@@ -204,7 +204,7 @@ This is a wrapper around `eval-after-load' that:
       (when smartparens-mode
         (setq-local doom-buffer-smartparens-mode t)
         (turn-off-smartparens-mode))))
-
+  (show-smartparens-global-mode)
   (smartparens-global-mode +1))
 
 (defun doom-surrounded-p (pair &optional inline balanced)

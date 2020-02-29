@@ -5,6 +5,16 @@
 (require 'cl-lib)
 (require 'subr-x)
 
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
+(fset 'yes-or-no-p 'y-or-n-p)
+(delete-selection-mode)
+(global-hl-line-mode)
+(global-display-line-numbers-mode)
+; (toggle-truncate-lines)
+
 (setq ad-redefinition-action 'accept
       apropos-do-all t
       auto-mode-case-fold nil
@@ -12,11 +22,7 @@
       display-line-numbers-width-start t
       make-backup-files nil
       ring-bell-function 'ignore
-      idle-update-delay 1
-      inhibit-compacting-font-caches t)
-
-(setq visible-cursor nil)
-(blink-cursor-mode -1)
+      idle-update-delay 1)
 
 (set-buffer-file-coding-system 'utf-8-unix)
 (set-clipboard-coding-system 'utf-8-unix)
@@ -25,20 +31,15 @@
 (set-terminal-coding-system 'utf-8-unix)
 (prefer-coding-system 'utf-8-unix)
 (modify-coding-system-alist 'process "*" 'utf-8-unix)
-
 ; (set-language-environment 'utf-8)  ;; enable these tws options will deactive font configuration on windows
 ; (setq locale-coding-system 'utf-8  ;; refer to https://emacs-china.org/t/topic/4581
 ;       default-process-coding-system '(utf-8 . utf-8))
 
-(fset 'yes-or-no-p 'y-or-n-p)
-(delete-selection-mode)
-(global-hl-line-mode)
-(global-display-line-numbers-mode)
-; (toggle-truncate-lines)
-
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p custom-file)
-  (load custom-file))
+(when (eq system-type 'windows-nt)
+  (set-default-coding-systems 'utf-8-unix)
+  (set-selection-coding-system 'utf-8-unix)
+  ; (setq abbreviated-home-dir "\\`'")
+  (setq default-directory "d:/"))
 
 (setq inhibit-compacting-font-caches t
       inhibit-startup-message t
@@ -52,17 +53,11 @@
 ; (setq initial-frame-alist
 ;       '((width . 100) (height . 35)))
 
-(when (eq system-type 'windows-nt)
-  (set-default-coding-systems 'utf-8-unix)
-  (set-selection-coding-system 'utf-8-unix)
-  ; (setq abbreviated-home-dir "\\`'")
-  (setq default-directory "d:/"))
-
+;; Network Proxy
 (defvar my-proxy "127.0.0.1:1080")
 (defvar socks-noproxy)
 (defvar socks-server)
 
-;; Network Proxy
 (defun proxy-http-show ()
   "Show HTTP/HTTPS proxy."
   (interactive)
@@ -105,7 +100,7 @@
   (require 'socks)
   (setq url-gateway-method 'socks
   socks-noproxy '("localhost")
-  socks-server '("Default server" "127.0.0.1" 3088 5))
+  socks-server '("Default server" "127.0.0.1" 1080 5))
   (proxy-socks-show))
 
 (defun proxy-socks-disable ()

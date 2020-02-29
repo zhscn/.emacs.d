@@ -2,10 +2,14 @@
 ;;; Commentary: Emacs Configuration
 ;;; Code:
 
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq file-name-handler-alist file-name-handler-alist-original)
+            (makunbound 'file-name-handler-alist-original)))
+
 (setq url-gateway-method 'socks)
 (setq socks-server '("Default server" "127.0.0.1" 1080 5))
-
-(setq gc-cons-threshold (* 500 1024 1024))
+(setq user-emacs-directory (file-name-directory load-file-name))
 (setq gc-cons-percentage 0.5)
 (setq load-prefer-newer noninteractive)
 
@@ -15,11 +19,8 @@
 (advice-add #'package-initialize :after #'update-load-path)
 (update-load-path)
 
-(let (file-name-handler-alist)
-  (setq user-emacs-directory (file-name-directory load-file-name)))
-
 (require 'init-base)
-(require 'init-benchmarking)
+; (require 'init-benchmarking)
 (require 'init-package)
 (require 'init-theme)
 

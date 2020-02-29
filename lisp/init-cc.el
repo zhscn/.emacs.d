@@ -18,10 +18,36 @@
 		c-default-style "cc-mode")
 		;; flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
   :config
+  (defun my-prettify-c-block-comment (orig-fun &rest args)
+    (let* ((first-comment-line (looking-back "/\\*\\s-*.*"))
+           (star-col-num (when first-comment-line
+                           (save-excursion
+                             (re-search-backward "/\\*")
+                             (1+ (current-column))))))
+      (apply orig-fun args)
+      (when first-comment-line
+        (save-excursion
+          (newline)
+          (dotimes (cnt star-col-num)
+            (insert " "))
+          (move-to-column star-col-num)
+          ; (insert "*/")
+          )
+        (move-to-column star-col-num) ; comment this line if using bsd style
+        (insert "*") ; comment this line if using bsd style
+       ))
+    ;; Ensure one space between the asterisk and the comment
+    (when (not (looking-back " "))
+      (insert " ")))
+  (advice-add 'c-indent-new-comment-line :around #'my-prettify-c-block-comment)
   (use-package clang-format
     :straight t
     :config
-    (setq clang-format-style-option "file")))
+    (setq clang-format-style-option "file"))
+
+  (use-package modern-cpp-font-lock
+    :straight t
+    :init (modern-c++-font-lock-global-mode t)))
 
 ;;(add-hook 'c++-mode #'lsp-deferred)
 ;;(ccls-use-default-rainbow-sem-highlight)
