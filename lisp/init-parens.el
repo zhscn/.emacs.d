@@ -1,17 +1,6 @@
 ;;; init-parens.el -*- lexical-binding: t -*-
-;;; Commentary: parens config
+;;; Commentary: parens config from doom emacs
 ;;; Code:
-
-; (use-package smartparens
-;   :straight t
-;   :hook (after-init . smartparens-mode)
-;   :init
-;   (progn
-;     (show-smartparens-global-mode t)
-;     (require 'smartparens-config)))
-
-; (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
-;;(add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
 
 (defun doom-enlist (exp)
   "Return EXP wrapped in a list, or as-is if already a list."

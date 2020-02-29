@@ -34,7 +34,7 @@
 (delete-selection-mode)
 (global-hl-line-mode)
 (global-display-line-numbers-mode)
-(toggle-truncate-lines)
+; (toggle-truncate-lines)
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
@@ -74,8 +74,8 @@
   "Enable HTTP/HTTPS proxy."
   (interactive)
   (setq url-proxy-services `(("http" . ,my-proxy)
-			     ("https" . ,my-proxy)
-			     ("no_proxy" . "^\\(localhost\\|192.168.*\\|10.*\\)")))
+           ("https" . ,my-proxy)
+           ("no_proxy" . "^\\(localhost\\|192.168.*\\|10.*\\)")))
   (proxy-http-show))
 
 (defun proxy-http-disable ()
@@ -96,7 +96,7 @@
   (interactive)
   (if socks-noproxy
       (message "Current SOCKS%d proxy is %s:%d"
-	       (cadddr socks-server) (cadr socks-server) (caddr socks-server))
+         (cadddr socks-server) (cadr socks-server) (caddr socks-server))
     (message "No SOCKS proxy")))
 
 (defun proxy-socks-enable ()
@@ -104,15 +104,15 @@
   (interactive)
   (require 'socks)
   (setq url-gateway-method 'socks
-	socks-noproxy '("localhost")
-	socks-server '("Default server" "127.0.0.1" 3088 5))
+  socks-noproxy '("localhost")
+  socks-server '("Default server" "127.0.0.1" 3088 5))
   (proxy-socks-show))
 
 (defun proxy-socks-disable ()
   "Disable SOCKS proxy."
   (interactive)
   (setq url-gateway-method 'native
-	socks-noproxy nil)
+  socks-noproxy nil)
   (proxy-socks-show))
 
 (defun proxy-socks-toggle ()
@@ -123,7 +123,7 @@
     (proxy-socks-enable)))
 
 (setq-default initial-scratch-message
-	      (concat ";; Happy hacking :)\n\n"))
+        (concat ";; Happy hacking :)\n\n"))
 
 (provide 'init-base)
 

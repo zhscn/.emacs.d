@@ -66,14 +66,7 @@
     :init
     (when (boundp 'xref-show-definitions-function)
       (setq xref-show-definitions-function #'ivy-xref-show-defs))
-    (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
-
-  ;; Tramp ivy interface
-  (use-package counsel-tramp
-    :straight t
-    :bind (:map counsel-mode-map
-           ("C-c c v" . counsel-tramp)))
-  )
+    (setq xref-show-xrefs-function #'ivy-xref-show-xrefs)))
 
 ;; More friendly display transformer for Ivy
 (use-package ivy-rich

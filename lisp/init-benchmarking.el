@@ -66,5 +66,5 @@ LOAD-DURATION is the time taken in milliseconds to load FEATURE.")
            (benchmark/time-subtract-millis after-init-time before-init-time)))
 
 (provide 'init-benchmarking)
-;;; init-benchmarking.el ends here
 
+;;; init-benchmarking.el ends here

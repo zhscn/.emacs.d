@@ -8,9 +8,9 @@
       (bootstrap-version 5))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
-	(url-retrieve-synchronously
-	 "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-	 'silent 'inhibit-cookies)
+  (url-retrieve-synchronously
+   "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+   'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
@@ -31,7 +31,6 @@
 (straight-use-package 'diminish)
 (straight-use-package 'bind-key)
 (straight-use-package 'gnu-elpa-keyring-update)
-;;(straight-use-package 'el-patch)
 
 (eval-and-compile
   (setq use-package-always-ensure t)
@@ -58,12 +57,18 @@
   :config
   (when (fboundp 'page-break-lines-mode)
     (add-hook 'paradox-after-execute-functions
-	(lambda (&rest _)
+  (lambda (&rest _)
     (let ((buf (get-buffer-create "*Paradox Report*"))
-	  (inhibit-read-only t))
+    (inhibit-read-only t))
       (with-current-buffer buf
-	(page-break-lines-mode 1))))
-	t)))
+  (page-break-lines-mode 1))))
+  t)))
+
+(use-package which-key
+  :straight t
+  :diminish
+  :bind ("C-h M-m" . which-key-show-major-mode)
+  :hook (after-init . which-key-mode))
 
 (use-package auto-package-update
   :straight t
@@ -78,8 +83,8 @@
   :ensure t
   :hook (after-init . recentf-mode)
   :init (setq recentf-max-saved-items 300
-	recentf-exclude
-	'("\\.?cache" ".cask" "url" "COMMIT_EDITMSG\\'" "bookmarks"
+  recentf-exclude
+  '("\\.?cache" ".cask" "url" "COMMIT_EDITMSG\\'" "bookmarks"
     "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\|bmp\\|xpm\\)$"
     "\\.?ido\\.last$" "\\.revive$" "/G?TAGS$" "/.elfeed/"
     "^/tmp/" "^/var/folders/.+$" ; "^/ssh:"
