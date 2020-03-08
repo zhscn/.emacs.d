@@ -22,8 +22,8 @@
 ; (require 'package)
 
 (setq package-archives '(("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-			 ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-			 ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+             ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+             ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
 ; (package-initialize)
 
@@ -74,7 +74,39 @@
 
 (use-package whitespace
   :ensure nil
-  :hook (before-save . whitespace-cleanup))
+  :hook ((after-init . global-whitespace-mode)
+     (before-save . whitespace-cleanup))
+ ;; :config
+ ;; (face-spec-set 'whitespace-tab
+ ;;         '((t :background unspecified)))
+ ;; (face-spec-set 'whitespace-line
+ ;;        '((((background light))
+ ;;           :background "#d8d8d8" :foreground unspecified
+ ;;           :underline t :weight unspecified)
+ ;;          (t
+ ;;           :background "#404040" :foreground unspecified
+ ;;           :underline t :weight unspecified)))
+
+ ;; ;; Use softer visual cue for space before tabs.
+ ;; (face-spec-set 'whitespace-space-before-tab
+ ;;        '((((background light))
+ ;;           :background "#d8d8d8" :foreground "#de4da1")
+ ;;          (t
+ ;;           :inherit warning
+ ;;           :background "#404040" :foreground "#ee6aa7")))
+
+ ;; (setq
+ ;;  whitespace-line-column nil
+ ;;  whitespace-style
+ ;;  '(face             ; visualize things below:
+ ;;    empty            ; empty lines at beginning/end of buffer
+ ;;    lines-tail       ; lines go beyond `fill-column'
+ ;;    space-before-tab ; spaces before tab
+ ;;    trailing         ; trailing blanks
+ ;;    tabs             ; tabs (show by face)
+ ;;    tab-mark         ; tabs (show by symbol)
+ ;;    ))
+  )
 
 (provide 'init-package)
 
