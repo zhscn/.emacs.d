@@ -3,9 +3,9 @@
 ;;; Code:
 
 (add-hook 'emacs-startup-hook
-          (lambda ()
-            (setq file-name-handler-alist file-name-handler-alist-original)
-            (makunbound 'file-name-handler-alist-original)))
+	  (lambda ()
+	    (setq file-name-handler-alist file-name-handler-alist-original)
+	    (makunbound 'file-name-handler-alist-original)))
 
 (setq url-gateway-method 'socks)
 (setq socks-server '("Default server" "127.0.0.1" 1080 5))
@@ -20,7 +20,7 @@
 (update-load-path)
 
 (require 'init-base)
-; (require 'init-benchmarking)
+(require 'init-benchmarking)
 (require 'init-package)
 (require 'init-theme)
 
