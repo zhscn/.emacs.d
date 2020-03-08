@@ -3,9 +3,9 @@
 ;;; Code:
 
 (add-hook 'emacs-startup-hook
-	  (lambda ()
-	    (setq file-name-handler-alist file-name-handler-alist-original)
-	    (makunbound 'file-name-handler-alist-original)))
+          (lambda ()
+            (setq file-name-handler-alist file-name-handler-alist-original)
+            (makunbound 'file-name-handler-alist-original)))
 
 (setq url-gateway-method 'socks)
 (setq socks-server '("Default server" "127.0.0.1" 1080 5))
@@ -15,14 +15,20 @@
 
 (defun update-load-path (&rest _)
   "Update `load-path'."
-  (push (expand-file-name "lisp" user-emacs-directory) load-path))
+  (dolist (dir '("site-lisp" "lisp"))
+    (push (expand-file-name dir user-emacs-directory) load-path)))
+
+(defun add-subdirs-to-load-path (&rest _)
+  "Add subdirectories to `load-path'."
+  (let ((default-directory (expand-file-name "site-lisp" user-emacs-directory)))
+    (normal-top-level-add-subdirs-to-load-path)))
+
 (advice-add #'package-initialize :after #'update-load-path)
+(advice-add #'package-initialize :after #'add-subdirs-to-load-path)
+
 (update-load-path)
 
-(require 'init-base)
-(require 'init-benchmarking)
 (require 'init-package)
-(require 'init-keybinds)
 (require 'init-theme)
 
 (require 'init-evil)
@@ -32,7 +38,9 @@
 (require 'init-flycheck)
 
 (require 'init-cc)
+(require 'init-rust)
 
+(require 'init-utils)
 (require 'init-funcs)
 (require 'init-dired)
 (require 'init-parens)

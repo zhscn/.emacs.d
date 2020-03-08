@@ -13,7 +13,8 @@
 (delete-selection-mode)
 (global-hl-line-mode)
 (global-display-line-numbers-mode)
-(toggle-truncate-lines)
+(column-number-mode)
+;; (toggle-truncate-lines)
 (global-so-long-mode)
 
 (setq ad-redefinition-action 'accept
@@ -32,7 +33,7 @@
 (set-terminal-coding-system 'utf-8-unix)
 (prefer-coding-system 'utf-8-unix)
 (modify-coding-system-alist 'process "*" 'utf-8-unix)
-; (set-language-environment 'utf-8)  ;; enable these tws options will deactive font configuration on windows
+; (set-language-environment 'utf-8)  ;; enable these two options will deactive font configuration on windows
 ; (setq locale-coding-system 'utf-8  ;; refer to https://emacs-china.org/t/topic/4581
 ;       default-process-coding-system '(utf-8 . utf-8))
 
@@ -70,8 +71,8 @@
   "Enable HTTP/HTTPS proxy."
   (interactive)
   (setq url-proxy-services `(("http" . ,my-proxy)
-	   ("https" . ,my-proxy)
-	   ("no_proxy" . "^\\(localhost\\|192.168.*\\|10.*\\)")))
+           ("https" . ,my-proxy)
+           ("no_proxy" . "^\\(localhost\\|192.168.*\\|10.*\\)")))
   (proxy-http-show))
 
 (defun proxy-http-disable ()
@@ -92,7 +93,7 @@
   (interactive)
   (if socks-noproxy
       (message "Current SOCKS%d proxy is %s:%d"
-	 (cadddr socks-server) (cadr socks-server) (caddr socks-server))
+         (cadddr socks-server) (cadr socks-server) (caddr socks-server))
     (message "No SOCKS proxy")))
 
 (defun proxy-socks-enable ()
@@ -119,7 +120,7 @@
     (proxy-socks-enable)))
 
 (setq-default initial-scratch-message
-	(concat ";; Happy hacking :)\n\n"))
+        (concat ";; Happy hacking :)\n\n"))
 
 (provide 'init-base)
 

@@ -2,6 +2,8 @@
 ;;; Commentary: parens config from doom emacs
 ;;; Code:
 
+(require 'init-doom)
+
 (use-package smartparens
   :straight t
   :hook (after-init . smartparens-mode)
