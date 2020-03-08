@@ -5,22 +5,15 @@
 (use-package evil
   :straight t
   :ensure t
-  :hook (after-init . evil-mode)
-  :init (setq evil-want-keybinding nil)
+  :hook ((after-init . evil-mode)
+	 (evil-insert-state-entry . (lambda () (setq display-line-numbers 'abslute)))
+	 (evil-normal-state-entry . (lambda () (setq display-line-numbers 'visual))))
+  :init (setq evil-want-keybinding nil
+	      evil-want-C-u-scroll t)
   :config
-  (define-key ivy-minibuffer-map [escape] 'minibuffer-keyboard-quit)
+  ;; (define-key ivy-minibuffer-map [escape] 'minibuffer-keyboard-quit)
   (setq evil-emacs-state-cursor '(box "SteelBlue")
-        evil-normal-state-cursor '(box "grey60"))
-
-  (defun change-line-number-relative()
-     (setq display-line-numbers 'visual))
-  
-  (defun change-line-number-abs()
-     (setq display-line-numbers 'abslute))
-
-  (add-hook 'evil-insert-state-entry-hook 'change-line-number-abs)
-  (add-hook 'evil-normal-state-entry-hook 'change-line-number-relative)
-  (add-hook 'evil-motion-state-entry-hook 'change-line-number-relative))
+	evil-normal-state-cursor '(box "grey60")))
 
 (use-package evil-collection
   :straight t
