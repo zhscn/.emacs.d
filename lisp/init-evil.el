@@ -12,7 +12,11 @@
               evil-want-C-u-scroll t)
   :config
   (setq evil-emacs-state-cursor '(box "SteelBlue")
-        evil-normal-state-cursor '(box "grey60")))
+        evil-normal-state-cursor '(box "grey60"))
+
+  (require 'key-chord)
+  (key-chord-mode 1)
+  (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
 
 (use-package evil-collection
   :straight t
@@ -26,28 +30,17 @@
   :init
   ;; Convenience aliases
   (defalias 'define-key! #'general-def)
-  (defalias 'unmap! #'general-unbind))
-
-(use-package which-key
-  :straight t
-  :defer 1
-  :init
-  (setq which-key-sort-order #'which-key-prefix-then-key-order
-        which-key-sort-uppercase-first nil
-        which-key-add-column-padding 1
-        which-key-max-display-columns nil
-        which-key-min-display-lines 6
-        which-key-side-window-slot -10)
+  (defalias 'unmap! #'general-unbind)
+  (defalias 'def-key #'general-def)
   :config
-  ;; general improvements to which-key readability
-  (set-face-attribute 'which-key-local-map-description-face nil :weight 'bold)
-  (which-key-setup-side-window-bottom)
-  (setq-hook! 'which-key-init-buffer-hook line-spacing 3)
 
-  (which-key-add-key-based-replacements doom-leader-key "<leader>")
-  (which-key-add-key-based-replacements doom-localleader-key "<localleader>")
+  (general-create-definer leader
+  ;; :prefix my-leader
+  :prefix "SPC")
 
-  (which-key-mode +1))
+  (general-create-definer local-leader
+  ;; :prefix my-local-leader
+  :prefix "SPC m"))
 
 (provide 'init-evil)
 

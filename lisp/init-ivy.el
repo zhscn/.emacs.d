@@ -7,7 +7,7 @@
   :diminish ivy-mode counsel-mode
   :hook ((after-init . ivy-mode)
          (ivy-mode . counsel-mode))
-  :bind (("C-s" . swiper-isearch)
+  :bind (;;("C-s" . swiper-isearch)
          :map ivy-minibuffer-map
               ([escape] . 'minibuffer-keyboard-quit))
   :init
