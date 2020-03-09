@@ -41,6 +41,7 @@
 (require 'init-rust)
 
 (require 'init-term)
+(require 'init-pyim)
 (require 'init-utils)
 (require 'init-funcs)
 (require 'init-dired)

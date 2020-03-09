@@ -50,13 +50,15 @@
   (setq doom-modeline-height 10
         doom-modeline-bar-width 3
         doom-modeline-project-detection 'project
+        doom-modeline-buffer-file-name-style 'relative-to-project
         doom-modeline-icon nil))
-
 (use-package dashboard
   :straight t
-  :ensure t
+  :diminish (dashboard-mode page-break-lines-mode)
+  :hook (dashboard-mode . (lambda () (setq-local frame-title-format "")))
   :config
-  (dashboard-setup-startup-hook))
+  (setq dashboard-banner-logo-title "zhscn's Emacs"))
+(dashboard-setup-startup-hook)
 
 (provide 'init-theme)
 
