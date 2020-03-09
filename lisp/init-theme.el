@@ -52,6 +52,12 @@
         doom-modeline-project-detection 'project
         doom-modeline-icon nil))
 
+(use-package dashboard
+  :straight t
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
+
 (provide 'init-theme)
 
 ;;; init-theme.el ends here

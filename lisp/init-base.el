@@ -26,6 +26,8 @@
       ring-bell-function 'ignore
       idle-update-delay 1)
 
+(setq-default truncate-lines t)
+
 (set-buffer-file-coding-system 'utf-8-unix)
 (set-clipboard-coding-system 'utf-8-unix)
 (set-file-name-coding-system 'utf-8-unix)

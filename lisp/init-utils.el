@@ -44,4 +44,13 @@
   (let ((val (or (getenv "P4CONFIG") ".p4config")))
     (add-to-list 'projectile-project-root-files-bottom-up val)))
 
+(use-package flywrap
+  :straight (flywrap
+             :type git
+             :host github
+             :repo "casouri/lunarymacs"
+             :files ("site-lisp/flywrap.el"))
+  :hook
+  (text-mode . #'flywrap-mode))
+
 (provide 'init-utils)

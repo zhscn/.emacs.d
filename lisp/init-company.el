@@ -10,12 +10,12 @@
   :bind (("M-/" . company-complete)
          ("<backtab>" . company-yasnippet)
          :map company-active-map
-         ("C-k" . company-select-previous)
-         ("C-j" . company-select-next)
+         ("C-p" . company-select-previous)
+         ("C-n" . company-select-next)
          ("<tab>" . company-complete-common-or-cycle)
          :map company-search-map
-         ("C-k" . company-select-previous)
-         ("C-j" . company-select-next))
+         ("C-p" . company-select-previous)
+         ("C-n" . company-select-next))
   :hook (after-init . global-company-mode)
   :config
   (setq company-tooltip-align-annotations t

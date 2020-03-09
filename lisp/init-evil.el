@@ -35,12 +35,26 @@
   :config
 
   (general-create-definer leader
-  ;; :prefix my-leader
+  ;; :prefix leader
   :prefix "SPC")
 
   (general-create-definer local-leader
-  ;; :prefix my-local-leader
+  ;; :prefix local-leader
   :prefix "SPC m"))
+
+(leader 'normal
+  "." 'counsel-find-file
+  "SPC" 'projectile-find-file
+  "rf" 'counsel-recentf
+  "fs" 'save-buffer
+  "bb" 'ivy-switch-buffer
+  "bk" 'kill-current-buffer
+  "bK" 'kill-buffer
+  "ww" 'ace-window
+  "wj" 'windmove-down
+  "wk" 'windmove-up
+  "wh" 'windmove-left
+  "wl" 'windmove-right)
 
 (provide 'init-evil)
 
