@@ -56,6 +56,9 @@
   "wh" 'windmove-left
   "wl" 'windmove-right)
 
+(def-key 'normal
+  "H" 'evil-first-non-blank
+  "L" 'evil-end-of-line)
 
 (provide 'init-evil)
 

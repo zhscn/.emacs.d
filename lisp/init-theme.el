@@ -15,10 +15,10 @@
                           (progn
                             (load-theme 'doom-nord-light t)
                             (set-face-attribute
-                              'default nil :font (font-spec :family "Consolas" :size 14.5))
+                             'default nil :font (font-spec :family "Consolas" :size 14.5))
                             (dolist (charset '(kana han symbol cjk-misc bopomofo))
                               (set-fontset-font (frame-parameter nil 'font)
-                                charset (font-spec :family "Sarasa Term SC" :size 14.8)))))))
+                                                charset (font-spec :family "Sarasa Term SC" :size 14.8)))))))
 
   :config
   (blink-cursor-mode -1)
@@ -52,6 +52,7 @@
         doom-modeline-project-detection 'project
         doom-modeline-buffer-file-name-style 'relative-to-project
         doom-modeline-icon nil))
+
 (use-package dashboard
   :straight t
   :diminish (dashboard-mode page-break-lines-mode)

@@ -39,8 +39,10 @@
 
 (require 'init-cc)
 (require 'init-rust)
+(require 'init-scheme)
 
 (require 'init-term)
+(require 'init-tex)
 (require 'init-pyim)
 (require 'init-utils)
 (require 'init-funcs)
