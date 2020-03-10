@@ -27,7 +27,7 @@
                          ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
                          ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
-; (package-initialize)
+(package-initialize)
 
 ; (unless (package-installed-p 'use-package)
 ;   (package-refresh-contents)

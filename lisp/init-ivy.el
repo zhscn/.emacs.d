@@ -15,7 +15,7 @@
 
   (setq ivy-use-selectable-prompt t
         ivy-use-virtual-buffers t
-        ivy-height 20
+        ivy-height 15
         ivy-fixed-height-minibuffer t
         ivy-count-format "(%d/%d) "
         ivy-on-del-error-function nil)

@@ -57,10 +57,9 @@
   (setq-default lsp-auto-guess-root nil
     company-transformers nil
     company-lsp-async t
-    company-lsp-cache-candidates t)
+    company-lsp-cache-candidates t))
 
-  :config
-  (use-package yasnippet
+(use-package yasnippet
     :straight t
     ; :diminish yas-minor-mode
     :hook (after-init . yas-global-mode)
@@ -69,7 +68,7 @@
     (yas-reload-all)
     (use-package yasnippet-snippets
       :straight t
-      :after yasnippet)))
+      :after yasnippet))
 
 (use-package dap-mode
   :straight t
