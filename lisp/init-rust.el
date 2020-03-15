@@ -3,11 +3,9 @@
 ;;; Code:
 
 (use-package rust-mode
-  :straight t
   :init (setq rust-format-on-save t)
   :config
   (use-package cargo
-    :straight t
     :hook (rust-mode . cargo-minor-mode)
     :config
     (setq compilation-filter-hook

@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package company
-  :straight t
   :diminish
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :commands company-abort
@@ -29,7 +28,6 @@
 
   ;; Better sorting and filtering
   (use-package company-prescient
-    :straight t
     :init (company-prescient-mode 1)))
 
 (provide 'init-company)

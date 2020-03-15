@@ -6,7 +6,6 @@
 ;; 14.5 14.8
 ;; 15.5 17.8
 (use-package doom-themes
-  :straight t
   :hook (after-init . (lambda ()
                         (if (not window-system)
                             (progn
@@ -43,14 +42,12 @@
     (reapply-themes)))
 
 (use-package dashboard
-  :straight t
   :diminish (dashboard-mode page-break-lines-mode)
   :hook (dashboard-mode . (lambda () (setq-local frame-title-format "")))
   :config
   (setq dashboard-banner-logo-title "zhscn's Emacs"))
 
 (use-package doom-modeline
-  :straight t
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :init

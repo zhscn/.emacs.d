@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package recentf
-  :straight t
   :hook (after-init . recentf-mode)
   :init (setq recentf-max-saved-items 300
   recentf-exclude

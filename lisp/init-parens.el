@@ -5,7 +5,6 @@
 (require 'init-doom)
 
 (use-package smartparens
-  :straight t
   :hook (after-init . smartparens-mode)
   ;; Auto-close delimiters and blocks as you type. It's more powerful than that,
   ;; but that is all Doom uses it for.
@@ -346,7 +345,7 @@ possible, or just one char if that's not possible."
     (advice-add #'delete-backward-char :override #'+default--delete-backward-char-a))
 
   ;; Makes `newline-and-indent' continue comments (and more reliably)
-  (advice-add #'newline-and-indent :override #'+default--newline-indent-and-continue-comments-a);)
+  ; (advice-add #'newline-and-indent :override #'+default--newline-indent-and-continue-comments-a);)
 
 (provide 'init-parens)
 

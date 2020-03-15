@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package counsel
-  :straight t
   :diminish ivy-mode counsel-mode
   :hook ((after-init . ivy-mode)
          (ivy-mode . counsel-mode))
@@ -30,57 +29,48 @@
     (with-eval-after-load 'magit
       (setq magit-completing-read-function 'ivy-completing-read)))
 
-  (use-package fuz
-    :straight t
-    :init
-    (require 'fuz)
-    (unless (require 'fuz-core nil t)
-      (fuz-build-and-load-dymod))
-    :config
-    (use-package ivy-fuz
-      :straight t
-      :after ivy
-      :custom
-      (ivy-sort-matches-functions-alist '((t . ivy-fuz-sort-fn)))
-      (ivy-re-builders-alist '((t . ivy-fuz-regex-fuzzy)))
-      :config
-      (add-to-list 'ivy-highlight-functions-alist '(ivy-fuz-regex-fuzzy . ivy-fuz-highlight-fn))))
+  ; (use-package fuz
+  ;   :init
+  ;   (require 'fuz)
+  ;   (unless (require 'fuz-core nil t)
+  ;     (fuz-build-and-load-dymod))
+  ;   :config
+  ;   (use-package ivy-fuz
+  ;     :after ivy
+  ;     :custom
+  ;     (ivy-sort-matches-functions-alist '((t . ivy-fuz-sort-fn)))
+  ;     (ivy-re-builders-alist '((t . ivy-fuz-regex-fuzzy)))
+  ;     :config
+  ;     (add-to-list 'ivy-highlight-functions-alist '(ivy-fuz-regex-fuzzy . ivy-fuz-highlight-fn))))
 
   (use-package amx
-    :straight t
     :ensure t
     :init (setq amx-history-length 20))
 
   (use-package ivy-hydra
-    :straight t
     :commands ivy-hydra-read-action
     :init (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point)))
 
   (use-package counsel-projectile
-    :straight t
     :init
     (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point))
     (counsel-projectile-mode 1))
 
   (use-package counsel-projectile
-    :straight t
     :hook (counsel-mode . counsel-projectile-mode)
     :init (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point)))
 
   (use-package ivy-yasnippet
-    :straight t
     :commands ivy-yasnippet--preview
     :config (advice-add #'ivy-yasnippet--preview :override #'ignore))
 
   (use-package ivy-xref
-    :straight t
     :init
     (when (boundp 'xref-show-definitions-function)
       (setq xref-show-definitions-function #'ivy-xref-show-defs))
     (setq xref-show-xrefs-function #'ivy-xref-show-xrefs)))
 
 (use-package ivy-rich
-  :straight t
   :hook ((ivy-mode . ivy-rich-mode)
          (ivy-rich-mode . (lambda ()
                             (setq ivy-virtual-abbreviate

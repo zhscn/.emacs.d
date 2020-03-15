@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package lsp-mode
-  :straight t
   :commands lsp
   :bind
   (:map lsp-mode-map
@@ -12,7 +11,6 @@
   (setq lsp-prefer-flymake nil))
 
 ; (use-package lsp-ui
-;   :straight t
 ;   :custom-face
 ;   (lsp-ui-sideline-code-action ((t (:inherit warning))))
 ;   :bind (("C-c u" . lsp-ui-imenu)
@@ -51,7 +49,6 @@
 ;                                    (face-background 'tooltip)))))
 
 (use-package company-lsp
-  :straight t
   :commands company-lsp
   :init
   (setq-default lsp-auto-guess-root nil
@@ -60,18 +57,15 @@
     company-lsp-cache-candidates t))
 
 (use-package yasnippet
-    :straight t
     ; :diminish yas-minor-mode
     :hook (after-init . yas-global-mode)
     :config
     (yas-minor-mode)
     (yas-reload-all)
     (use-package yasnippet-snippets
-      :straight t
       :after yasnippet))
 
 ; (use-package dap-mode
-;   :straight t
 ;   :diminish
 ;   :bind
 ;   (:map dap-mode-map

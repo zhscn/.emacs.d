@@ -232,7 +232,6 @@ all hooks after it are ignored.")
 ;;; General + leader/localleader keys
 
 (use-package general
-  :straight t
   :init
   ;; Convenience aliases
   (defalias 'define-key! #'general-def)
@@ -346,7 +345,6 @@ localleader prefix."
       collect `(remove-hook ',hook #',fn))))
 
 (use-package which-key
-  :straight t
   :defer 1
   :init
   (setq which-key-sort-order #'which-key-prefix-then-key-order
