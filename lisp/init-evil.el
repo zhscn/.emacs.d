@@ -5,9 +5,9 @@
 (use-package evil
   :straight t
   :ensure t
-  :hook ((after-init . evil-mode)
-         (evil-insert-state-entry . (lambda () (setq display-line-numbers 'abslute)))
-         (evil-normal-state-entry . (lambda () (setq display-line-numbers 'visual))))
+  :hook ((after-init . evil-mode))
+         ; (evil-insert-state-entry . (lambda () (setq display-line-numbers 'abslute)))
+         ; (evil-normal-state-entry . (lambda () (setq display-line-numbers 'visual))))
   :init (setq evil-want-keybinding nil
               evil-want-C-u-scroll t)
   :config

@@ -58,6 +58,13 @@
 ; (setq initial-frame-alist
 ;       '((width . 100) (height . 35)))
 
+; (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+;   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+;   (cl-letf (((symbol-function #'process-list) (lambda ())))
+;     ad-do-it))
+
+(setq kill-buffer-query-functions nil)
+; (setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
 ;; Network Proxy
 (defvar my-proxy "127.0.0.1:1080")
 (defvar socks-noproxy)

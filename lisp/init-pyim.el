@@ -3,21 +3,22 @@
 ;;; Code:
 
 (use-package pyim
-  :ensure nil
+  :straight t
   :init
-  (require 'pyim)
-  (add-to-list 'load-path (expand-file-name "~/pkg/liberime/build"))
+  (add-to-list 'load-path (expand-file-name "~/pkg/liberime"))
   (require 'liberime)
-  (liberime-start
-   (expand-file-name "/usr/share/rime-data")
-   (expand-file-name "~/.emacs.d/pyim/rime"))
   (liberime-select-schema "double_pinyin_flypy")
+  ; (liberime-load)
   :demand t
   :config
   (use-package pyim-basedict
     :straight t
     :ensure nil
-    :config (pyim-basedict-enable))
+    :hook (after-init . (lambda () (pyim-restart-1 t)))
+    :init (setq pyim-dicts
+                '((:name "base" :file "/home/zhscn/.emacs.d/pyim/dcache/pyim-bigdict.pyim")))
+    :config
+    (pyim-basedict-enable))
 
   (use-package posframe
     :straight t

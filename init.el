@@ -41,6 +41,7 @@
 (require 'init-rust)
 (require 'init-scheme)
 
+(require 'init-org)
 (require 'init-term)
 (require 'init-tex)
 (require 'init-pyim)
