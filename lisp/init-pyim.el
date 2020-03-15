@@ -4,7 +4,8 @@
 
 (use-package pyim
   :init
-  (add-to-list 'load-path (expand-file-name "~/pkg/liberime"))
+  (unless (eq system-type 'windows-nt)
+    (add-to-list 'load-path (expand-file-name "~/pkg/liberime")))
   (require 'liberime)
   (liberime-select-schema "double_pinyin_flypy")
   (liberime-load)
