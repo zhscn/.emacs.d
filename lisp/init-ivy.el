@@ -6,8 +6,7 @@
   :diminish ivy-mode counsel-mode
   :hook ((after-init . ivy-mode)
          (ivy-mode . counsel-mode))
-  :bind (;;("C-s" . swiper-isearch)
-         :map ivy-minibuffer-map
+  :bind (:map ivy-minibuffer-map
               ([escape] . 'minibuffer-keyboard-quit))
   :init
   (setq enable-recursive-minibuffers t)
@@ -29,36 +28,33 @@
     (with-eval-after-load 'magit
       (setq magit-completing-read-function 'ivy-completing-read)))
 
-  ; (use-package fuz
-  ;   :init
-  ;   (require 'fuz)
-  ;   (unless (require 'fuz-core nil t)
-  ;     (fuz-build-and-load-dymod))
-  ;   :config
-  ;   (use-package ivy-fuz
-  ;     :after ivy
-  ;     :custom
-  ;     (ivy-sort-matches-functions-alist '((t . ivy-fuz-sort-fn)))
-  ;     (ivy-re-builders-alist '((t . ivy-fuz-regex-fuzzy)))
-  ;     :config
-  ;     (add-to-list 'ivy-highlight-functions-alist '(ivy-fuz-regex-fuzzy . ivy-fuz-highlight-fn))))
+  (use-package fuz
+    :init
+    (require 'fuz)
+    (unless (require 'fuz-core nil t)
+      (fuz-build-and-load-dymod))
+    :config
+    (use-package ivy-fuz
+      :after ivy
+      :custom
+      (ivy-sort-matches-functions-alist '((t . ivy-fuz-sort-fn)))
+      (ivy-re-builders-alist '((t . ivy-fuz-regex-fuzzy)))
+      :config
+      (add-to-list 'ivy-highlight-functions-alist '(ivy-fuz-regex-fuzzy . ivy-fuz-highlight-fn))))
 
-  (use-package amx
-    :ensure t
-    :init (setq amx-history-length 20))
+  ; (use-package amx
+  ;   :ensure t
+  ;   :init (setq amx-history-length 20))
 
   (use-package ivy-hydra
     :commands ivy-hydra-read-action
     :init (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point)))
 
   (use-package counsel-projectile
+    :hook (counsel-mode . counsel-projectile-mode)
     :init
     (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point))
     (counsel-projectile-mode 1))
-
-  (use-package counsel-projectile
-    :hook (counsel-mode . counsel-projectile-mode)
-    :init (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point)))
 
   (use-package ivy-yasnippet
     :commands ivy-yasnippet--preview

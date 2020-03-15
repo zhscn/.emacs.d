@@ -44,7 +44,7 @@ If prefix ARG is non-nil, recreate vterm buffer in the current project's root."
         (pop-to-buffer buffer)))))
 
 (leader 'normal
-	"t" '+vterm/toggle)
+  "t" '+vterm/toggle)
 
 (provide 'init-term)
 

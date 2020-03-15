@@ -25,7 +25,6 @@
 
 (use-package general
   :init
-  ;; Convenience aliases
   (defalias 'define-key! #'general-def)
   (defalias 'unmap! #'general-unbind)
   (defalias 'def-key #'general-def)

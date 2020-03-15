@@ -33,7 +33,6 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-; (use-package use-package)
 (use-package diminish)
 (use-package bind-key)
 (use-package gnu-elpa-keyring-update)
@@ -46,10 +45,6 @@
 
 (eval-when-compile
   (require 'use-package))
-
-; (use-package benchmark-init
-;   :ensure t
-;   :hook ((after-init . benchmark-init/deactivate)))
 
 (require 'init-builtin)
 
