@@ -28,22 +28,30 @@
 
 (setq-default truncate-lines t)
 
-(set-buffer-file-coding-system 'utf-8-unix)
-(set-clipboard-coding-system 'utf-8-unix)
-(set-file-name-coding-system 'utf-8-unix)
-(set-keyboard-coding-system 'utf-8-unix)
-(set-terminal-coding-system 'utf-8-unix)
+(when (fboundp 'set-charset-priority)
+  (set-charset-priority 'unicode))
+
 (prefer-coding-system 'utf-8-unix)
 (modify-coding-system-alist 'process "*" 'utf-8-unix)
-; (set-language-environment 'utf-8)  ;; enable these two options will deactive font configuration on windows
-; (setq locale-coding-system 'utf-8  ;; refer to https://emacs-china.org/t/topic/4581
-;       default-process-coding-system '(utf-8 . utf-8))
+(set-buffer-file-coding-system 'utf-8-unix)
+(set-file-name-coding-system 'utf-8-unix)
+(set-default-coding-systems 'utf-8-unix)
+(set-keyboard-coding-system 'utf-8-unix)
+(set-terminal-coding-system 'utf-8-unix)
+(set-language-environment 'utf-8)
+(setq locale-coding-system 'utf-8-unix)
+(setq default-process-coding-system '(utf-8-unix . utf-8-unix))
 
 (when (eq system-type 'windows-nt)
-  (set-default-coding-systems 'utf-8-unix)
-  (set-selection-coding-system 'utf-8-unix)
   ; (setq abbreviated-home-dir "\\`'")
+  (setq locale-coding-system 'gb18030)
+  (setq w32-unicode-filenames 'nil)
+  (setq file-name-coding-system 'gb18030)
   (setq default-directory "d:/"))
+
+(unless (eq system-type 'windows-nt)
+  (set-clipboard-coding-system 'utf-8)
+  (set-selection-coding-system 'utf-8))
 
 (setq inhibit-compacting-font-caches t
       inhibit-startup-message t
