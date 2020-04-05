@@ -38,6 +38,7 @@
 (require 'init-flycheck)
 
 (require 'init-cc)
+(require 'init-haskell)
 (require 'init-rust)
 (require 'init-scheme)
 
