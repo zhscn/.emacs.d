@@ -15,14 +15,17 @@
     :config
     (pyim-basedict-enable))
 
-  (use-package posframe
-    :init (require 'posframe))
-
+  (if (window-system)
+      (progn
+        (use-package posframe
+        :init (require 'posframe))
+        (setq pyim-page-tooltip 'posframe))
+    (setq pyim-page-tooltip 'popup))
+  
   (setq default-input-method "pyim")
   (setq pyim-punctuation-translate-p '(no auto yes)
         pyim-default-scheme 'rime
         ;; pyim-punctuation-dict nil
-        pyim-page-tooltip 'posframe
         pyim-page-length 5)
 
   (setq-default pyim-english-input-switch-functions
