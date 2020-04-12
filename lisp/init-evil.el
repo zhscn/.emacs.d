@@ -9,13 +9,9 @@
          ; (evil-normal-state-entry . (lambda () (setq display-line-numbers 'visual))))
   :init (setq evil-want-keybinding nil
               evil-want-C-u-scroll t)
-  (require 'key-chord)
-  (key-chord-mode 1)
   :config
   (setq evil-emacs-state-cursor '(box "SteelBlue")
         evil-normal-state-cursor '(box "grey60"))
-
-  (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
 
 (use-package evil-collection
   :after evil
