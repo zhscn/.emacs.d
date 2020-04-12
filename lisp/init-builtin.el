@@ -17,12 +17,13 @@
   :ensure nil
   :config (setq ediff-split-window-function 'split-window-horizontally))
 
+(setq whitespace-global-modes '(not makefile-mode))
 (use-package whitespace
   :ensure nil
   :hook ((after-init . global-whitespace-mode)
          (before-save . (lambda () (progn
-                                     (untabify (point-min) (point-max))
-                                     (whitespace-cleanup)))))
+                                       ;; (untabify (point-min) (point-max))
+                                       (whitespace-cleanup)))))
   :config
   (setq-default indent-tabs-mode nil)
   (face-spec-set 'whitespace-tab

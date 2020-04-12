@@ -21,7 +21,7 @@
            (lsp)))
   :init
   (setq-default c-basic-offset 2
-                default-tab-width 2
+                ;; tab-width 2
                 ;;ccls-sem-highlight-method 'overlay
                 c-default-style "cc-mode")
   ;; flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
