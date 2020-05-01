@@ -8,18 +8,19 @@
   :custom
   (default-input-method "rime")
   :init
+  (setq rime-title "im")
+  :config
   (setq rime-disable-predicates
         '(rime-predicate-evil-mode-p
           rime-predicate-after-ascii-char-p
           rime-predicate-hydra-p
           rime-predicate-space-after-cc-p
           rime-predicate-prog-in-code-p))
-  :config
   (setq rime-translate-keybindings
     '("C-f" "C-b" "C-n" "C-p" "M-n" "M-p"))
   (setq rime-show-candidate 'posframe)
   (setq rime-posframe-properties
-        (list :font "Microsoft YaHei"
+        (list :font "Microsoft YaHei-12"
               :internal-border-width 2))
   (define-key rime-mode-map (kbd "M-k") 'rime-force-enable))
 
