@@ -15,7 +15,7 @@
                           (progn
                             (load-theme 'doom-nord-light t) ;; doom-acario-light
                             (set-face-attribute
-                             'default nil :font (font-spec :family "Source Code Pro" :size 11.5))
+                             'default nil :font (font-spec :family "JetBrains Mono" :size 11.5))
                             (dolist (charset '(kana han symbol cjk-misc bopomofo))
                               (set-fontset-font (frame-parameter nil 'font)
                                                 charset (font-spec :family "Sarasa Term SC" :size 13.5)))))))
