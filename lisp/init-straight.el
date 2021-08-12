@@ -1,5 +1,4 @@
 ;;; -*- lexical-binding: t -*-
-
 (setq comp-deferred-compilation-deny-list ())
 (setq straight-vc-git-default-clone-depth 1)
 
@@ -9,7 +8,7 @@
 
 (defvar bootstrap-version)
 (let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
       (bootstrap-version 5))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
@@ -20,13 +19,17 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; <leaf-install-code>
-(eval-when-compile
-  (straight-use-package 'leaf)
-  (straight-use-package 'leaf-keywords)
-  (require 'leaf)
-  (require 'leaf-keywords)
-  (leaf-keywords-init))
-;; </leaf-install-code>
+(defvar +pdump-load-path nil
+  "The load-path backup before dump.
 
-(provide 'init-package)
+This variable is non-nil when emacs is started with dump file.")
+
+(defvar +pdump-packages nil
+  "A list of package names to dump.")
+
+(defun +pdump-packages (&rest pkgs)
+  "Mark pkgs should be dumped."
+  (dolist (pkg pkgs)
+    (push pkg +pdump-packages)))
+
+(provide 'init-straight)

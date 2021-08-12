@@ -1,24 +1,11 @@
-;;; init-eaf.el -*- lexical-binding: t -*-
-;;; Commentary: emacs application framework 
-;;; Code:
+(straight-use-package 'deferred)
+(straight-use-package 's)
+;; (straight-use-package '(epc :type git :host github :repo "MatthewZMD/emacs-epc"))
+(straight-use-package 'epc)
+(straight-use-package '(ctable :type git :host github :repo "kiwanami/emacs-ctable"))
+(add-to-list 'load-path "~/.emacs.d/emacs-application-framework")
 
-(use-package eaf
-  :load-path "~/pkg/emacs-application-framework"
-  :init
-  (require 'eaf)
-  :after evil
-  :custom
-  (eaf-find-alternate-file-in-dired t)
-  :config
-  (evil-set-initial-state 'eaf-mode 'emacs)
-  (evil-set-initial-state 'eaf-edit-mode 'emacs)
-  (evil-set-initial-state 'eaf-interleave-mode 'emacs)
-  (evil-set-initial-state 'eaf-pdf-outline-mode 'emacs)
-  (evil-set-initial-state 'eaf-edit-buffer-switch-ot-org-mode 'emacs)
-  (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
-  (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
-  (eaf-bind-key take_photo "p" eaf-camera-keybinding))
+(setq eaf-terminal-font-size "18")
+(require 'eaf)
 
 (provide 'init-eaf)
-
-;;; init-eaf.el ends here

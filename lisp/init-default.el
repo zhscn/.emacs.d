@@ -98,10 +98,7 @@
  ;; pinentry
  epa-pinentry-mode 'loopback
  ;; disable input method in pgtk
- pgtk-use-im-context-on-new-connection nil
- enable-local-variables :safe
- visible-bell 1
- ring-bell-function 'ignore)
+ pgtk-use-im-context-on-new-connection nil)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -111,7 +108,13 @@
   (interactive)
   (find-alternate-file (format "/sudo::%s" (buffer-file-name))))
 
-(global-set-key (kbd "C-x C-z") #'+reopen-file-with-sudo)
+; (global-set-key (kbd "C-x C-z") #'+reopen-file-with-sudo)
+(setq-default max-mini-window-height 0.1)
+
+(require 'printed-theme)
+(require 'storybook-theme)
+(require 'paperlike-theme)
+(require 'solo-jazz-theme)
 
 (global-hl-line-mode 1)
 
@@ -125,9 +128,55 @@
 (menu-bar-mode -1)
 
 ;;; No blink cursor
+;;; (blink-cursor-mode -1)
 (add-hook 'after-init-hook (lambda () (blink-cursor-mode -1)))
 
-(defun display-startup-echo-area-message ()
-  (message ""))
+(defun reapply-themes ()
+  "Forcibly load the themes listed in `custom-enabled-themes'."
+  (setq custom-safe-themes t)
+  (dolist (theme custom-enabled-themes)
+    (unless (custom-theme-p theme)
+      (load-theme theme)))
+  (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes))))
 
-(provide 'init-builtin)
+(defun light ()
+  "Activate a light color theme."
+  (interactive)
+                                        ; (setq custom-enabled-themes '(tsdh-light))
+  (setq custom-enabled-themes '(solo-jazz))
+                                        ;(setq custom-enabled-themes '(printed))
+                                        ;(setq custom-enabled-themes '(storybook))
+                                        ;(setq custom-enabled-themes '(paperlike))
+  (reapply-themes))
+
+(defun dark ()
+  "Activate a dark color theme."
+  (interactive)
+  (setq custom-enabled-themes '(joker))
+  (reapply-themes))
+
+(defun y/auto-update-theme ()
+  "depending on time use different theme"
+  (let* ((hour (nth 2 (decode-time (current-time))))
+         (theme (cond ((<= 7 hour 18) 'solo-jazz)
+                      (t              'joker))))
+    (when (not (equal (car-safe custom-enabled-themes) theme))
+      (setq custom-enabled-themes `(,theme))
+      (reapply-themes))
+    ;; run that function again next hour
+    (run-at-time (format "%02d:%02d" (+ hour 1) 0) nil 'y/auto-update-theme)))
+
+(if (not window-system)
+    (setq visible-cursor nil)
+  (progn
+    (set-face-attribute
+     'default nil :font (font-spec :family "Sarasa Fixed SC" :size 18))
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font)
+                        charset (font-spec :family "Sarasa Fixed SC" :size 18)))
+    (set-fontset-font t 'unicode "Symbola" nil 'append)
+
+      (y/auto-update-theme)
+      ))
+
+(provide 'init-default)
