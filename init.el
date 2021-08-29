@@ -15,6 +15,7 @@
 (require 'init-rime)
 (require 'init-org)
 (require 'init-telega)
+(require 'init-magit)
 
 (require 'init-coq)
 (require 'init-cpp)
