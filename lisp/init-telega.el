@@ -20,8 +20,14 @@
   (defun +use-fixed-pitch ()
     (interactive)
     (make-face 'mytelega-face)
-    (set-face-attribute 'mytelega-face nil :font (font-spec :family "Sarasa Mono SC" :size 18))
+    (set-face-attribute 'mytelega-face nil :font (font-spec :family "Sarasa Mono SC"))
     (setq buffer-face-mode-face 'mytelega-face)
+    (make-variable-buffer-local 'face-font-rescale-alist)
+    (add-to-list 'face-font-rescale-alist '("-Noto Color Emoji-" . 0.8))
+    (add-to-list 'face-font-rescale-alist '("-Apple Color Emoji-" . 0.8))
+    (add-to-list 'face-font-rescale-alist '("-Noto Sans Symbols-" . 0.8))
+    (add-to-list 'face-font-rescale-alist '("-Noto Sans Symbols2-" . 0.8))
+    (add-to-list 'face-font-rescale-alist '("-Symbola-" . 0.8))
     (buffer-face-mode +1))
   :config
   (unless window-system

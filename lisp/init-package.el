@@ -29,4 +29,10 @@
   (leaf-keywords-init))
 ;; </leaf-install-code>
 
+(leaf gcmh
+  :straight t
+  :require t
+  :config
+  (gcmh-mode 1))
+
 (provide 'init-package)
