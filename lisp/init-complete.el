@@ -6,7 +6,7 @@
   :hook (after-init-hook . ivy-mode)
   :init
 
-  (setq ivy-height 12
+  (setq ivy-height 20
         ivy-wrap t
         ivy-fixed-height-minibuffer t
         ivy-read-action-function #'ivy-hydra-read-action
