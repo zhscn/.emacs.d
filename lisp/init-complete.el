@@ -44,6 +44,14 @@
   (global-set-key (kbd "C-c k") 'counsel-ag)
   (global-set-key (kbd "C-x l") 'counsel-locate)
   (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
+  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+
+  (leaf ivy-posframe
+    :straight t
+    :require t
+    ;; :when window-system
+    :config
+    (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+    (ivy-posframe-mode 1)))
 
 (provide 'init-complete)
