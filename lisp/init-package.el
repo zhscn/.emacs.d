@@ -5,7 +5,7 @@
 
 (setq straight-disable-native-compile
       (when (fboundp 'native-comp-available-p)
-	(not (native-comp-available-p))))
+	    (not (native-comp-available-p))))
 
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -20,14 +20,12 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; <leaf-install-code>
 (eval-when-compile
   (straight-use-package 'leaf)
   (straight-use-package 'leaf-keywords)
   (require 'leaf)
   (require 'leaf-keywords)
   (leaf-keywords-init))
-;; </leaf-install-code>
 
 (leaf gcmh
   :straight t

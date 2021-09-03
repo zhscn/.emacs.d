@@ -7,15 +7,16 @@
 (require 'init-package)
 (require 'init-builtin)
 (require 'init-complete)
-(require 'init-theme)
 (require 'init-company)
-(require 'init-meow)
+(require 'init-theme)
 
 ;(require 'init-eaf)
 (require 'init-rime)
 (require 'init-org)
 (require 'init-telega)
 (require 'init-magit)
+(require 'init-window)
+(require 'init-meow)
 
 (require 'init-coq)
 (require 'init-cpp)

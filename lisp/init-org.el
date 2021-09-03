@@ -4,10 +4,9 @@
   :straight (org-roam :type git :host github :repo "org-roam/org-roam")
   :require t
   :init
-  (setq org-roam-v2-ack t)
-  (setq org-roam-directory (file-truename "~/org"))
   ;; (setq org-agenda-text-search-extra-files (directory-files-recursively org-roam-directory "\\.org$"))
-)
+  (setq org-roam-v2-ack t)
+  (setq org-roam-directory (file-truename "~/org")))
 
 (leaf org-tree-slide
   :straight t
@@ -16,6 +15,7 @@
   (leaf darkroom
     :straight t
     :hook org-tree-slide-mode-hook darkroom-mode)
+
   (defvar-local org-tree-slide--on nil)
   (defun org-tree-slide-toggle ()
     (interactive)
@@ -28,9 +28,11 @@
         (setq-local org-tree-slide--on nil)
         (org-tree-slide-mode -1)
         (darkroom-mode -1))))
-  (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-toggle)
-  (define-key org-tree-slide-mode-map (kbd "<f9>") 'org-tree-slide-move-previous-tree)
-  (define-key org-tree-slide-mode-map (kbd "<f10>") 'org-tree-slide-move-next-tree))
+  :bind ((:org-mode-map
+          ("<f8>" . org-tree-slide-toggle))
+         (:org-tree-slide-mode-map
+          ("<f9>" . org-tree-slide-move-previous-tree)
+          ("<f10>" . org-tree-slide-move-next-tree))))
 
 ;; (leaf org-latex-impatient
 ;;   :straight t

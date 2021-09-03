@@ -107,12 +107,6 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(defun +reopen-file-with-sudo ()
-  (interactive)
-  (find-alternate-file (format "/sudo::%s" (buffer-file-name))))
-
-; (global-set-key (kbd "C-x C-z") #'+reopen-file-with-sudo)
-
 (global-hl-line-mode 1)
 
 ;;; No scroll bar
