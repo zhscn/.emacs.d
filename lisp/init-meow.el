@@ -115,4 +115,11 @@
   :config
   (which-key-mode))
 
+(leaf doom-modeline
+  :straight t
+  :init
+  (setq doom-modeline-icon nil)
+  :config
+  (doom-modeline-mode 1))
+
 (provide 'init-meow)
