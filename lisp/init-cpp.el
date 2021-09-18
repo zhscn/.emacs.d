@@ -15,6 +15,9 @@
 (leaf rg
   :straight t
   :require t)
+(leaf cmake-mode
+  :straight t
+  :require t)
 
 (leaf ccls
   :straight t
@@ -84,6 +87,25 @@
         lsp-completion-provider :none
         lsp-completion-show-detail nil
         lsp-completion-show-kind nil)
+
+  (defun lsp-hover-manually ()
+    (interactive)
+    (lsp-request-async
+         "textDocument/hover"
+         (lsp--text-document-position-params)
+         (-lambda ((hover &as &Hover? :range? :contents))
+           (when hover
+             (when range?
+               (setq lsp--hover-saved-bounds (lsp--range-to-region range?)))
+             (lsp--eldoc-message (and contents
+                                      (lsp--render-on-hover-content
+                                       contents
+                                       lsp-eldoc-render-all)))))
+         :error-handler #'ignore
+         :mode 'tick
+         :cancel-token :eldoc-hover))
+  (define-key lsp-mode-map (kbd "C-;") #'lsp-hover-manually)
+
   (leaf lsp-ivy
     :straight t
     :after lsp)

@@ -18,9 +18,11 @@
 (require 'init-window)
 (require 'init-meow)
 
+(require 'init-cl)
 (require 'init-coq)
 (require 'init-cpp)
 (require 'init-scheme)
+(require 'init-koka)
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file) (load custom-file))
