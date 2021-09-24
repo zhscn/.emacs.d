@@ -19,6 +19,7 @@
 (require 'init-meow)
 
 (require 'init-cl)
+(require 'init-clojure)
 (require 'init-coq)
 (require 'init-cpp)
 (require 'init-scheme)
