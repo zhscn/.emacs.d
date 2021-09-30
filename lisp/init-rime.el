@@ -2,7 +2,6 @@
 
 (leaf rime
   :straight (rime :type git :host github :repo "DogLooksGood/emacs-rime")
-  :require t
   :init
   (setq default-input-method "rime"
         rime-title "im ")

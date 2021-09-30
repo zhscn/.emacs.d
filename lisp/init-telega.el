@@ -2,7 +2,7 @@
 
 (leaf telega
   :straight (telega :type git :host github :branch "master")
-  :require t
+  :commands telega
   :init
   (setq
    telega-use-images t

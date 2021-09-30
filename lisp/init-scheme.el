@@ -10,8 +10,7 @@
 
 (leaf paredit
   :straight t
-  :require t
-  :hook scheme-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook lisp-mode-hook racket-mode-hook)
+  :hook ((scheme-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook lisp-mode-hook racket-mode-hook) . paredit-mode))
 
 (leaf racket-mode
   :straight t

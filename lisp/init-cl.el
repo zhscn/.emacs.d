@@ -1,12 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
-(leaf sly-asdf
-  :straight t
-  :after (sly company))
 
-(leaf sly-quicklisp
-  :straight t
-  :after sly)
 
 (leaf sly
   :straight t
@@ -18,9 +12,14 @@
                        sly-sbcl-exts
                        sly-scratch))
   (setq inferior-lisp-program "/usr/bin/sbcl")
-  (add-to-list 'meow-mode-state-list '(sly-mrepl-mode . normal))
+
   :config
-  (sly-setup '(sly-fancy sly-asdf sly-quicklisp)))
+  (leaf sly-asdf :straight t)
+  (leaf sly-quicklisp :straight t)
+
+  (sly-setup '(sly-fancy sly-asdf sly-quicklisp))
+  (with-eval-after-load "meow"
+      (add-to-list 'meow-mode-state-list '(sly-mrepl-mode . normal))))
 
 (leaf common-lisp-snippets
   :straight t

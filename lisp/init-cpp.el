@@ -16,6 +16,7 @@
   :straight t
   :require t
   :config
+  (set-persp-parameter 'dont-save-to-file t nil)
   (persp-mode 1))
 
 (leaf rg
