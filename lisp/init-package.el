@@ -31,4 +31,8 @@
   :straight t
   :global-minor-mode gcmh-mode)
 
+(leaf esup
+  :straight t
+  :commands esup)
+
 (provide 'init-package)

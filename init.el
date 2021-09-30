@@ -22,7 +22,7 @@
 (require 'init-clojure)
 (require 'init-coq)
 (require 'init-cpp)
-(require 'init-scheme)
+;(require 'init-scheme)
 ;(require 'init-koka)
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
