@@ -124,6 +124,8 @@
 (defun display-startup-echo-area-message ()
   (message ""))
 
+(autoload 'View-scroll-half-page-forward "view")
+(autoload 'View-scroll-half-page-backward "view")
 (define-key global-map (kbd "C-v") #'View-scroll-half-page-forward)
 (define-key global-map (kbd "M-v") #'View-scroll-half-page-backward)
 
