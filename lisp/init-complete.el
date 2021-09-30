@@ -30,14 +30,12 @@
     :straight t
     :hook (ivy-mode-hook . ivy-prescient-mode))
 
-  (leaf ivy-posframe
+  (leaf counsel
     :straight t
-    :init (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-    :global-minor-mode ivy-posframe-mode)
+    :hook (ivy-mode-hook . counsel-mode))
 
-  (leaf counsel :straight t)
-  (leaf swiper :straight t)
-  (leaf posframe :straight t)
+  (leaf swiper
+    :straight t)
 
   :bind
   (("C-s" . swiper)
@@ -47,5 +45,6 @@
    ("C-c g" . counsel-git)
    (:minibuffer-local-map
     ("C-r" . counsel-minibuffer-history))))
+
 
 (provide 'init-complete)
