@@ -42,6 +42,7 @@
    ("C-c C-r" . ivy-resume)
    ("C-x C-f" . counsel-find-file)
    ("M-x" . counsel-M-x)
+   ("s-x" . counsel-M-x)
    ("C-c g" . counsel-git)
    (:minibuffer-local-map
     ("C-r" . counsel-minibuffer-history))))
