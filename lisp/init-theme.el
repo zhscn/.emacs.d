@@ -1,10 +1,10 @@
 ;;; -*- lexical-binding: t -*-
+(straight-use-package 'doom-themes)
+(straight-use-package 'doom-modeline)
 
-(leaf doom-themes
-  :straight t
-  :require t
-  :config
-  (load-theme 'doom-vibrant t))
+;;; doom themes
+(require 'doom-themes)
+(load-theme 'doom-vibrant t)
 
 (when window-system
   (set-fontset-font t 'unicode "Symbola" nil 'append)
@@ -13,12 +13,11 @@
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
                       charset (font-spec :family "Sarasa Fixed SC"))))
-(leaf doom-modeline
-  :straight t
-  :init
-  (setq doom-modeline-height 0)
-  (setq doom-modeline-bar-width 0)
-  (setq doom-modeline-icon nil)
-  :advice (:around meow-setup-indicator doom-modeline-mode))
+
+(setq doom-modeline-height 0)
+(setq doom-modeline-bar-width 0)
+(setq doom-modeline-icon nil)
+
+(advice-add 'meow-setup-indicator :around #'doom-modeline-mode)
 
 (provide 'init-theme)
