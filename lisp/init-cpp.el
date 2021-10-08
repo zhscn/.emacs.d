@@ -10,7 +10,8 @@
 (projectile-mode +1)
 
 (require 'persp-mode)
-(set-persp-parameter 'dont-save-to-file t nil)
+;; (set-persp-parameter 'dont-save-to-file t nil)
+(setq-default persp-auto-save-opt 0)
 (persp-mode +1)
 
 (require 'rg)

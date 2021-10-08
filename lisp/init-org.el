@@ -23,7 +23,6 @@
 (setq reftex-default-bibliography '("~/Documents/test.bib"))
 (setq org-ref-pdf-directory "File")
 (setq org-ref-bibliography-notes "~/Documents/notes")
-(require 'org-ref)
 
 ;;; org-roam
 (autoload 'org-roam-node-find "org-roam" nil t)
@@ -33,6 +32,7 @@
 
 ;;; org-roam-bibtex
 (with-eval-after-load "org-roam"
+  (require 'org-ref)
   (require 'org-roam-bibtex))
 
 ;;; org-tree-slide
@@ -49,7 +49,9 @@
       (org-tree-slide-mode -1)
       (darkroom-mode -1))))
 
-(define-key org-mode-map (kbd "<f8>") 'org-tree-slide-toggle)
+(with-eval-after-load "org"
+  (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-toggle))
+
 (with-eval-after-load "org-tree-slide"
   (define-key org-tree-slide-mode-map (kbd "<f9>") 'org-tree-slide-move-previous-tree)
   (define-key org-tree-slide-mode-map (kbd "<f10>") 'org-tree-slide-move-next-tree))
