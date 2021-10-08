@@ -30,8 +30,10 @@
 (setq exec-path-from-shell-variables '("PATH" "MANPATH"))
 (setq exec-path-from-shell-check-startup-files nil)
 (setq exec-path-from-shell-arguments '("-l" ))
-(when (memq window-system '(mac ns x))
+
+(when *is-mac*
   (exec-path-from-shell-initialize))
+
 (when (daemonp)
   (exec-path-from-shell-initialize))
 
