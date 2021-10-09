@@ -7,15 +7,16 @@
 (straight-use-package 'lsp-ivy)
 (straight-use-package 'ccls)
 
-(projectile-mode +1)
+(add-hook 'after-init-hook #'projectile-mode)
 
 (require 'persp-mode)
 ;; (set-persp-parameter 'dont-save-to-file t nil)
 (setq-default persp-auto-save-opt 0)
 (persp-mode +1)
 
-(require 'rg)
-(require 'cmake-mode)
+(add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
+(add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
+(autoload #'cmake-mode "cmake-mode" nil t)
 
 (setq ccls-executable "~/.local/bin/ccls")
 (defvar ccls-loaded nil)
