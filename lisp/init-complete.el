@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 (straight-use-package 'ivy)
+(straight-use-package 'ivy-hydra)
 (straight-use-package 'ivy-rich)
 (straight-use-package 'ivy-prescient)
 (straight-use-package 'counsel)
