@@ -105,9 +105,9 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
 
-(global-hl-line-mode 1)
+(global-hl-line-mode +1)
 
 ;;; No scroll bar
 (scroll-bar-mode -1)
@@ -119,17 +119,18 @@
 (menu-bar-mode -1)
 
 ;;; No blink cursor
-(add-hook 'after-init-hook (lambda () (blink-cursor-mode -1)))
+(add-hook 'after-init-hook #'(lambda () (blink-cursor-mode -1)))
 
 (defun display-startup-echo-area-message ()
   (message ""))
 
-(autoload 'View-scroll-half-page-forward "view")
-(autoload 'View-scroll-half-page-backward "view")
+(autoload #'View-scroll-half-page-forward "view")
+(autoload #'View-scroll-half-page-backward "view")
 (define-key global-map (kbd "C-v") #'View-scroll-half-page-forward)
 (define-key global-map (kbd "M-v") #'View-scroll-half-page-backward)
 
 (defconst *is-mac*
-  (memq window-system '(mac ns x)))
+  ;; (memq window-system '(mac ns x))
+  (eq system-type 'darwin))
 
 (provide 'init-builtin)
