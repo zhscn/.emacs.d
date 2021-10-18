@@ -66,7 +66,8 @@
       lsp-signature-render-documentation nil
       lsp-completion-provider :none
       lsp-completion-show-detail nil
-      lsp-completion-show-kind nil)
+      lsp-completion-show-kind nil
+      lsp-disabled-clients '((c++-mode . clangd) (c-mode . clangd)))
 
 (with-eval-after-load "lsp-mode"
   (require 'ccls)
