@@ -2,6 +2,9 @@
 (straight-use-package 'fold-this)
 (straight-use-package 'which-key)
 (straight-use-package 'meow)
+(straight-use-package 'undo-fu)
+
+(define-key global-map [remap undo] #'undo-fu-only-undo)
 
 (autoload #'fold-this "fold-this" nil t)
 (which-key-mode +1)
@@ -92,6 +95,7 @@
    '("s" . meow-change)
    '("t" . meow-till)
    '("u" . meow-undo)
+   '("U" . undo-fu-only-redo)
    '("v" . meow-visit)
    '("V" . meow-kmacro-matches)
    '("w" . meow-next-word)
