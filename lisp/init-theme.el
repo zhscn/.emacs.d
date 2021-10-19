@@ -1,9 +1,7 @@
 ;;; -*- lexical-binding: t -*-
-;; (straight-use-package 'doom-themes)
 (straight-use-package 'doom-modeline)
 
-;;; doom themes
-;; (require 'doom-themes)
+(setq modus-themes-region '(bg-only no-extend))
 (load-theme 'modus-vivendi t)
 
 (when window-system
