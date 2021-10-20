@@ -107,7 +107,8 @@
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
-(global-hl-line-mode +1)
+(when (display-graphic-p)
+  (global-hl-line-mode +1))
 
 ;;; No scroll bar
 (when (bound-and-true-p scroll-bar-mode)
