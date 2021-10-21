@@ -3,14 +3,9 @@
 (straight-use-package '(org :type git :host github :repo "bzg/org-mode"))
 (straight-use-package 'org-tree-slide)
 (straight-use-package 'darkroom)
-
-(let ((straight-current-profile 'pinned))
-  (add-to-list 'straight-x-pinned-packages
-               '("org-roam" . "f819720c510185af713522c592833ec9f2934251"))
-  (straight-use-package 'org-roam))
+(straight-use-package 'org-roam)
 
 (setq org-directory (file-truename "~/org/"))
-
 
 ;;; org-roam
 (setq org-roam-v2-ack t

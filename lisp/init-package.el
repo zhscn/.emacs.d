@@ -7,12 +7,6 @@
       (when (fboundp 'native-comp-available-p)
 	    (not (native-comp-available-p))))
 
-;; Tell straight.el about the profiles we are going to be using.
-(setq straight-profiles
-      '((nil . "default.el")
-        ;; Packages which are pinned to a specific commit.
-        (pinned . "pinned.el")))
-
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -25,9 +19,6 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
-
-(autoload #'straight-x-pull-all "straight-x" nil t)
-(autoload #'straight-x-freeze-versions "straight-x" nil t)
 
 (straight-use-package 'gcmh)
 (gcmh-mode +1)
