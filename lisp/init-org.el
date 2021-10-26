@@ -8,6 +8,7 @@
 (straight-use-package 'ebib)
 (straight-use-package 'bibtex-actions)
 (straight-use-package 'citeproc)
+(straight-use-package 'xenops)
 
 (setq org-directory (file-truename "~/org/"))
 
@@ -25,7 +26,8 @@
 (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
 
 ;;; org-cite
-(autoload #'oc-bibtex-actions "oc-bibtex-actions")
+(with-eval-after-load "oc"
+  (require 'oc-bibtex-actions))
 (setq org-cite-global-bibliography bibtex-actions-bibliography
       org-cite-insert-processor 'oc-bibtex-actions
       org-cite-follow-processor 'oc-bibtex-actions
