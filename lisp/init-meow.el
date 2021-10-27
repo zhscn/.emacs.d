@@ -12,15 +12,19 @@
 (require 'meow)
 (meow-global-mode +1)
 (setq meow-cursor-type-insert '(bar . 2)
-      meow-expand-hint-remove-delay 1.5
-      meow-region-cursor 'insert)
+      meow-expand-hint-remove-delay 1.5)
 
 (defun +delete ()
   (interactive)
   (when (meow--allow-modify-p)
-    (if (region-active-p)
-        (delete-region (region-beginning) (region-end))
-      (meow-C-d))))
+    (cond
+     ((equal '(expand . join) (meow--selection-type))
+      (delete-indentation nil (region-beginning) (region-end)))
+     ((region-active-p)
+      (delete-region (region-beginning) (region-end)))
+     (t (meow-C-d)))))
+
+(set-face-attribute 'meow-region-cursor nil :inherit nil)
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
