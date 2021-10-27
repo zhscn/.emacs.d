@@ -18,14 +18,14 @@
       bibtex-completion-notes-path (concat org-directory "roam")
       bibtex-actions-bibliography bibtex-completion-bibliography
       bibtex-actions-file-note-org-include '(org-id org-roam-ref)
-      bibtex-actions-file-open-note-function '+org-insert-id-refs-custom)
+      bibtex-actions-file-open-note-function #'+org-insert-id-refs-custom)
 
 (with-eval-after-load "embark"
   (setq bibtex-actions-at-point-function 'embark-act)
   (add-to-list 'embark-keymap-alist '(bib-reference . bibtex-actions-map))
   (add-to-list 'embark-keymap-alist '(citation-key . bibtex-actions-buffer-map))
   (with-eval-after-load "bibtex-actions"
-    (add-to-list 'embark-target-finders 'bibtex-actions-citation-key-at-point)))
+    (add-to-list 'embark-target-finders #'bibtex-actions-citation-key-at-point)))
 (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
 
 ;;; org-cite
