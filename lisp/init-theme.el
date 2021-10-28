@@ -1,5 +1,4 @@
 ;;; -*- lexical-binding: t -*-
-(straight-use-package 'doom-modeline)
 (straight-use-package 'hl-todo)
 
 (setq modus-themes-region '(bg-only no-extend))
@@ -12,12 +11,6 @@
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
                       charset (font-spec :family "Sarasa Fixed SC"))))
-
-(setq doom-modeline-height 0
-      doom-modeline-bar-width 0
-      doom-modeline-icon nil)
-
-(advice-add 'meow-setup-indicator :around #'doom-modeline-mode)
 
 (global-hl-todo-mode +1)
 
