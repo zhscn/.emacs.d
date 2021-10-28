@@ -12,7 +12,12 @@
 (require 'meow)
 (meow-global-mode +1)
 (setq meow-cursor-type-insert '(bar . 2)
-      meow-expand-hint-remove-delay 1.5)
+      meow-expand-hint-remove-delay 1.5
+      meow-replace-state-name-list
+ '((normal . "N")
+   (insert . "I")
+   (keypad . "K")
+   (motion . "M")))
 
 (defun +delete ()
   (interactive)
