@@ -5,7 +5,7 @@
       rime-title "im")
 
 (when *is-mac*
-  (setq rime-emacs-module-header-root "/opt/homebrew/opt/emacs-plus@28/include")
+  (setq rime-emacs-module-header-root "/opt/homebrew/opt/emacs-plus@29/include")
   (setq rime-librime-root "~/.local/"))
 
 (defun +rime-predicate-org-syntax-punc-p ()
