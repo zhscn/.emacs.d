@@ -1,8 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 (straight-use-package 'hl-todo)
+(straight-use-package 'kaolin-themes)
 
 (setq modus-themes-region '(bg-only no-extend))
-(load-theme 'modus-vivendi t)
+(if (display-grayscale-p)
+    (load-theme 'kaolin-light t)
+  (load-theme 'kaolin-dark t))
 
 (when window-system
   (set-fontset-font t 'unicode "Symbola" nil 'append)
