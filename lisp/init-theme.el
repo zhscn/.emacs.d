@@ -3,6 +3,10 @@
 (straight-use-package 'kaolin-themes)
 
 (setq modus-themes-region '(bg-only no-extend))
+
+(setq kaolin-themes-italic-comments t
+      kaolin-ocean-alt-bg t)
+
 (if (display-grayscale-p)
     (load-theme 'kaolin-light t)
   (load-theme 'kaolin-dark t))
