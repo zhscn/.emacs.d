@@ -9,7 +9,7 @@
 
 (if (display-grayscale-p)
     (load-theme 'kaolin-light t)
-  (load-theme 'kaolin-dark t))
+  (load-theme 'modus-vivendi t))
 
 (when window-system
   (set-fontset-font t 'unicode "Symbola" nil 'append)
