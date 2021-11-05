@@ -64,7 +64,8 @@
   (define-key org-tree-slide-mode-map (kbd "<f9>") #'org-tree-slide-move-previous-tree)
   (define-key org-tree-slide-mode-map (kbd "<f10>") #'org-tree-slide-move-next-tree))
 
-(setq org-agenda-text-search-extra-files (directory-files-recursively org-roam-directory "\\.org$"))
+(setq org-agenda-text-search-extra-files (directory-files-recursively org-roam-directory "\\.org$")
+      org-html-validation-link nil)
 
 ;; (leaf org-latex-impatient
 ;;   :straight t
