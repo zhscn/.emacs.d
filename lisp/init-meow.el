@@ -29,8 +29,6 @@
       (delete-region (region-beginning) (region-end)))
      (t (meow-C-d)))))
 
-(set-face-attribute 'meow-region-cursor nil)
-
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
@@ -127,11 +125,8 @@
    '("`" . repeat)
    '("<escape>" . meow-cancel)))
 
-  ;; meow-setup is your custom function, see below
-  (meow-setup)
-  ;; If you want relative line number in NORMAL state(for display-line-numbers-mode)
-  ;; (meow-setup-line-number)
-  ;; If you need setup indicator, see `meow-indicator' for customizing by hand.
-  (meow-setup-indicator)
+(meow-setup)
+;; (meow-setup-line-number)
+(meow-setup-indicator)
 
 (provide 'init-meow)
