@@ -109,6 +109,8 @@
 
 (global-hl-line-mode +1)
 
+(global-auto-revert-mode +1)
+
 ;;; No scroll bar
 (when (bound-and-true-p scroll-bar-mode)
     (scroll-bar-mode -1))
