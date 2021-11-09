@@ -4,8 +4,12 @@
 (straight-use-package 'company-posframe)
 (straight-use-package 'company-box)
 (straight-use-package 'smartparens)
+(straight-use-package 'prescient)
+(straight-use-package 'company-prescient)
 
 (global-company-mode +1)
+(company-prescient-mode +1)
+(prescient-persist-mode +1)
 
 (define-key company-active-map (kbd "C-n") #'company-select-next)
 (define-key company-active-map (kbd "C-p") #'company-select-previous)
