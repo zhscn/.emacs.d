@@ -35,7 +35,9 @@
 (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
 
 (setq consult-narrow-key "<"
-      consult-project-root-function #'consult-project-root)
+      consult-project-root-function #'consult-project-root
+      xref-show-xrefs-function #'consult-xref
+      xref-show-definitions-function #'consult-xref)
 
 (defun consult-project-root ()
   "Returns project root directory."
