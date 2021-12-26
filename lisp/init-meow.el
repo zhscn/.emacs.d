@@ -15,7 +15,7 @@
       meow-replace-state-name-list
       '((normal . "N") (insert . "I")
         (keypad . "K") (motion . "M")
-        (bmacro . "B")))
+        (beacon . "B")))
 
 (require 'meow)
 (meow-global-mode +1)
@@ -102,7 +102,7 @@
    '("n" . meow-search)
    '("N" . meow-pop-search)
    '("o" . meow-block)
-   '("O" . meow-block-expand)
+   '("O" . meow-to-block)
    '("p" . meow-yank)
    '("q" . avy-goto-char-2)
    '("Q" . goto-line)
