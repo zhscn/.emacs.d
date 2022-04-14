@@ -28,7 +28,7 @@
   (setq telega-open-message-as-file '(photo video)
         telega-open-file-function '+telega-open-file))
 
-(setq telega-chat-input-markups '(nil "org" "markdown1"))
+(setq telega-chat-input-markups '(nil "org" "markdown2"))
 (add-hook 'telega-chat-mode-hook #'+use-fixed-pitch)
 
 (provide 'init-telega)
