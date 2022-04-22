@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 (straight-use-package 'hl-todo)
 (straight-use-package 'autothemer)
-(straight-use-package 'modus-themes)
 
 (setq modus-themes-region '(bg-only no-extend))
 
