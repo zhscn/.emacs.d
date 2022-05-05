@@ -69,6 +69,12 @@
       lsp-disabled-clients '((c++-mode . clangd) (c-mode . clangd)))
 
 (with-eval-after-load "lsp-mode"
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-tramp-connection "ccls")
+                    :major-modes '(c-mode c++-mode)
+                    :remote? t
+                    :server-id 'ccls-remote))
+
   (require 'ccls)
   (defun lsp-hover-manually ()
     (interactive)

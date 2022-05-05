@@ -9,6 +9,7 @@
 (require 'init-telega)
 (require 'init-window)
 (require 'init-meow)
+(require 'init-tramp)
 
 (require 'init-lisp)
 (require 'init-coq)
