@@ -13,11 +13,7 @@
       meow-expand-hint-remove-delay 1.5
       ;; meow-use-cursor-position-hack t
       meow-keypad-leader-dispatch "C-c"
-      meow-keypad-start-keys nil
-      meow-replace-state-name-list
-      '((normal . "N") (insert . "I")
-        (keypad . "K") (motion . "M")
-        (beacon . "B")))
+      meow-keypad-start-keys nil)
 
 (require 'meow)
 (meow-global-mode +1)
