@@ -119,9 +119,14 @@
 (when (bound-and-true-p tool-bar-mode)
   (tool-bar-mode -1))
 
+(defconst *is-mac*
+  ;; (memq window-system '(mac ns x))
+  (eq system-type 'darwin))
+
 ;;; No menu bar
-(when (bound-and-true-p menu-bar-mode)
-  (menu-bar-mode -1))
+(unless (and *is-mac* (display-graphic-p))
+  (when (bound-and-true-p menu-bar-mode)
+      (menu-bar-mode -1)))
 
 ;;; No blink cursor
 (add-hook 'after-init-hook #'(lambda () (blink-cursor-mode -1)))
@@ -133,9 +138,5 @@
 (autoload #'View-scroll-half-page-backward "view")
 (define-key global-map (kbd "C-v") #'View-scroll-half-page-forward)
 (define-key global-map (kbd "M-v") #'View-scroll-half-page-backward)
-
-(defconst *is-mac*
-  ;; (memq window-system '(mac ns x))
-  (eq system-type 'darwin))
 
 (provide 'init-builtin)
