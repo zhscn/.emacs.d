@@ -7,7 +7,7 @@
 (require 'init-package)
 
 (require 'init-complete)
-(require 'init-company)
+;; (require 'init-company)
 (require 'init-theme)
 
 (require 'init-rime)
@@ -17,9 +17,12 @@
 (require 'init-meow)
 (require 'init-tramp)
 
+(require 'init-lsp)
+
 (require 'init-lisp)
 (require 'init-coq)
-(require 'init-cpp)
+(require 'init-cc)
+;; (require 'init-cpp)
 (require 'init-haskell)
 
 (require 'init-tree-sitter)
