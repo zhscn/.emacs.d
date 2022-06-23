@@ -1,14 +1,9 @@
 ;;; -*- lexical-binding: t -*-
-(straight-use-package 'persp-mode)
 (straight-use-package 'rg)
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
 (straight-use-package 'ccls)
 
-(require 'persp-mode)
-;; (set-persp-parameter 'dont-save-to-file t nil)
-(setq-default persp-auto-save-opt 0)
-(persp-mode +1)
 
 (add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
 (add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))

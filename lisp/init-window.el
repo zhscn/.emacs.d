@@ -2,6 +2,7 @@
 (straight-use-package 'windmove)
 (straight-use-package 'ace-window)
 (straight-use-package 'avy)
+(straight-use-package 'persp-mode)
 
 (define-key global-map (kbd "C-x C-o") #'ace-window)
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
@@ -27,5 +28,11 @@
     (progn
       (window-configuration-to-register ?_)
       (delete-other-windows))))
+
+(require 'persp-mode)
+;; (set-persp-parameter 'dont-save-to-file t nil)
+(setq-default persp-auto-save-opt 0)
+(persp-mode +1)
+
 
 (provide 'init-window)
