@@ -32,7 +32,6 @@
                 (apply capf-fn args))))
 
 ;; consult
-(advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
 
 (setq consult-narrow-key "<"
       consult-project-root-function #'consult-project-root
