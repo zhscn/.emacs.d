@@ -73,5 +73,6 @@ This function is slow, so we have to use cache."
             rhs-str)))
 
 ;; (advice-add 'meow-setup-indicator :around #'(lambda (_) (setq-default mode-line-format '((:eval (+format-mode-line))))))
+(add-to-list 'mode-line-format '((:eval (+persp-name))))
 
 (provide 'init-theme)
