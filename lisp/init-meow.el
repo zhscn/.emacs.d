@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 (straight-use-package 'fold-this)
 (straight-use-package 'which-key)
-(straight-use-package 'meow)
 (straight-use-package 'undo-fu)
 
 (define-key global-map [remap undo] #'undo-fu-only-undo)
@@ -9,13 +8,20 @@
 (autoload #'fold-this "fold-this" nil t)
 (which-key-mode +1)
 
+(add-to-list 'load-path (expand-file-name "meow" user-emacs-directory))
+(require 'meow)
+
 (setq meow-cursor-type-insert '(bar . 2)
       meow-expand-hint-remove-delay 1.5
       ;; meow-use-cursor-position-hack t
       meow-keypad-leader-dispatch "C-c"
-      meow-keypad-start-keys nil)
-
-(require 'meow)
+      meow-keypad-start-keys nil
+      meow-replace-state-name-list
+      '((normal . "N")
+        (motion . "M")
+        (keypad . "K")
+        (insert . "I")
+        (beacon . "B")))
 (meow-global-mode +1)
 
 (defun +delete ()
