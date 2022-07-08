@@ -33,4 +33,7 @@
 
 (straight-use-package 'yaml-mode)
 
+(straight-use-package '(yasnippet :type git :host github :repo "joaotavora/yasnippet"
+                                  :fork (:host github :repo "zhscn/yasnippet")))
+
 (provide 'init-package)
