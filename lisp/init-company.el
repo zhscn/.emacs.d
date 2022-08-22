@@ -23,5 +23,8 @@
 
 (smartparens-global-mode +1)
 (show-smartparens-global-mode +1)
+(sp-with-modes
+        '(c++-mode objc-mode c-mode)
+        (sp-local-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET"))))
 
 (provide 'init-company)
