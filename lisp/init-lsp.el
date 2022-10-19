@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 (straight-use-package '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge" :files (:defaults "*")))
 
+(straight-use-package 'popon)
 (straight-use-package 'markdown-mode)
 (straight-use-package 'smartparens)
 (straight-use-package 'posframe)
@@ -10,6 +11,12 @@
 (yas-global-mode 1)
 
 (global-lsp-bridge-mode)
+
+(unless (display-graphic-p)
+  (add-to-list 'load-path (expand-file-name "acm-terminal" user-emacs-directory))
+  (with-eval-after-load 'acm
+    (require 'acm-terminal)))
+
 (smartparens-global-mode +1)
 (show-smartparens-global-mode +1)
 (sp-with-modes
