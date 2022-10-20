@@ -9,7 +9,6 @@
         ("Groups" . (type basicgroup supergroup))
         ("Channels" . (type channel))
         ("Archive" . archive))
-      telega-server-libs-prefix "/opt/homebrew/Cellar/tdlib/HEAD-07b7faf/"
       telega-proxies '((:server "localhost" :port 1080 :enable t :type (:@type "proxyTypeHttp"))))
 
 (defun +telega-open-file (file)
