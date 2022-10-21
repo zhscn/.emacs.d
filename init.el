@@ -21,13 +21,9 @@
 (require 'init-haskell)
 (require 'init-zig)
 
-(if nil
-    (progn
-      (require 'init-lsp)
-      (require 'init-cc))
-  (progn
-    (require 'init-company)
-    (require 'init-cpp)))
+;; (require 'init-lsp-bridge)
+(require 'init-company)
+(require 'init-cpp)
 
 (require 'init-tree-sitter)
 

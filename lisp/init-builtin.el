@@ -140,4 +140,8 @@
 (define-key global-map (kbd "C-v") #'View-scroll-half-page-forward)
 (define-key global-map (kbd "M-v") #'View-scroll-half-page-backward)
 
+(add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
+(add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
+(autoload #'cmake-mode "cmake-mode" nil t)
+
 (provide 'init-builtin)

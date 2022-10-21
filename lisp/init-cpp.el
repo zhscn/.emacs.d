@@ -1,13 +1,8 @@
 ;;; -*- lexical-binding: t -*-
-(straight-use-package 'rg)
+
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
 (straight-use-package 'ccls)
-
-
-(add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
-(add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
-(autoload #'cmake-mode "cmake-mode" nil t)
 
 (setq ccls-executable "~/.local/bin/ccls")
 (add-hook 'c-mode-hook #'lsp)
