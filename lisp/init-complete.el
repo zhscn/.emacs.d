@@ -5,6 +5,7 @@
 (straight-use-package 'consult)
 (straight-use-package 'embark)
 (straight-use-package 'embark-consult)
+(straight-use-package 'smartparens)
 
 ;; vertico
 (add-hook 'after-init-hook #'vertico-mode)
@@ -67,4 +68,10 @@
 (with-eval-after-load "embark"
   (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode))
 
+;; smartparens
+(smartparens-global-mode +1)
+(show-smartparens-global-mode +1)
+(sp-with-modes
+        '(c++-mode objc-mode c-mode)
+        (sp-local-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET"))))
 (provide 'init-complete)
