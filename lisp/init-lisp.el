@@ -24,9 +24,7 @@
                      sly-sbcl-exts
                      sly-scratch))
 
-(if *is-mac*
-    (setq inferior-lisp-program "/opt/homebrew/bin/sbcl")
-  (setq inferior-lisp-program "/usr/bin/sbcl"))
+(setq inferior-lisp-program "ros -Q run")
 
 (with-eval-after-load "sly"
   (sly-setup '(sly-fancy sly-asdf sly-quicklisp)))
