@@ -3,6 +3,8 @@
 (straight-use-package 'sly)
 (straight-use-package 'sly-asdf)
 (straight-use-package 'sly-quicklisp)
+(straight-use-package '(sly-stepper :type git :host github :repo "joaotavora/sly-stepper"
+                                    :files (:defaults "*.el" "*.lisp" "*.asd")))
 (straight-use-package 'common-lisp-snippets)
 
 (straight-use-package 'geiser)
@@ -21,7 +23,7 @@
       sly-contribs '(sly-fancy
                      sly-indentation
                      sly-autodoc
-                     sly-sbcl-exts
+                     sly-stepper
                      sly-scratch))
 
 (setq inferior-lisp-program "ros -Q run")
