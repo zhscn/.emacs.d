@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 (straight-use-package 'hl-todo)
-(straight-use-package 'autothemer)
 (straight-use-package 'minions)
 
 (setq column-number-mode t)
