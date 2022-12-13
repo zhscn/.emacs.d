@@ -3,8 +3,6 @@
 (straight-use-package 'marginalia)
 (straight-use-package 'orderless)
 (straight-use-package 'consult)
-(straight-use-package 'embark)
-(straight-use-package 'embark-consult)
 (straight-use-package 'smartparens)
 
 ;; vertico
@@ -15,9 +13,9 @@
 ;; vertico-directory
 (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy)
 (with-eval-after-load "vertico"
-  (define-key vertico-map (kbd "RET") #'vertico-directory-enter)
-  (define-key vertico-map (kbd "DEL") #'vertico-directory-delete-char)
-  (define-key vertico-map (kbd "M-DEL") #'vertico-directory-delete-word))
+  (keymap-set vertico-map "RET" #'vertico-directory-enter)
+  (keymap-set vertico-map "DEL" #'vertico-directory-delete-char)
+  (keymap-set vertico-map "M-DEL" #'vertico-directory-delete-word))
 
 ;; marginalia
 (add-hook 'vertico-mode-hook #'marginalia-mode)
@@ -33,7 +31,6 @@
                 (apply capf-fn args))))
 
 ;; consult
-
 (setq consult-narrow-key "<"
       consult-project-root-function #'consult-project-root
       xref-show-xrefs-function #'consult-xref
@@ -43,30 +40,13 @@
   "Returns project root directory."
   (when-let (project (project-current))
     (car (project-roots project))))
-
-(define-key global-map [remap switch-to-buffer] #'consult-buffer)
-(define-key global-map [remap goto-line] #'consult-goto-line)
-(define-key global-map [remap imenu] #'consult-imenu)
-(define-key global-map (kbd "C-s") #'consult-isearch-history)
-(define-key global-map [remap project-find-regexp] #'consult-ripgrep)
+(keymap-substitute global-map #'switch-to-buffer #'consult-buffer)
+(keymap-substitute global-map #'goto-line #'consult-goto-line)
+(keymap-substitute global-map #'imenu #'consult-imenu)
+(keymap-substitute global-map #'isearch-forward #'consult-isearch-history)
+(keymap-substitute global-map #'project-find-regexp #'consult-ripgrep)
 (with-eval-after-load "org-mode"
-  (define-key org-mode-map [remap consult-imenu] #'consult-org-heading))
-
-;; embark
-(define-key minibuffer-mode-map (kbd "C-.") #'embark-act)
-(define-key minibuffer-mode-map (kbd "C-'") #'embark-dwim)
-(define-key minibuffer-mode-map (kbd "M-h") #'embark-bindings)
-
-(setq prefix-help-command #'embark-prefix-help-command)
-
-(add-to-list 'display-buffer-alist
-             '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-               nil
-               (window-parameters (mode-line-format . none))))
-
-;; embark-consult
-(with-eval-after-load "embark"
-  (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode))
+  (keymap-substitute org-mode-map #'consult-imenu #'consult-org-heading))
 
 ;; smartparens
 (smartparens-global-mode +1)
@@ -74,4 +54,5 @@
 (sp-with-modes
         '(c++-mode objc-mode c-mode)
         (sp-local-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET"))))
+
 (provide 'init-complete)

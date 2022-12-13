@@ -4,7 +4,7 @@
 (straight-use-package 'avy)
 (straight-use-package 'persp-mode)
 
-(define-key global-map (kbd "C-x C-o") #'ace-window)
+(keymap-set global-map "C-x C-o" #'ace-window)
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
       aw-dispatch-alist
       '((?x aw-delete-window "Delete Window")

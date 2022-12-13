@@ -4,7 +4,7 @@
 (straight-use-package 'undo-fu)
 (straight-use-package 'rg)
 
-(define-key global-map [remap undo] #'undo-fu-only-undo)
+(keymap-substitute global-map #'undo #'undo-fu-only-undo)
 
 (autoload #'fold-this "fold-this" nil t)
 (which-key-mode +1)

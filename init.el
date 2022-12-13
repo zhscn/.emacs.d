@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "theme" user-emacs-directory))
 
 (require 'init-site-lisp)
 (require 'init-builtin)
@@ -10,7 +9,6 @@
 (require 'init-theme)
 
 (require 'init-rime)
-(require 'init-org)
 (require 'init-window)
 (require 'init-meow)
 (require 'init-tramp)
@@ -20,9 +18,7 @@
 (require 'init-haskell)
 (require 'init-zig)
 
-;; (require 'init-lsp-bridge)
 (require 'init-company)
-(require 'init-cpp)
 
 (require 'init-tree-sitter)
 
