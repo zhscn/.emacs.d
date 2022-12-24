@@ -10,7 +10,6 @@
 (straight-use-package 'geiser)
 (straight-use-package 'geiser-guile)
 
-(straight-use-package '(a :type git :host github :repo "plexus/a.el"))
 (straight-use-package 'clojure-mode)
 (straight-use-package 'cider)
 
