@@ -105,8 +105,6 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(add-hook 'before-save-hook #'delete-trailing-whitespace)
-
 (when (display-graphic-p)
   (global-hl-line-mode +1))
 

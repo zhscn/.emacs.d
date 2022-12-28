@@ -35,4 +35,7 @@
 (straight-use-package '(yasnippet :type git :host github :repo "joaotavora/yasnippet"
                                   :fork (:host github :repo "zhscn/yasnippet")))
 
+(straight-use-package 'ws-butler)
+(ws-butler-global-mode)
+
 (provide 'init-package)
