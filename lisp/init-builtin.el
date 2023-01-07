@@ -122,6 +122,9 @@
   ;; (memq window-system '(mac ns x))
   (eq system-type 'darwin))
 
+(when *is-mac*
+  (setq ns-use-proxy-icon nil))
+
 ;;; No menu bar
 (unless (and *is-mac* (display-graphic-p))
   (when (bound-and-true-p menu-bar-mode)
