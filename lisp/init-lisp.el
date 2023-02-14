@@ -5,10 +5,7 @@
 (straight-use-package 'sly-quicklisp)
 (straight-use-package '(sly-stepper :type git :host github :repo "joaotavora/sly-stepper"
                                     :files (:defaults "*.el" "*.lisp" "*.asd")))
-(straight-use-package 'common-lisp-snippets)
-
-(straight-use-package 'geiser)
-(straight-use-package 'geiser-guile)
+(straight-use-package 'sly-macrostep)
 
 (straight-use-package 'clojure-mode)
 (straight-use-package 'cider)
@@ -23,12 +20,13 @@
                      sly-indentation
                      sly-autodoc
                      sly-stepper
+                     sly-macrostep
                      sly-scratch))
 
 (setq inferior-lisp-program "ros -Q run")
 
 (with-eval-after-load "sly"
-  (sly-setup '(sly-fancy sly-asdf sly-quicklisp)))
+  (sly-setup '(sly-fancy sly-asdf sly-quicklisp sly-macrostep)))
 
 (with-eval-after-load "meow"
   (add-to-list 'meow-mode-state-list '(sly-mrepl-mode . normal)))
@@ -41,19 +39,6 @@
       cider-save-file-on-load t
       cider-enhanced-cljs-completion-p t
       cider-offer-to-open-cljs-app-in-browser nil)
-
-(with-eval-after-load "cider"
-  (defun +clojure-describe-spec ()
-    (interactive)
-    (when-let* ((code (thing-at-point 'symbol))
-                (dict (cider-nrepl-sync-request:eval
-                       code
-                       (--find (eq (cider-connection-type-for-buffer)
-                                   (cider-connection-type-for-buffer it))
-                               (cider-connections))
-                       (cider-ns-from-form (cider-ns-form))))
-                (spec (-last-item dict)))
-      (cider-browse-spec spec))))
 
 (add-hook 'scheme-mode-hook #'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook #'paredit-mode)

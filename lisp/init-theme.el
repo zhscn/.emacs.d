@@ -1,6 +1,8 @@
 ;;; -*- lexical-binding: t -*-
 (straight-use-package 'hl-todo)
 (straight-use-package 'minions)
+(straight-use-package '(catppuccin :type git :host github :repo "catppuccin/emacs"))
+(require 'catppuccin-theme)
 
 (setq column-number-mode t)
 (minions-mode)
@@ -9,7 +11,14 @@
       modus-themes-region '(bg-only no-extend))
 
 (if (display-graphic-p)
-    (load-theme 'modus-operandi t)
+    (progn
+      (setq catppuccin-flavor
+            ;; 'latte
+            ;; 'frappe
+            ;; 'macchiato
+            'mocha
+            )
+      (catppuccin-reload))
   (load-theme 'modus-vivendi t))
 
 (when window-system

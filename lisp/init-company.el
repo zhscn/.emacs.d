@@ -10,12 +10,12 @@
 (company-prescient-mode +1)
 (prescient-persist-mode +1)
 
-(define-key company-active-map (kbd "C-n") #'company-select-next)
-(define-key company-active-map (kbd "C-p") #'company-select-previous)
+(keymap-set company-active-map "C-n" #'company-select-next)
+(keymap-set company-active-map "C-p" #'company-select-previous)
 
 (add-hook 'company-mode-hook
-          #'(lambda ()
-              (setq company-backends (delete 'company-clang company-backends))))
+          (lambda ()
+            (setq company-backends (delete 'company-clang company-backends))))
 
 (add-hook 'company-mode-hook #'company-posframe-mode)
 (add-hook 'company-mode-hook #'company-box-mode)
