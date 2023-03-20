@@ -1,14 +1,4 @@
 ;;; -*- lexical-binding: t; -*-
-(straight-use-package 'paredit)
-(straight-use-package 'sly)
-(straight-use-package 'sly-asdf)
-(straight-use-package 'sly-quicklisp)
-(straight-use-package '(sly-stepper :type git :host github :repo "joaotavora/sly-stepper"
-                                    :files (:defaults "*.el" "*.lisp" "*.asd")))
-(straight-use-package 'sly-macrostep)
-
-(straight-use-package 'clojure-mode)
-(straight-use-package 'cider)
 
 ;;; scheme
 (with-eval-after-load "meow"

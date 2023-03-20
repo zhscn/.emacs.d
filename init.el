@@ -16,7 +16,6 @@
 (require 'init-lisp)
 (require 'init-coq)
 (require 'init-haskell)
-(require 'init-zig)
 
 (require 'init-company)
 

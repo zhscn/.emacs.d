@@ -1,6 +1,4 @@
 ;;; -*- lexical-binding: t; -*-
-(straight-use-package 'proof-general)
-(straight-use-package 'company-coq)
 
 (with-eval-after-load "meow"
   (add-to-list 'meow-mode-state-list '(coq-mode . normal)))

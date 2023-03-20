@@ -1,5 +1,4 @@
 ;;; -*- lexical-binding: t; -*-
-(straight-use-package '(rime :type git :host github :repo "DogLooksGood/emacs-rime"))
 
 (setq default-input-method "rime"
       rime-title "im ")
