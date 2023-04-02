@@ -48,7 +48,7 @@
   (elpaca marginalia)
   (elpaca orderless)
   (elpaca consult)
-  (elpaca smartparens)
+  (elpaca puni)
   (elpaca company)
   (elpaca posframe)
   (elpaca prescient)
