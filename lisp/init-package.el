@@ -81,6 +81,8 @@
   (elpaca lsp-ui)
   (elpaca tree-sitter)
   (elpaca tree-sitter-langs)
+  (elpaca (copilot :host github :repo "zerolfx/copilot.el"
+                   :files ("dist" "*.el")))
   (elpaca flycheck))
 
 (elpaca-process-queues)
@@ -102,5 +104,7 @@
 (set-persp-parameter 'dont-save-to-file t nil)
 (setq-default persp-auto-save-opt 0)
 (persp-mode +1)
+
+(global-copilot-mode)
 
 (provide 'init-package)
