@@ -13,7 +13,7 @@
 (when window-system
   (set-fontset-font t 'unicode "Symbola" nil 'append)
   (set-face-attribute
-   'default nil :font (font-spec :family "Sarasa Fixed SC" :size 14))
+   'default nil :font (font-spec :family "JetBrains Mono" :size 14))
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
                       charset (font-spec :family "Sarasa Fixed SC"))))
