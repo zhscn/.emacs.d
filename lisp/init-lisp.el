@@ -1,22 +1,14 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; scheme
-(with-eval-after-load "meow"
-  (add-to-list 'meow-mode-state-list '(geiser-repl-mode . normal)))
-
 ;;; common lisp
 (setq sly-complete-symbol*-fancy t
-      sly-contribs '(sly-fancy
-                     sly-indentation
-                     sly-autodoc
-                     sly-stepper
-                     sly-macrostep
-                     sly-scratch))
+      sly-contribs '(sly-fancy sly-indentation sly-autodoc
+                     sly-stepper sly-macrostep sly-scratch))
 
 (setq inferior-lisp-program "ros -Q run")
 
 (with-eval-after-load "sly"
-  (sly-setup '(sly-fancy sly-asdf sly-quicklisp sly-macrostep)))
+  (sly-setup sly-contribs))
 
 (with-eval-after-load "meow"
   (add-to-list 'meow-mode-state-list '(sly-mrepl-mode . normal)))
@@ -30,12 +22,8 @@
       cider-enhanced-cljs-completion-p t
       cider-offer-to-open-cljs-app-in-browser nil)
 
-(dolist (hook '(scheme-mode-hook
-                emacs-lisp-mode-hook
-                lisp-interaction-mode-hook
-                lisp-mode-hook
-                common-lisp-mode-hook
-                clojure-mode-hook))
+(dolist (hook '(scheme-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+                lisp-mode-hook common-lisp-mode-hook clojure-mode-hook))
   (add-hook hook #'paredit-mode)
   (add-hook hook #'puni-disable-puni-mode))
 

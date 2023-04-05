@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
+(setq company-minimum-prefix-length 1)
+
 (global-company-mode +1)
 (company-prescient-mode +1)
 (prescient-persist-mode +1)

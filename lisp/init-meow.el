@@ -1,24 +1,14 @@
 ;;; -*- lexical-binding: t; -*-
 
-(keymap-substitute global-map #'undo #'undo-fu-only-undo)
-
 (autoload #'fold-this "fold-this" nil t)
-(which-key-mode +1)
 
-(add-to-list 'load-path (expand-file-name "meow" user-emacs-directory))
 (require 'meow)
 
 (setq meow-cursor-type-insert '(bar . 2)
       meow-expand-hint-remove-delay 1.5
       ;; meow-use-cursor-position-hack t
       meow-keypad-leader-dispatch "C-c"
-      meow-keypad-start-keys nil
-      meow-replace-state-name-list
-      '((normal . "N")
-        (motion . "M")
-        (keypad . "K")
-        (insert . "I")
-        (beacon . "B")))
+      meow-keypad-start-keys nil)
 (meow-global-mode +1)
 
 (defun +delete ()
@@ -113,7 +103,6 @@
    '("s" . meow-change)
    '("t" . meow-query-replace)
    '("u" . meow-undo)
-   '("U" . undo-fu-only-redo)
    '("v" . meow-visit)
    '("V" . meow-kmacro-matches)
    '("w" . meow-next-word)
