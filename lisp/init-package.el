@@ -105,6 +105,4 @@
 (setq-default persp-auto-save-opt 0)
 (persp-mode +1)
 
-(global-copilot-mode)
-
 (provide 'init-package)
