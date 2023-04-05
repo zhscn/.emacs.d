@@ -83,6 +83,7 @@
   (elpaca citre)
   (elpaca (copilot :host github :repo "zerolfx/copilot.el"
                    :files ("dist" "*.el")))
+  (elpaca meow)
   (elpaca flycheck))
 
 (elpaca-process-queues)
