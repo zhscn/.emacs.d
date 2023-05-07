@@ -82,7 +82,7 @@
 
 (gcmh-mode +1)
 
-(setq exec-path-from-shell-variables '("PATH" "MANPATH")
+(setq exec-path-from-shell-variables '("PATH" "MANPATH" "LANG")
       exec-path-from-shell-check-startup-files nil
       exec-path-from-shell-arguments '("-l"))
 (when (or *is-mac* (daemonp))
