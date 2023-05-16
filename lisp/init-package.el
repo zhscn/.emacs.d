@@ -70,8 +70,6 @@
   (elpaca lua-mode)
   (elpaca ccls)
   (elpaca lsp-mode)
-  (elpaca lsp-ui)
-  (elpaca citre)
   (elpaca meow)
   (elpaca flycheck))
 
