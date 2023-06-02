@@ -71,7 +71,7 @@
 ;;; No menu bar
 (unless (and *is-mac* (display-graphic-p))
   (when (bound-and-true-p menu-bar-mode)
-      (menu-bar-mode -1)))
+    (menu-bar-mode -1)))
 
 ;;; No blink cursor
 (add-hook 'after-init-hook (lambda () (blink-cursor-mode -1)))
