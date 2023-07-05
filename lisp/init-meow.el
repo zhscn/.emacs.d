@@ -119,5 +119,10 @@
 (meow-setup)
 ;; (meow-setup-line-number)
 (meow-setup-indicator)
+(meow-thing-register 'angle
+                     '(pair ("<") (">"))
+                     '(pair ("<") (">")))
 
+(add-to-list 'meow-char-thing-table
+             '(?a . angle))
 (provide 'init-meow)
