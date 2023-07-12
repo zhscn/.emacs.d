@@ -4,7 +4,7 @@
   (add-to-list 'meow-mode-state-list '(coq-mode . normal)))
 
 (autoload #'proof-assert-next-command-interactive "proof-general" nil t)
-(setq pg-init--script-full-path "~/.emacs.d/straight/repos/PG/proof-general.el"
+(setq pg-init--script-full-path "~/.emacs.d/elpaca/repos/PG/proof-general.el"
       pg-init--pg-root (file-name-directory pg-init--script-full-path)
       proof-splash-enable nil
       proof-three-window-enable t
