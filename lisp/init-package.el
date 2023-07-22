@@ -43,6 +43,7 @@
   (elpaca hl-todo)
   (elpaca minions)
   (elpaca persp-mode)
+  (elpaca nix-mode)
   (elpaca (vertico :files (:defaults "extensions/*")))
   (elpaca marginalia)
   (elpaca orderless)
