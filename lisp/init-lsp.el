@@ -8,6 +8,8 @@
 
 (with-eval-after-load "cc-mode"
   (keymap-set c-mode-base-map "RET" #'c-context-line-break)
+  (keymap-unset c++-mode-map ":")
+  (keymap-unset c++-mode-map ",")
   (add-hook 'c-mode-hook #'lsp)
   (add-hook 'c++-mode-hook #'lsp))
 
