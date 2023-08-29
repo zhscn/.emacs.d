@@ -53,7 +53,6 @@
   (elpaca posframe)
   (elpaca ace-window)
   (elpaca avy)
-  (elpaca doom-themes)
   (elpaca haskell-mode)
   (elpaca proof-general)
   (elpaca company-coq)

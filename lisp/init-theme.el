@@ -6,17 +6,15 @@
 (setq modus-themes-italic-constructs t
       modus-themes-region '(bg-only no-extend))
 
-(if (display-graphic-p)
-    (load-theme 'doom-nord-light t)
-  (load-theme 'modus-vivendi t))
+(load-theme 'modus-vivendi t)
 
 (when window-system
   (set-fontset-font t 'unicode "Symbola" nil 'append)
   (set-face-attribute
-   'default nil :font (font-spec :family "JetBrains Mono" :size 14))
+   'default nil :font (font-spec :family "Cascadia Mono" :size 16))
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
-                      charset (font-spec :family "Sarasa Fixed SC"))))
+                      charset (font-spec :family "LXGW WenKai Mono"))))
 
 (global-hl-todo-mode +1)
 
