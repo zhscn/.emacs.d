@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
 (setq-default
+ ;; bidi-display-reordering nil
  ;; no start messages
  inhibit-startup-message t
  ;; don't read x resource file
