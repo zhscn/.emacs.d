@@ -35,6 +35,7 @@
 
 (progn
   (elpaca `(,@elpaca-order))
+  (elpaca page-break-lines)
   (elpaca gcmh)
   (elpaca exec-path-from-shell)
   (elpaca (telega :type git :host github :branch "master"))
