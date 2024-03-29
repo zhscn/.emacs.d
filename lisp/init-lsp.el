@@ -5,6 +5,7 @@
       lsp-enable-on-type-formatting nil
       lsp-lens-enable nil
       lsp-keymap-prefix "C-c l"
+      lsp-enable-file-watchers nil
       lsp-java-server-install-dir (expand-file-name "jdtls/" user-emacs-directory)
       lsp-enable-indentation nil)
 
