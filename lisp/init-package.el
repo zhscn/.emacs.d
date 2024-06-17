@@ -35,6 +35,7 @@
 
 (progn
   (elpaca `(,@elpaca-order))
+  (elpaca treesit-auto)
   (elpaca page-break-lines)
   (elpaca gcmh)
   (elpaca (transient :host github :repo "magit/transient"))
@@ -81,6 +82,11 @@
 (require 'transient)
 
 (gcmh-mode +1)
+
+(require 'treesit-auto)
+(delete 'c treesit-auto-langs)
+(delete 'cpp treesit-auto-langs)
+(global-treesit-auto-mode)
 
 (setq exec-path-from-shell-variables '("PATH" "MANPATH" "LANG")
       exec-path-from-shell-check-startup-files nil
