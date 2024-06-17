@@ -13,4 +13,7 @@
         ("Channels" . (type channel))
         ("Archive" . archive)))
 
+(with-eval-after-load "telega"
+  (setq telega-chat-mode-hook nil))
+
 (provide 'init-telega)
