@@ -27,7 +27,8 @@
 
   (keymap-set lsp-mode-map "C-c v c" #'ccls-call-hierarchy)
   (keymap-set lsp-mode-map "C-c v d" #'ccls-inheritance-hierarchy-derived)
-  (keymap-set lsp-mode-map "C-c v b" #'ccls-inheritance-hierarchy-base))
+  (keymap-set lsp-mode-map "C-c v b" #'ccls-inheritance-hierarchy-base)
+  (keymap-set lsp-mode-map "C-c v m" #'ccls-member-hierarchy))
 
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
 (add-hook 'rust-ts-mode-hook #'lsp)
