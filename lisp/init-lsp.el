@@ -14,9 +14,7 @@
   (keymap-unset c++-mode-map ":")
   (keymap-unset c++-mode-map ",")
   (add-hook 'c-mode-hook #'lsp)
-  (add-hook 'c++-mode-hook #'lsp)
-  ;; (add-hook 'java-mode-hook #'lsp)
-  )
+  (add-hook 'c++-mode-hook #'lsp))
 
 (with-eval-after-load "lsp-mode"
   (require 'ccls))
