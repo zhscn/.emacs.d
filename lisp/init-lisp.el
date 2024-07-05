@@ -31,4 +31,7 @@
   (dolist (k '("M-?" "RET"))
     (keymap-unset paredit-mode-map k)))
 
+(with-eval-after-load "geiser"
+  (require 'geiser-guile))
+
 (provide 'init-lisp)
