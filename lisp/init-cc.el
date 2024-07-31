@@ -69,4 +69,21 @@
 
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 
+(with-eval-after-load "cc-mode"
+  (defun c-page-break ()
+    "insert page break line in comment"
+    (interactive)
+    (let ((comment (read-from-minibuffer "comment: ")))
+      (move-end-of-line nil)
+      (insert ?\n)
+      (c-indent-line-or-region)
+      (let ((eq-str (make-string (/ (- 80 (length comment) 6 (current-column)) 2) ?=)))
+        (insert "/// ")
+        (insert eq-str)
+        (insert " ")
+        (insert comment)
+        (insert " ")
+        (insert eq-str))))
+  (keymap-set c-mode-base-map "M-'" #'c-page-break))
+
 (provide 'init-cc)
