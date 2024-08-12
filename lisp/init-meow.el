@@ -32,6 +32,8 @@
    '("x" . "H-x")
    '("c" . "H-c")
    '("b" . consult-buffer)
+   '("i" . symbol-overlay-put)
+   '("I" . symbol-overlay-remove-all)
    '("H" . windmove-left)
    '("J" . windmove-down)
    '("K" . windmove-up)
