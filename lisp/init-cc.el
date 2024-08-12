@@ -56,7 +56,6 @@
                              'c-lineup-assignments)
                           ++))
                         (label . /)
-                        (case-label . +)
                         (statement-case-open . +)
                         (statement-case-intro . +) ; case w/o {
                         (innamespace . 0))))
