@@ -103,6 +103,7 @@
    '("r" . meow-kill)
    '("R" . meow-query-replace-regexp)
    '("s" . meow-change)
+   '("S" . meow-swap-grab)
    '("t" . meow-query-replace)
    '("u" . meow-undo)
    '("v" . meow-visit)
