@@ -67,6 +67,7 @@
   (c-add-style "Google" google-c-style t))
 
 (add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
 
 (with-eval-after-load "cc-mode"
   (defun c-page-break ()
