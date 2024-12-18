@@ -7,8 +7,7 @@
 (setq meow-cursor-type-insert '(bar . 2)
       meow-expand-hint-remove-delay 1.5
       ;; meow-use-cursor-position-hack t
-      meow-keypad-leader-dispatch "C-c"
-      meow-keypad-start-keys nil)
+      meow-keypad-leader-dispatch "C-c")
 (meow-global-mode +1)
 
 (defun +delete ()
@@ -23,14 +22,9 @@
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
-  (meow-motion-overwrite-define-key
-   '("x" . meow-keypad-start)
-   '("c" . meow-keypad-start))
 
   (meow-leader-define-key
    '("f" . fold-this)
-   '("x" . "H-x")
-   '("c" . "H-c")
    '("b" . consult-buffer)
    '("i" . symbol-overlay-put)
    '("I" . symbol-overlay-remove-all)
@@ -39,6 +33,7 @@
    '("K" . windmove-up)
    '("L" . windmove-right)
    '("U" . meow-undo-in-selection)
+   '("o" . ace-window)
    '("[" . kmacro-start-macro-or-insert-counter)
    '("]" . kmacro-end-or-call-macro)
 
