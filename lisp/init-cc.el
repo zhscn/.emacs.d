@@ -47,6 +47,7 @@
                         (topmost-intro . 0)
                         (block-open . 0)
                         (inline-open . 0)
+                        (inextern-lang . 0)
                         (substatement-open . 0)
                         (statement-cont
                          .
