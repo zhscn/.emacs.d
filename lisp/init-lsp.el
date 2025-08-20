@@ -10,7 +10,7 @@
 
 (yas-global-mode 1)
 
-(add-hook 'after-init-hook #'global-lsp-bridge-mode)
+(global-lsp-bridge-mode)
 (smartparens-global-mode +1)
 (show-smartparens-global-mode +1)
 (sp-with-modes
