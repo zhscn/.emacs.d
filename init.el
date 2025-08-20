@@ -8,6 +8,9 @@
 (require 'init-complete)
 (require 'init-theme)
 
+(require 'init-rime)
+(require 'init-telega)
+
 (require 'init-meow)
 
 (require 'init-lisp)
