@@ -64,6 +64,8 @@
       lsp-completion-provider :none
       lsp-completion-show-detail nil
       lsp-completion-show-kind nil
+      lsp-enable-on-type-formatting nil
+      lsp-enable-indentation nil
       lsp-disabled-clients '((c++-mode . clangd) (c-mode . clangd)))
 
 (with-eval-after-load "lsp-mode"
