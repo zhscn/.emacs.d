@@ -22,8 +22,8 @@
 ; (require 'package)
 
 (setq package-archives '(("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-                         ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+			 ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+			 ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
 ; (package-initialize)
 
@@ -50,15 +50,14 @@
 ;   :ensure t
 ;   :hook ((after-init . benchmark-init/deactivate)))
 
-(use-package which-key
-  :straight t
-  :diminish
-  :bind ("C-h M-m" . which-key-show-major-mode)
-  :hook (after-init . which-key-mode))
+;(use-package which-key
+;  :straight t
+;  :diminish
+;  :bind ("C-h M-m" . which-key-show-major-mode)
+;  :hook (after-init . which-key-mode))
 
 (use-package recentf
   :straight t
-  :ensure nil
   :hook (after-init . recentf-mode)
   :init (setq recentf-max-saved-items 300
   recentf-exclude

@@ -5,7 +5,7 @@
 (use-package flycheck
   :straight t
   :diminish
-  :hook (after-init . global-flycheck-mode)
+  :hook ((c-mode c++-mode) . global-flycheck-mode)
   :init
   (flymake-mode -1)
   :config
