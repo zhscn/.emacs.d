@@ -12,6 +12,7 @@
 (setq meow-cursor-type-insert '(bar . 2)
       meow-expand-hint-remove-delay 1.5
       ;; meow-use-cursor-position-hack t
+      meow-keypad-start-keys nil
       meow-replace-state-name-list
       '((normal . "N") (insert . "I")
         (keypad . "K") (motion . "M")
@@ -38,8 +39,8 @@
 
   (meow-leader-define-key
    '("f" . fold-this)
-   '("x" . meow-motion-origin-command)
-   '("c" . meow-motion-origin-command)
+   '("x" . "H-x")
+   '("c" . "H-c")
    '("b" . switch-to-buffer)
    '("H" . windmove-left)
    '("J" . windmove-down)
@@ -110,7 +111,7 @@
    '("p" . meow-yank)
    '("q" . avy-goto-char-2)
    '("Q" . goto-line)
-   '("r" . meow-C-k)
+   '("r" . meow-kill)
    '("R" . meow-query-replace-regexp)
    '("s" . meow-change)
    '("t" . meow-query-replace)
