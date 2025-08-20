@@ -48,7 +48,7 @@
 (define-key global-map [remap goto-line] #'consult-goto-line)
 (define-key global-map [remap imenu] #'consult-imenu)
 (define-key global-map [remap goto-line] #'consult-goto-line)
-(define-key global-map (kbd "C-s") #'consult-isearch)
+(define-key global-map (kbd "C-s") #'consult-isearch-history)
 (define-key global-map [remap project-find-regexp] #'consult-ripgrep)
 (with-eval-after-load "org-mode"
   (define-key org-mode-map [remap consult-imenu] #'consult-org-heading))

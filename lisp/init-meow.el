@@ -12,6 +12,7 @@
 (setq meow-cursor-type-insert '(bar . 2)
       meow-expand-hint-remove-delay 1.5
       ;; meow-use-cursor-position-hack t
+      meow-keypad-leader-dispatch "C-c"
       meow-keypad-start-keys nil
       meow-replace-state-name-list
       '((normal . "N") (insert . "I")
