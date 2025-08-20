@@ -21,9 +21,8 @@
 (leaf rg
   :straight t
   :require t)
-(leaf cmake-mode
-  :straight (cmake-mode :type git :host github :repo "emacsmirror/cmake-mode")
-  :require t)
+
+(require 'cmake-mode)
 
 (leaf ccls
   :straight t
