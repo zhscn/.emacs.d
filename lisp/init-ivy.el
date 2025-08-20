@@ -6,18 +6,19 @@
   :straight t
   :diminish ivy-mode counsel-mode
   :hook ((after-init . ivy-mode)
-	 (ivy-mode . counsel-mode))
-  :bind (:map ivy-minibuffer-map
-	      ([escape] . 'minibuffer-keyboard-quit))
+         (ivy-mode . counsel-mode))
+  :bind (("C-s" . swiper-isearch)
+         :map ivy-minibuffer-map
+              ([escape] . 'minibuffer-keyboard-quit))
   :init
   (setq enable-recursive-minibuffers t)
 
   (setq ivy-use-selectable-prompt t
-	ivy-use-virtual-buffers t
-	ivy-height 15
-	ivy-fixed-height-minibuffer t
-	ivy-count-format "(%d/%d) "
-	ivy-on-del-error-function nil)
+        ivy-use-virtual-buffers t
+        ivy-height 15
+        ivy-fixed-height-minibuffer t
+        ivy-count-format "(%d/%d) "
+        ivy-on-del-error-function nil)
 
   (setq swiper-action-recenter t)
 
@@ -44,6 +45,11 @@
     (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point))
     (counsel-projectile-mode 1))
 
+  (use-package counsel-projectile
+    :straight t
+    :hook (counsel-mode . counsel-projectile-mode)
+    :init (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point)))
+
   (use-package ivy-yasnippet
     :straight t
     :commands ivy-yasnippet--preview
@@ -59,15 +65,15 @@
 (use-package ivy-rich
   :straight t
   :hook ((ivy-mode . ivy-rich-mode)
-	 (ivy-rich-mode . (lambda ()
-			    (setq ivy-virtual-abbreviate
-				  (or (and ivy-rich-mode 'abbreviate) 'name)))))
+         (ivy-rich-mode . (lambda ()
+                            (setq ivy-virtual-abbreviate
+                                  (or (and ivy-rich-mode 'abbreviate) 'name)))))
   :init
   (setq ivy-rich-parse-remote-buffer nil)
 
   (add-hook 'minibuffer-setup-hook
-	    (lambda ()
-	      (setq tab-width 1))))
+            (lambda ()
+              (setq tab-width 1))))
 
 (provide 'init-ivy)
 

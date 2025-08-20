@@ -5,18 +5,18 @@
 (use-package ccls
   :straight t
   :hook ((c-mode c++-mode) .
-	 (lambda ()
-	   (if (eq system-type 'windows-nt)
-	     (setq ccls-executable "D:/lib/LLVM/bin/ccls.exe")
-	     (setq ccls-executable "~/.local/bin/ccls"))
-	   (require 'ccls)
-	   (lsp)))
+         (lambda ()
+           (if (eq system-type 'windows-nt)
+             (setq ccls-executable "D:/lib/LLVM/bin/ccls.exe")
+             (setq ccls-executable "~/.local/bin/ccls"))
+           (require 'ccls)
+           (lsp)))
   :init
   (setq-default c-basic-offset 2
-		default-tab-width 2
-		;;ccls-sem-highlight-method 'overlay
-		c-default-style "cc-mode")
-		;; flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+                default-tab-width 2
+                ;;ccls-sem-highlight-method 'overlay
+                c-default-style "cc-mode")
+                ;; flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
   :config
   (defun my-prettify-c-block-comment (orig-fun &rest args)
     (let* ((first-comment-line (looking-back "/\\*\\s-*.*"))
