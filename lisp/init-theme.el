@@ -15,10 +15,10 @@
                           (progn
                             (load-theme 'doom-nord-light t)
                             (set-face-attribute
-                             'default nil :font (font-spec :family "Consolas" :size 14.5))
+                             'default nil :font (font-spec :family "Consolas" :size 11.5))
                             (dolist (charset '(kana han symbol cjk-misc bopomofo))
                               (set-fontset-font (frame-parameter nil 'font)
-                                                charset (font-spec :family "Sarasa Term SC" :size 14.8)))))))
+                                                charset (font-spec :family "Sarasa Term SC" :size 11.8)))))))
 
   :config
   (blink-cursor-mode -1)
