@@ -8,7 +8,7 @@
 (setq kaolin-themes-italic-comments t
       kaolin-ocean-alt-bg t)
 
-(if (display-grayscale-p)
+(if (display-graphic-p)
     (load-theme 'kaolin-light t)
   (load-theme 'modus-vivendi t))
 
