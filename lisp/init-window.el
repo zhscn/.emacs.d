@@ -19,20 +19,9 @@
 	    (?o delete-other-windows "Delete Other Windows")
 	    (?? aw-show-dispatch-help)))
 
-(defun toggle-maximize-window ()
-  "Maximize window."
-  (interactive)
-  (if (and (= 1 (length (window-list)))
-           (assoc ?_ register-alist))
-      (jump-to-register ?_)
-    (progn
-      (window-configuration-to-register ?_)
-      (delete-other-windows))))
-
 (require 'persp-mode)
 ;; (set-persp-parameter 'dont-save-to-file t nil)
 (setq-default persp-auto-save-opt 0)
 (persp-mode +1)
-
 
 (provide 'init-window)

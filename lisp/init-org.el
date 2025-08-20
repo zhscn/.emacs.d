@@ -70,11 +70,4 @@
 (setq org-agenda-text-search-extra-files (directory-files-recursively org-roam-directory "\\.org$")
       org-html-validation-link nil)
 
-;; (leaf org-latex-impatient
-;;   :straight t
-;;   :require t
-;;   :hook (org-mode-hook . org-latex-packages-mode)
-;;   :init
-;;   (setq org-latex-impatient-tex2svg-bin "~/.local/package/node_modules/mathjax-node-cli/bin/tex2svg"))
-
 (provide 'init-org)
