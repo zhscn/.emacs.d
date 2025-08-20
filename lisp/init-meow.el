@@ -9,15 +9,15 @@
 (autoload #'fold-this "fold-this" nil t)
 (which-key-mode +1)
 
-(require 'meow)
-(meow-global-mode +1)
 (setq meow-cursor-type-insert '(bar . 2)
       meow-expand-hint-remove-delay 1.5
+      meow-use-cursor-position-hack t
       meow-replace-state-name-list
- '((normal . "N")
-   (insert . "I")
-   (keypad . "K")
-   (motion . "M")))
+      '((normal . "N") (insert . "I")
+        (keypad . "K") (motion . "M")))
+
+(require 'meow)
+(meow-global-mode +1)
 
 (defun +delete ()
   (interactive)
