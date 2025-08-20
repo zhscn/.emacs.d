@@ -35,6 +35,7 @@
 
 (progn
   (elpaca `(,@elpaca-order))
+  (elpaca symbol-overlay)
   (elpaca treesit-auto)
   (elpaca page-break-lines)
   (elpaca gcmh)
