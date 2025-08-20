@@ -1,12 +1,9 @@
 ;;; -*- lexical-binding: t -*-
-(straight-use-package 'projectile)
 (straight-use-package 'persp-mode)
 (straight-use-package 'rg)
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
 (straight-use-package 'ccls)
-
-(add-hook 'after-init-hook #'projectile-mode)
 
 (require 'persp-mode)
 ;; (set-persp-parameter 'dont-save-to-file t nil)
