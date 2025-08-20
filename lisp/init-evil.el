@@ -2,6 +2,14 @@
 ;;; Commentary: vim key binding
 ;;; Code:
 
+(setq evil-normal-state-tag " N")
+(setq evil-insert-state-tag " I")
+(setq evil-visual-state-tag " V")
+(setq evil-emacs-state-tag " E")
+(setq evil-motion-state-tag " M")
+(setq evil-replace-state-tag " R")
+(setq evil-operator-state-tag " O")
+
 (use-package evil
   :ensure t
   :hook ((after-init . evil-mode))
