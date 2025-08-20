@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 (straight-use-package '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge" :files (:defaults "*")))
 
-(straight-use-package 'yasnippet)
 (straight-use-package 'markdown-mode)
 (straight-use-package 'smartparens)
 (straight-use-package 'posframe)
