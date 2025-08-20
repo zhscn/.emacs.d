@@ -9,6 +9,7 @@
         ("Groups" . (type basicgroup supergroup))
         ("Channels" . (type channel))
         ("Archive" . archive))
+      telega-server-libs-prefix "/opt/homebrew/Cellar/tdlib/HEAD-07b7faf/"
       telega-proxies '((:server "localhost" :port 1080 :enable t :type (:@type "proxyTypeHttp"))))
 
 (defun +telega-open-file (file)
@@ -29,10 +30,13 @@
   (add-to-list 'face-font-rescale-alist '("-Noto Sans-" . 0.6))
   (add-to-list 'face-font-rescale-alist '("-Noto Sans Math-" . 0.5))
   (add-to-list 'face-font-rescale-alist '("-Noto Color Emoji-" . 0.5))
+  (add-to-list 'face-font-rescale-alist '("-STIXGeneral-" . 0.7))
+  (add-to-list 'face-font-rescale-alist '("-Arial Unicode MS-" . 0.8))
   (add-to-list 'face-font-rescale-alist '("-Noto Sans Georgian-" . 0.8))
   (add-to-list 'face-font-rescale-alist '("-Noto Sans Symbols-" . 0.4))
   (add-to-list 'face-font-rescale-alist '("-mincho-" . 0.5))
   (add-to-list 'face-font-rescale-alist '("-Symbola-" . 0.8))
+  (add-to-list 'face-font-rescale-alist '("-Apple Color Emoji-" . 0.8))
   (buffer-face-mode +1))
 
 (unless window-system
