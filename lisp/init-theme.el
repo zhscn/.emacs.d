@@ -6,7 +6,8 @@
 (setq column-number-mode t)
 (minions-mode)
 
-(setq modus-themes-region '(bg-only no-extend))
+(setq modus-themes-italic-constructs t
+      modus-themes-region '(bg-only no-extend))
 
 (require 'kaolin-themes)
 (setq kaolin-themes-italic-comments t
