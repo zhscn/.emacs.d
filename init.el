@@ -1,4 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
+(setq modus-themes-slanted-constructs t)
+
+(load-theme 'modus-vivendi t)
+
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
