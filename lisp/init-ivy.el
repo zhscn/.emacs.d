@@ -15,7 +15,7 @@
 
   (setq ivy-use-selectable-prompt t
         ivy-use-virtual-buffers t
-        ivy-height 15
+        ivy-height 20
         ivy-fixed-height-minibuffer t
         ivy-count-format "(%d/%d) "
         ivy-on-del-error-function nil)
@@ -30,8 +30,25 @@
     (with-eval-after-load 'magit
       (setq magit-completing-read-function 'ivy-completing-read)))
 
+  (use-package fuz
+    :straight t
+    :init
+    (require 'fuz)
+    (unless (require 'fuz-core nil t)
+      (fuz-build-and-load-dymod))
+    :config
+    (use-package ivy-fuz
+      :straight t
+      :after ivy
+      :custom
+      (ivy-sort-matches-functions-alist '((t . ivy-fuz-sort-fn)))
+      (ivy-re-builders-alist '((t . ivy-fuz-regex-fuzzy)))
+      :config
+      (add-to-list 'ivy-highlight-functions-alist '(ivy-fuz-regex-fuzzy . ivy-fuz-highlight-fn))))
+
   (use-package amx
     :straight t
+    :ensure t
     :init (setq amx-history-length 20))
 
   (use-package ivy-hydra

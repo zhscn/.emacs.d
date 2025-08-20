@@ -40,6 +40,7 @@
 (require 'init-cc)
 (require 'init-rust)
 
+(require 'init-term)
 (require 'init-utils)
 (require 'init-funcs)
 (require 'init-dired)
