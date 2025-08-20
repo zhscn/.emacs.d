@@ -79,4 +79,12 @@
     (setq lsp-eldoc-enable-hover nil))
   (define-key lsp-mode-map (kbd "C-;") #'lsp-hover-manually))
 
+(unless *is-mac*
+  (straight-use-package 'tree-sitter)
+  (straight-use-package 'tree-sitter-langs)
+  (require 'tree-sitter)
+  (require 'tree-sitter-langs)
+  (add-hook 'c++-mode-hook #'tree-sitter-mode)
+  (add-hook 'c++-mode-hook #'tree-sitter-hl-mode))
+
 (provide 'init-cpp)
