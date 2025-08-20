@@ -41,6 +41,8 @@
 (puni-global-mode)
 (dolist (h '(minibuffer-mode-hook git-rebase-mode-hook))
   (add-hook h #'puni-disable-puni-mode))
+(keymap-set puni-mode-map "C-S-<right>" #'puni-slurp-forward)
+(keymap-set puni-mode-map "C-S-<left>" #'puni-barf-forward)
 (electric-pair-mode)
 
 (provide 'init-complete)
