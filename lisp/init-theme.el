@@ -9,12 +9,12 @@
 (setq modus-themes-italic-constructs t
       modus-themes-region '(bg-only no-extend))
 
-(require 'kaolin-themes)
-(setq kaolin-themes-italic-comments t
-      kaolin-ocean-alt-bg t)
+;; (require 'kaolin-themes)
+;; (setq kaolin-themes-italic-comments t
+;;       kaolin-ocean-alt-bg t)
 
 (if (display-graphic-p)
-    (load-theme 'kaolin-light t)
+    (load-theme 'modus-operandi t)
   (load-theme 'modus-vivendi t))
 
 (when window-system
