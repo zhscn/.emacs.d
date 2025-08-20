@@ -1,6 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 (straight-use-package 'hl-todo)
 (straight-use-package 'autothemer)
+(straight-use-package 'minions)
+
+(setq column-number-mode t)
+(minions-mode)
 
 (setq modus-themes-region '(bg-only no-extend))
 
@@ -67,6 +71,6 @@ This function is slow, so we have to use cache."
             (propertize " " 'display `((space :align-to (- (+ right right-fringe right-margin) (+ 1 ,rhs-w)))))
             rhs-str)))
 
-(advice-add 'meow-setup-indicator :around #'(lambda (_) (setq-default mode-line-format '((:eval (+format-mode-line))))))
+;; (advice-add 'meow-setup-indicator :around #'(lambda (_) (setq-default mode-line-format '((:eval (+format-mode-line))))))
 
 (provide 'init-theme)
