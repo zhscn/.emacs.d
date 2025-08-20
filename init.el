@@ -22,6 +22,7 @@
 (require 'init-base)
 (require 'init-benchmarking)
 (require 'init-package)
+(require 'init-keybinds)
 (require 'init-theme)
 
 (require 'init-evil)

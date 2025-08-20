@@ -2,10 +2,6 @@
 ;;; Commentary: to be honest, i don't know about its uses
 ;;; Code:
 
-(map!
- (
-  :n "mm" #'(lambda () (message "test"))))
-
 (use-package counsel
   :straight t
   :diminish ivy-mode counsel-mode
