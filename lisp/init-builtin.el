@@ -99,6 +99,18 @@
 
 (with-eval-after-load "whitespace"
   (setq whitespace-display-mappings '((tab-mark 9 [187 9] [92 9]))
-        whitespace-line-column 100))
+        whitespace-line-column 120))
+
+(defun open-kitty ()
+  (interactive)
+  (do-applescript "
+if application \"Kitty\" is not running then
+    launch application \"Kitty\"
+else
+    tell application \"Kitty\" to activate
+end if
+"))
+
+(keymap-set global-map "M-s-," #'open-kitty)
 
 (provide 'init-builtin)
