@@ -76,23 +76,12 @@
       lsp-completion-show-detail nil
       lsp-completion-show-kind nil)
 
-(defun lsp-hover-manually ()
-  (interactive)
-  (lsp-request-async
-   "textDocument/hover"
-   (lsp--text-document-position-params)
-   (-lambda ((hover &as &Hover? :range? :contents))
-     (when hover
-       (when range?
-         (setq lsp--hover-saved-bounds (lsp--range-to-region range?)))
-       (lsp--eldoc-message (and contents
-                                (lsp--render-on-hover-content
-                                 contents
-                                 lsp-eldoc-render-all)))))
-   :error-handler #'ignore
-   :mode 'tick
-   :cancel-token :eldoc-hover))
 (with-eval-after-load "lsp-mode"
+  (defun lsp-hover-manually ()
+    (interactive)
+    (setq lsp-eldoc-enable-hover t)
+    (lsp-hover)
+    (setq lsp-eldoc-enable-hover nil))
   (define-key lsp-mode-map (kbd "C-;") #'lsp-hover-manually))
 
 (provide 'init-cpp)
