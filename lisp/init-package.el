@@ -66,7 +66,6 @@
   (elpaca cider)
   (elpaca fold-this)
   (elpaca rg)
-  (elpaca (rime :host github :repo "DogLooksGood/emacs-rime"))
   (elpaca lua-mode)
   (elpaca ccls)
   (elpaca lsp-mode)
