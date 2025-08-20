@@ -5,6 +5,8 @@
 (straight-use-package 'smartparens)
 (straight-use-package 'posframe)
 
+(setq acm-candidate-match-function 'acm-candidate-fuzzy-search)
+
 (yas-global-mode 1)
 
 (add-hook 'after-init-hook #'global-lsp-bridge-mode)
