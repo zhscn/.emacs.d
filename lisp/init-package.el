@@ -23,8 +23,6 @@
 (straight-use-package 'gcmh)
 (gcmh-mode +1)
 
-(straight-use-package 'esup)
-
 (straight-use-package 'exec-path-from-shell)
 (setq exec-path-from-shell-variables '("PATH" "MANPATH")
       exec-path-from-shell-check-startup-files nil

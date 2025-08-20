@@ -38,7 +38,7 @@ This function is slow, so we have to use cache."
                             (setq +smart-file-name-cache (cons (buffer-name) file-name))
                             file-name))))
     (if (and (buffer-modified-p) (buffer-file-name))
-        (concat "* " curr-file-name)
+        (concat "*" curr-file-name)
       curr-file-name)))
 
 (defun +persp-name ()
