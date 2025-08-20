@@ -9,7 +9,8 @@
     (ignore-errors
       (rename-buffer
        (file-relative-name buffer-file-name (projectile-project-root)))))
-  (add-hook 'find-file-hook #'proj-relative-buf-name))
+  (add-hook 'find-file-hook #'proj-relative-buf-name)
+  (setq projectile-mode-line-function '(lambda () (format " Proj[%s]" (projectile-project-name)))))
 
 (leaf rg
   :straight t
@@ -24,8 +25,10 @@
   (defun ccls-member-variable () (interactive) (lsp-ui-peek-find-custom "$ccls/member" '(:kind 4)))
   (defun ccls-member-function () (interactive) (lsp-ui-peek-find-custom "$ccls/member" '(:kind 3)))
   (defun ccls-member-type () (interactive) (lsp-ui-peek-find-custom "$ccls/member" '(:kind 2)))
+  (defun ccls-callee () (interactive) (lsp-ui-peek-find-custom "$ccls/call" '(:callee t)))
 
   (define-key lsp-mode-map (kbd "C-c v c") #'ccls-call-hierarchy)
+  (define-key lsp-mode-map (kbd "C-c v e") #'ccls-callee)
   (define-key lsp-mode-map (kbd "C-c v d") #'ccls-inheritance-hierarchy-derived)
   (define-key lsp-mode-map (kbd "C-c v b") #'ccls-inheritance-hierarchy-base)
   (define-key lsp-mode-map (kbd "C-c v s") #'lsp-ivy-workspace-symbol)
@@ -39,6 +42,13 @@
   (add-hook 'c-mode-hook #'load-ccls)
   (add-hook 'c++-mode-hook #'load-ccls)
   (setq ccls-executable "~/.local/bin/ccls"))
+
+(straight-use-package 'tree-sitter)
+(straight-use-package 'tree-sitter-langs)
+(require 'tree-sitter)
+(require 'tree-sitter-langs)
+(add-hook 'c++-mode-hook #'tree-sitter-mode)
+(add-hook 'c++-mode-hook #'tree-sitter-hl-mode)
 
 (leaf lsp-mode
   :straight t
