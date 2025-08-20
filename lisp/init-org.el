@@ -8,7 +8,6 @@
 (straight-use-package 'ebib)
 (straight-use-package 'citar)
 (straight-use-package 'citeproc)
-(straight-use-package 'xenops)
 
 (setq org-directory (file-truename "~/org/"))
 
