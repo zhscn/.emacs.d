@@ -22,4 +22,9 @@
 (sp-with-modes
     '(c++-mode objc-mode c-mode)
   (sp-local-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET"))))
+
+(with-eval-after-load "meow"
+  (add-to-list 'meow-mode-state-list '(lsp-bridge-ref-mode . motion))
+  (add-to-list 'meow-mode-state-list '(lsp-bridge-ref-switch-to-view-mode . motion)))
+
 (provide 'init-lsp)
