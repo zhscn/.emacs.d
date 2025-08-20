@@ -11,10 +11,6 @@
   :demand t
   :config
   (use-package pyim-basedict
-    :ensure nil
-    ; :hook (after-init . (lambda () (pyim-restart-1 t)))
-    ; :init (setq pyim-dicts
-    ;             '((:name "base" :file "/home/zhscn/.emacs.d/pyim/dcache/pyim-bigdict.pyim")))
     :config
     (pyim-basedict-enable))
 
@@ -22,7 +18,6 @@
     :init (require 'posframe))
 
   (setq default-input-method "pyim")
-  ;;(pyim-isearch-mode 1)
   (setq pyim-punctuation-translate-p '(no auto yes)
         pyim-default-scheme 'rime
         ;; pyim-punctuation-dict nil

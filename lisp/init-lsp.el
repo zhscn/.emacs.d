@@ -57,7 +57,6 @@
     company-lsp-cache-candidates t))
 
 (use-package yasnippet
-    ; :diminish yas-minor-mode
     :hook (after-init . yas-global-mode)
     :config
     (yas-minor-mode)

@@ -344,9 +344,6 @@ possible, or just one char if that's not possible."
     ;;  f) do none of this when inside a string
     (advice-add #'delete-backward-char :override #'+default--delete-backward-char-a))
 
-  ;; Makes `newline-and-indent' continue comments (and more reliably)
-  ; (advice-add #'newline-and-indent :override #'+default--newline-indent-and-continue-comments-a);)
-
 (provide 'init-parens)
 
 ;;; init.el ends here

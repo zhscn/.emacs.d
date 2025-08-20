@@ -65,6 +65,7 @@
 
 (setq kill-buffer-query-functions nil)
 ; (setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
+
 ;; Network Proxy
 (defvar my-proxy "127.0.0.1:1080")
 (defvar socks-noproxy)

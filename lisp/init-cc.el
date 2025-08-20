@@ -53,13 +53,14 @@
     ;; Ensure one space between the asterisk and the comment
     (when (not (looking-back " "))
       (insert " ")))
-  (advice-add 'c-indent-new-comment-line :around #'my-prettify-c-block-comment)
-  (use-package clang-format
-    :config
-    (setq clang-format-style-option "file"))
+  (advice-add 'c-indent-new-comment-line :around #'my-prettify-c-block-comment))
 
-  (use-package modern-cpp-font-lock
-    :init (modern-c++-font-lock-global-mode t)))
+(use-package clang-format
+  :config
+  (setq clang-format-style-option "file"))
+
+(use-package modern-cpp-font-lock
+  :init (modern-c++-font-lock-global-mode t))
 
 ;;(add-hook 'c++-mode #'lsp-deferred)
 ;;(ccls-use-default-rainbow-sem-highlight)
