@@ -17,7 +17,6 @@
   (setq lsp-haskell-process-path-hie "ghcide")
   (setq lsp-haskell-process-args-hie '()))
 
-
 (provide 'init-haskell)
 
 ;;; init-haskell.el ends here

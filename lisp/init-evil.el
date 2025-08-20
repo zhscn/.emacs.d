@@ -11,7 +11,7 @@
               evil-want-C-u-scroll t)
   :config
   (setq evil-emacs-state-cursor '(box "SteelBlue")
-        evil-normal-state-cursor '(box "grey60"))
+        evil-normal-state-cursor '(box "grey60")))
 
 (use-package evil-collection
   :after evil

@@ -1,6 +1,6 @@
 ;;; early-init.el -*- lexical-binding: t; -*-
 
-(setq gc-cons-threshold 500000000)
+(setq gc-cons-threshold 50000000)
 
 (setq package-enable-at-startup nil)
 

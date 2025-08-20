@@ -8,7 +8,9 @@
   (:map lsp-mode-map
     ("C-c C-d" . lsp-describe-thing-at-point))
   :config
-  (setq lsp-prefer-flymake nil))
+  (setq lsp-diagnostic-package :flycheck)
+  (setq lsp-flycheck-live-reporting nil)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
 
 ; (use-package lsp-ui
 ;   :custom-face

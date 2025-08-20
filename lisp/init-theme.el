@@ -5,6 +5,7 @@
 ;; 11.5 11.8
 ;; 14.5 14.8
 ;; 15.5 17.8
+;; 12.5 13.5 Source Han Sans HW SC
 (use-package doom-themes
   :hook (after-init . (lambda ()
                         (if (not window-system)
@@ -14,10 +15,10 @@
                           (progn
                             (load-theme 'doom-nord-light t) ;; doom-acario-light
                             (set-face-attribute
-                             'default nil :font (font-spec :family "Consolas" :size 11.5))
+                             'default nil :font (font-spec :family "Source Code Pro" :size 11.5))
                             (dolist (charset '(kana han symbol cjk-misc bopomofo))
                               (set-fontset-font (frame-parameter nil 'font)
-                                                charset (font-spec :family "Sarasa Term SC" :size 11.8)))))))
+                                                charset (font-spec :family "Sarasa Term SC" :size 13.5)))))))
 
   :config
   (blink-cursor-mode -1)
@@ -41,17 +42,10 @@
     (setq custom-enabled-themes '(doom-vibrant))
     (reapply-themes)))
 
-(use-package dashboard
-  :diminish (dashboard-mode page-break-lines-mode)
-  :hook (dashboard-mode . (lambda () (setq-local frame-title-format "")))
-  :config
-  (setq dashboard-banner-logo-title "zhscn's Emacs"))
-
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :init
-  (dashboard-setup-startup-hook)
   (setq doom-modeline-height 10
         doom-modeline-bar-width 3
         doom-modeline-project-detection 'project

@@ -38,18 +38,20 @@
 (require 'init-flycheck)
 
 (require 'init-cc)
-(require 'init-haskell)
-(require 'init-rust)
-(require 'init-scheme)
 
 (require 'init-org)
-(require 'init-term)
-(require 'init-tex)
 (require 'init-pyim)
 (require 'init-utils)
 (require 'init-funcs)
 (require 'init-dired)
 (require 'init-parens)
+
+(unless (eq system-type 'windows-nt)
+  (require 'init-haskell)
+  (require 'init-rust)
+  (require 'init-scheme)
+  (require 'init-tex)
+  (require 'init-term))
 
 (provide 'init)
 
