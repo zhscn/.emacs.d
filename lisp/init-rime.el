@@ -2,7 +2,7 @@
 (straight-use-package '(rime :type git :host github :repo "DogLooksGood/emacs-rime"))
 
 (setq default-input-method "rime"
-      rime-title "im")
+      rime-title "im ")
 
 (when *is-mac*
   (setq rime-emacs-module-header-root "/opt/homebrew/opt/emacs-plus@29/include")
