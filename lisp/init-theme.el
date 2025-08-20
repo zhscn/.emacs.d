@@ -1,9 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 (straight-use-package 'hl-todo)
-(straight-use-package 'kaolin-themes)
+(straight-use-package 'autothemer)
 
 (setq modus-themes-region '(bg-only no-extend))
 
+(require 'kaolin-themes)
 (setq kaolin-themes-italic-comments t
       kaolin-ocean-alt-bg t)
 
