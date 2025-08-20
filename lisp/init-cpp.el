@@ -4,7 +4,6 @@
 (straight-use-package 'rg)
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
-(straight-use-package 'lsp-ivy)
 (straight-use-package 'ccls)
 
 (add-hook 'after-init-hook #'projectile-mode)
@@ -38,7 +37,6 @@
   (define-key lsp-mode-map (kbd "C-c v e") #'ccls-callee)
   (define-key lsp-mode-map (kbd "C-c v d") #'ccls-inheritance-hierarchy-derived)
   (define-key lsp-mode-map (kbd "C-c v b") #'ccls-inheritance-hierarchy-base)
-  (define-key lsp-mode-map (kbd "C-c v s") #'lsp-ivy-workspace-symbol)
   (define-key lsp-mode-map (kbd "C-c v p") #'lsp-ui-peek-find-definitions)
   (define-key lsp-mode-map (kbd "C-c v v") #'ccls-member-variable)
   (define-key lsp-mode-map (kbd "C-c v f") #'ccls-member-function)
