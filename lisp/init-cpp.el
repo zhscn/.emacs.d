@@ -70,9 +70,22 @@
   (require 'ccls)
   (defun lsp-hover-manually ()
     (interactive)
-    (setq lsp-eldoc-enable-hover t)
-    (lsp-hover)
-    (setq lsp-eldoc-enable-hover nil))
+    (lsp-request-async
+     "textDocument/hover"
+     (lsp--text-document-position-params)
+     (-lambda ((hover &as &Hover? :range? :contents))
+       (when hover
+         (when range?
+           (setq lsp--hover-saved-bounds (lsp--range-to-region range?)))
+         (let ((msg (and contents
+                         (lsp--render-on-hover-content
+                          contents
+                          lsp-eldoc-render-all))))
+           (let ((message-log-max nil))
+             (message "%s" msg)))))
+     :error-handler #'ignore
+     :mode 'tick
+     :cancel-token :eldoc-hover))
   (define-key lsp-mode-map (kbd "C-;") #'lsp-hover-manually))
 
 (unless *is-mac*
