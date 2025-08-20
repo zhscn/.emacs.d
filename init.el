@@ -24,6 +24,7 @@
 (require 'init-cc)
 ;; (require 'init-cpp)
 (require 'init-haskell)
+(require 'init-zig)
 
 (require 'init-tree-sitter)
 
