@@ -30,11 +30,13 @@
       cider-enhanced-cljs-completion-p t
       cider-offer-to-open-cljs-app-in-browser nil)
 
-(add-hook 'scheme-mode-hook #'paredit-mode)
-(add-hook 'emacs-lisp-mode-hook #'paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'paredit-mode)
-(add-hook 'lisp-mode-hook #'paredit-mode)
-(add-hook 'common-lisp-mode-hook #'paredit-mode)
-(add-hook 'clojure-mode-hook #'paredit-mode)
+(dolist (hook '(scheme-mode-hook
+                emacs-lisp-mode-hook
+                lisp-interaction-mode-hook
+                lisp-mode-hook
+                common-lisp-mode-hook
+                clojure-mode-hook))
+  (add-hook hook #'paredit-mode)
+  (add-hook hook #'puni-disable-puni-mode))
 
 (provide 'init-lisp)

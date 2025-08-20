@@ -43,11 +43,9 @@
 (with-eval-after-load "org-mode"
   (keymap-substitute org-mode-map #'consult-imenu #'consult-org-heading))
 
-;; smartparens
-(smartparens-global-mode +1)
-(show-smartparens-global-mode +1)
-(sp-with-modes
-    '(c++-mode objc-mode c-mode)
-  (sp-local-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET"))))
+(puni-global-mode)
+(add-hook 'minibuffer-mode-hook #'puni-disable-puni-mode)
+(add-hook 'git-rebase-mode-hook #'puni-disable-puni-mode)
+(electric-pair-mode)
 
 (provide 'init-complete)
