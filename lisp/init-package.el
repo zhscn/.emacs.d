@@ -46,6 +46,32 @@
 (eval-when-compile
   (require 'use-package))
 
+(use-package paradox
+  :init
+  (setq paradox-execute-asynchronously t
+        paradox-github-token t
+        paradox-display-star-count nil)
+
+  (defun my-paradox-enable (&rest _)
+    "Enable paradox, overriding the default package-menu."
+    (paradox-enable))
+  (advice-add #'list-packages :before #'my-paradox-enable)
+  :config
+  (when (fboundp 'page-break-lines-mode)
+    (add-hook 'paradox-after-execute-functions
+              (lambda (&rest _)
+                (let ((buf (get-buffer-create "*Paradox Report*"))
+                      (inhibit-read-only t))
+                  (with-current-buffer buf
+                    (page-break-lines-mode 1))))
+              t)))
+
+(use-package auto-package-update
+  :init
+  (setq auto-package-update-delete-old-versions t
+        auto-package-update-hide-results t)
+  (defalias 'upgrade-packages #'auto-package-update-now))
+
 (require 'init-builtin)
 
 (provide 'init-package)
