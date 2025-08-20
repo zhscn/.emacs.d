@@ -1,5 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
+(leaf posframe
+  :straight t
+  :require t)
+
 (leaf rime
   :straight (rime :type git :host github :repo "DogLooksGood/emacs-rime")
   :init
