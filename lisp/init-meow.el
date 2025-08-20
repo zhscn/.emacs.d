@@ -7,6 +7,9 @@
   (setq meow-cursor-type-insert '(bar . 2)
         meow-expand-hint-remove-delay 1.5)
   :config
+  (leaf windmove
+    :straight t
+    :require t)
   (defun toggle-maximize-window ()
     "Maximize window."
     (interactive)
@@ -28,6 +31,10 @@
      '("x" . meow-motion-origin-command)
      '("c" . meow-motion-origin-command)
      '("b" . switch-to-buffer)
+     '("H" . windmove-left)
+     '("J" . windmove-down)
+     '("K" . windmove-up)
+     '("L" . windmove-right)
      '("=" . toggle-maximize-window)
 
      ;; Use SPC (0-9) for digit arguments.
