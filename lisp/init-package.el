@@ -26,9 +26,11 @@
 (straight-use-package 'exec-path-from-shell)
 (setq exec-path-from-shell-variables '("PATH" "MANPATH")
       exec-path-from-shell-check-startup-files nil
-      exec-path-from-shell-arguments '("-l" ))
+      exec-path-from-shell-arguments '("-l"))
 
 (when (or *is-mac* (daemonp))
   (exec-path-from-shell-initialize))
+
+(straight-use-package 'yaml-mode)
 
 (provide 'init-package)
