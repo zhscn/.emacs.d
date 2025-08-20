@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package flycheck
-  :straight t
   :diminish
   :hook ((c-mode c++-mode) . global-flycheck-mode)
   :init
@@ -34,7 +33,6 @@
   ;; Display Flycheck errors in GUI tooltips
   (if (display-graphic-p)
       (use-package flycheck-posframe
-        :straight t
         :custom-face (flycheck-posframe-border-face ((t (:inherit default))))
         :hook (flycheck-mode . flycheck-posframe-mode)
         :init (setq flycheck-posframe-border-width 1

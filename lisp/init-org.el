@@ -2,8 +2,7 @@
 ;;; Commentary: Org-mode
 ;;; Code:
 
-(use-package htmlize
-  :straight t)
+(use-package htmlize)
 (setq org-html-htmlize-output-type 'css)
 (setq org-html-validation-link nil)
 (provide 'init-org)

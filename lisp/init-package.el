@@ -5,23 +5,23 @@
 (require 'init-base)
 (require 'init-benchmarking)
 
-(setq straight-recipes-gnu-elpa-use-mirror t
-      straight-vc-git-default-clone-depth 1)
+; (setq straight-recipes-gnu-elpa-use-mirror t
+;       straight-vc-git-default-clone-depth 1)
 
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 5))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
+; (defvar bootstrap-version)
+; (let ((bootstrap-file
+;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+;       (bootstrap-version 5))
+;   (unless (file-exists-p bootstrap-file)
+;     (with-current-buffer
+;         (url-retrieve-synchronously
+;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+;          'silent 'inhibit-cookies)
+;       (goto-char (point-max))
+;       (eval-print-last-sexp)))
+;   (load bootstrap-file nil 'nomessage))
 
-                                        ; (require 'package)
+(require 'package)
 
 (setq package-archives '(("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
@@ -29,14 +29,14 @@
 
 (package-initialize)
 
-; (unless (package-installed-p 'use-package)
-;   (package-refresh-contents)
-;   (package-install 'use-package))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-(straight-use-package 'use-package)
-(straight-use-package 'diminish)
-(straight-use-package 'bind-key)
-(straight-use-package 'gnu-elpa-keyring-update)
+; (use-package use-package)
+(use-package diminish)
+(use-package bind-key)
+(use-package gnu-elpa-keyring-update)
 
 (eval-and-compile
   (setq use-package-always-ensure t)
@@ -48,7 +48,6 @@
   (require 'use-package))
 
 ; (use-package benchmark-init
-;   :straight t
 ;   :ensure t
 ;   :hook ((after-init . benchmark-init/deactivate)))
 

@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package vterm
-  :straight t
   :hook (vterm-mode . (lambda () (whitespace-mode 1)(whitespace-mode -1)))
   :ensure t
   :config)

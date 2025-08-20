@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package geiser
-  :straight t
   :init
   (setq geiser-active-implementations '(chez guile chicken mit chibi))
   (setq geiser-mode-start-repl-p t)

@@ -2,17 +2,16 @@
 ;;; Commentary: use ccls and clang-format
 ;;; Code:
 
-(use-package company-cmake
-  :straight (company-cmake
-             :type git
-             :host github
-             :repo "ifesdjeen/emacs-live-packs"
-             :files ("lib/company-mode/company-cmake.el"))
-  :after cmake-mode
-  :config (set-company-backend! 'cmake-mode 'company-cmake))
+; (use-package company-cmake
+;   :straight (company-cmake
+;              :type git
+;              :host github
+;              :repo "ifesdjeen/emacs-live-packs"
+;              :files ("lib/company-mode/company-cmake.el"))
+;   :after cmake-mode
+;   :config (set-company-backend! 'cmake-mode 'company-cmake))
 
 (use-package ccls
-  :straight t
   :hook ((c-mode c++-mode) .
          (lambda ()
            (if (eq system-type 'windows-nt)
@@ -56,12 +55,10 @@
       (insert " ")))
   (advice-add 'c-indent-new-comment-line :around #'my-prettify-c-block-comment)
   (use-package clang-format
-    :straight t
     :config
     (setq clang-format-style-option "file"))
 
   (use-package modern-cpp-font-lock
-    :straight t
     :init (modern-c++-font-lock-global-mode t)))
 
 ;;(add-hook 'c++-mode #'lsp-deferred)

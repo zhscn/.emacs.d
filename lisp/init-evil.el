@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package evil
-  :straight t
   :ensure t
   :hook ((after-init . evil-mode))
          ; (evil-insert-state-entry . (lambda () (setq display-line-numbers 'abslute)))
@@ -19,14 +18,12 @@
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
 
 (use-package evil-collection
-  :straight t
   :after evil
   :config
   (setq evil-collection-company-use-tng nil)
   (evil-collection-init))
 
 (use-package general
-  :straight t
   :init
   ;; Convenience aliases
   (defalias 'define-key! #'general-def)

@@ -3,12 +3,10 @@
 ;;; Code:
 
 (use-package multiple-cursors
-  :straight t
   :bind (("s-<mouse-1>"   . mc/add-cursor-on-click)
          ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
 
 (use-package hl-todo
-  :straight t
   :bind (:map hl-todo-mode-map
               ([C-f3] . hl-todo-occur)
               ("C-c p" . hl-todo-previous)
@@ -22,7 +20,6 @@
     (cl-pushnew `(,keyword . ,(face-foreground 'warning)) hl-todo-keyword-faces)))
 
 (use-package projectile
-  :straight t
   :diminish
   :bind (:map projectile-mode-map
               ("s-t" . projectile-find-file) ; `cmd-t' or `super-t'
