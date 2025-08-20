@@ -9,10 +9,10 @@
   :hook (after-init . (lambda ()
                         (if (not window-system)
                             (progn
-                              (load-theme 'doom-one t)
+                              (load-theme 'doom-vibrant t) ;; doom-one doom-city-light doom-city-lights
                               (xterm-mouse-mode))
                           (progn
-                            (load-theme 'doom-nord-light t)
+                            (load-theme 'doom-nord-light t) ;; doom-acario-light
                             (set-face-attribute
                              'default nil :font (font-spec :family "Consolas" :size 11.5))
                             (dolist (charset '(kana han symbol cjk-misc bopomofo))
@@ -38,7 +38,7 @@
   (defun dark ()
     "Activate a dark color theme."
     (interactive)
-    (setq custom-enabled-themes '(doom-one))
+    (setq custom-enabled-themes '(doom-vibrant))
     (reapply-themes)))
 
 (use-package dashboard

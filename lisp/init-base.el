@@ -16,6 +16,7 @@
 (column-number-mode)
 ;; (toggle-truncate-lines)
 (global-so-long-mode)
+(setq-default tab-width 4)
 
 (setq ad-redefinition-action 'accept
       apropos-do-all t
