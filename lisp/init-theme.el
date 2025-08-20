@@ -10,9 +10,9 @@
     (set-fontset-font t 'unicode "Symbola" nil 'append)
     (set-face-attribute
      'default nil :font (font-spec :family "Sarasa Fixed SC" :size 18))
-    ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    ;;   (set-fontset-font (frame-parameter nil 'font)
-    ;;                     charset (font-spec :family "Sarasa Fixed SC" :size 18)))
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font)
+                        charset (font-spec :family "Sarasa Fixed SC" :size 18)))
     (load-theme 'bespoke t))
 
   (unless window-system

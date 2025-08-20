@@ -11,13 +11,12 @@
   ;; project.el (finding files)
   (add-to-list 'project-find-functions 'global-tags-try-project-root)
   ;; configure Imenu
-  (add-hook 'ruby-mode-hook #'global-tags-imenu-mode)
+  (add-hook 'c++-mode-hook #'global-tags-imenu-mode)
   ;; to update database after save
   (add-hook 'c++-mode-hook (lambda ()
                              (add-hook 'after-save-hook
                                        #'global-tags-update-database-with-buffer
                                        nil
-                                       t)))
+                                       t))))
 
-)
 (provide 'init-cpp)
