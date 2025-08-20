@@ -11,7 +11,7 @@
 
 (setq meow-cursor-type-insert '(bar . 2)
       meow-expand-hint-remove-delay 1.5
-      meow-use-cursor-position-hack t
+      ;; meow-use-cursor-position-hack t
       meow-replace-state-name-list
       '((normal . "N") (insert . "I")
         (keypad . "K") (motion . "M")
