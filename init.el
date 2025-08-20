@@ -32,6 +32,7 @@
 (require 'init-theme)
 
 (require 'init-evil)
+(require 'init-eaf)
 (require 'init-ivy)
 (require 'init-company)
 (require 'init-lsp)
