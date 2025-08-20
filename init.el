@@ -18,6 +18,7 @@
 (require 'init-haskell)
 
 (require 'init-company)
+(require 'init-citre)
 
 (when (file-exists-p custom-file) (load custom-file))
 (put 'dired-find-alternate-file 'disabled nil)

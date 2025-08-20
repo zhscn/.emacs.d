@@ -37,7 +37,6 @@
   (elpaca `(,@elpaca-order))
   (elpaca gcmh)
   (elpaca exec-path-from-shell)
-  (elpaca yaml-mode)
   (elpaca yasnippet)
   (elpaca ws-butler)
   (elpaca magit)
@@ -81,6 +80,7 @@
   (elpaca lsp-ui)
   (elpaca tree-sitter)
   (elpaca tree-sitter-langs)
+  (elpaca citre)
   (elpaca (copilot :host github :repo "zerolfx/copilot.el"
                    :files ("dist" "*.el")))
   (elpaca flycheck))
