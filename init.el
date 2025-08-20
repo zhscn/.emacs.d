@@ -24,7 +24,9 @@
   (add-hook 'after-init-hook #'global-lsp-bridge-mode)
   (keymap-set global-map "M-." #'lsp-bridge-find-def)
   (keymap-set global-map "M-," #'lsp-bridge-find-def-return)
-  (keymap-set global-map "M-?" #'lsp-bridge-find-references))
+  (keymap-set global-map "M-?" #'lsp-bridge-find-references)
+  (keymap-set global-map "M-'" #'lsp-bridge-code-action)
+  (keymap-set global-map "M-[" #'lsp-bridge-code-format))
 
 (defun load-lsp ()
   (require 'init-company)
