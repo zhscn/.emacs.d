@@ -23,7 +23,8 @@
       cider-offer-to-open-cljs-app-in-browser nil)
 
 (dolist (hook '(scheme-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
-                lisp-mode-hook common-lisp-mode-hook clojure-mode-hook sly-mrepl-mode-hook))
+                lisp-mode-hook common-lisp-mode-hook clojure-mode-hook sly-mrepl-mode-hook
+                cider-repl-mode))
   (add-hook hook #'paredit-mode)
   (add-hook hook #'puni-disable-puni-mode))
 
