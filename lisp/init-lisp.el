@@ -27,4 +27,7 @@
   (add-hook hook #'paredit-mode)
   (add-hook hook #'puni-disable-puni-mode))
 
+(with-eval-after-load "paredit"
+  (keymap-unset paredit-mode-map "M-?"))
+
 (provide 'init-lisp)
