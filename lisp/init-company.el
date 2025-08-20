@@ -14,7 +14,12 @@
     ("C-p" . company-select-previous)))
   :config
   (add-hook 'company-mode-hook #'(lambda ()
-                                   (setq company-backends (delete 'company-clang company-backends)))))
+                                   (setq company-backends (delete 'company-clang company-backends))))
+  (leaf company-posframe
+    :straight t
+    :require t
+    :config
+    (company-posframe-mode 1)))
 
 (leaf awesome-pair
   :straight (awesome-pair :type git :host github :repo "manateelazycat/awesome-pair")

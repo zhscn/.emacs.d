@@ -82,7 +82,7 @@
      '("s" . meow-change)
      '("t" . meow-till)
      '("u" . meow-undo)
-     '("v" . meow-mark-symbol)
+     '("v" . meow-visit)
      '("V" . meow-kmacro-matches)
      '("w" . meow-next-word)
      '("W" . meow-next-symbol)
@@ -93,7 +93,7 @@
      '("&" . meow-query-replace)
      '("%" . meow-query-replace-regexp)
      '("'" . meow-join)
-     '("/" . meow-visit)
+     '("/" . counsel-find-file)
      '("`" . repeat)
      '("<escape>" . meow-cancel)))
 
