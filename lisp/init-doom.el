@@ -1,4 +1,6 @@
 ;;; init-doom.el -*- lexical-binding: t; -*-
+;;; Commentary: copy from Doom Emacs
+;;; Code:
 
 (defun doom--resolve-hook-forms (hooks)
   "Converts a list of modes into a list of hook symbols.
@@ -365,4 +367,5 @@ localleader prefix."
   (which-key-mode +1))
 
 (provide 'init-doom)
+
 ;;; init-doom.el ends here

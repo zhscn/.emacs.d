@@ -1,3 +1,7 @@
+;;; init-pyim.el -*- lexical-binding: t -*-
+;;; Commentary: input method in Emacs
+;;; Code:
+
 (use-package liberime
   :straight (liberime
              :type git
@@ -41,8 +45,11 @@
                 '(pyim-probe-punctuation-line-beginning
                   pyim-probe-punctuation-after-punctuation))
   :bind
-  (("M-i" . pyim-convert-string-at-point)
+  (("M-k" . pyim-convert-string-at-point)
    ("C-;" . pyim-delete-word-from-personal-buffer)
    ("C-\\". toggle-input-method)
    ("C-'" . pyim-punctuation-translate-at-point)))
+
 (provide 'init-pyim)
+
+;;; init-rust.el ends here
