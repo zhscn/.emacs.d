@@ -16,7 +16,9 @@
 (setq bibtex-completion-bibliography `(,(concat org-directory "bibliography/ref.bib"))
       bibtex-completion-library-path `(,(concat org-directory "pdf/"))
       bibtex-completion-notes-path (concat org-directory "roam")
-      bibtex-actions-bibliography bibtex-completion-bibliography)
+      bibtex-actions-bibliography bibtex-completion-bibliography
+      bibtex-actions-file-note-org-include '(org-id org-roam-ref)
+      bibtex-actions-file-open-note-function '+org-insert-id-refs-custom)
 
 (with-eval-after-load "embark"
   (setq bibtex-actions-at-point-function 'embark-act)
@@ -69,5 +71,35 @@
 ;;   :hook (org-mode-hook . org-latex-packages-mode)
 ;;   :init
 ;;   (setq org-latex-impatient-tex2svg-bin "~/.local/package/node_modules/mathjax-node-cli/bin/tex2svg"))
+
+(defun +org-insert-id-refs-custom (key entry)
+  "Open a note file from KEY and ENTRY."
+  (if-let* ((file
+             (caar (bibtex-actions-file--get-note-filename
+                    key
+                    bibtex-actions-notes-paths '("org"))))
+            (file-exists (file-exists-p file)))
+      (funcall bibtex-actions-file-open-function file)
+    (let* ((uuid (org-id-new))
+           (template (bibtex-actions-get-template 'note))
+           (note-meta
+            (when template
+              (bibtex-actions--format-entry-no-widths
+               entry
+               template)))
+           (org-id (when (member 'org-id bibtex-actions-file-note-org-include)
+                     (concat "\n:ID:   " uuid)))
+           (org-roam-key (when (member 'org-roam-ref bibtex-actions-file-note-org-include)
+                           (concat "\n:ROAM_REFS: @" key)))
+           (prop-drawer (or org-id org-roam-key))
+           (content
+            (concat (when prop-drawer ":PROPERTIES:")
+                    org-roam-key org-id
+                    (when prop-drawer "\n:END:\n")
+                    note-meta "\n")))
+      (funcall bibtex-actions-file-open-function file)
+      ;; This just overrides other template insertion.
+      (erase-buffer)
+      (when template (insert content)))))
 
 (provide 'init-org)
