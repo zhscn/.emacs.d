@@ -12,6 +12,11 @@
 
 (global-lsp-bridge-mode)
 
+(keymap-set global-map "C-c ." #'lsp-bridge-find-def)
+(keymap-set global-map "C-c ," #'lsp-bridge-find-def-return)
+(keymap-set global-map "C-c >" #'lsp-bridge-find-def-other-window)
+(keymap-set global-map "C-c ?" #'lsp-bridge-find-references)
+
 (unless (display-graphic-p)
   (add-to-list 'load-path (expand-file-name "acm-terminal" user-emacs-directory))
   (with-eval-after-load 'acm
