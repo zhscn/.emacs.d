@@ -17,7 +17,7 @@
   :straight t
   :init
   (liberime-load)
-  (setq-default pyim-title "pyim")
+  (setq default-input-method "pyim")
   :config
   (use-package pyim-basedict
     :straight t
@@ -27,9 +27,8 @@
     :straight t
     :init (require 'posframe))
 
-  (pyim-isearch-mode 1)
+  ;;(pyim-isearch-mode 1)
   (setq pyim-punctuation-translate-p '(no auto yes)
-        default-input-method "pyim"
         pyim-default-scheme 'rime
         ;; pyim-punctuation-dict nil
         pyim-page-tooltip 'posframe
@@ -45,9 +44,9 @@
                 '(pyim-probe-punctuation-line-beginning
                   pyim-probe-punctuation-after-punctuation))
   :bind
-  (("M-k" . pyim-convert-string-at-point)
+  (("C-\\". toggle-input-method)
+   ("M-k" . pyim-convert-string-at-point)
    ("C-;" . pyim-delete-word-from-personal-buffer)
-   ("C-\\". toggle-input-method)
    ("C-'" . pyim-punctuation-translate-at-point)))
 
 (provide 'init-pyim)
