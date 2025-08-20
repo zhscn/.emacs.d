@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 (straight-use-package 'doom-modeline)
+(straight-use-package 'hl-todo)
 
 (setq modus-themes-region '(bg-only no-extend))
 (load-theme 'modus-vivendi t)
@@ -17,5 +18,7 @@
       doom-modeline-icon nil)
 
 (advice-add 'meow-setup-indicator :around #'doom-modeline-mode)
+
+(global-hl-todo-mode +1)
 
 (provide 'init-theme)
