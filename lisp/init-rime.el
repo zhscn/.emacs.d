@@ -29,7 +29,7 @@
  rime-inline-predicates '(rime-predicate-space-after-cc-p
                           rime-predicate-current-uppercase-letter-p
                           +rime-predicate-md-syntax-punc-p))
-(setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-v" "M-v")
+(setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-v" "M-v" "M-n" "M-p")
       rime-show-candidate 'posframe
       rime-posframe-properties (list :font "Sarasa Fixed SC-12"
                                      :internal-border-width 2))
