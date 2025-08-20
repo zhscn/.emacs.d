@@ -5,7 +5,7 @@
       sly-contribs '(sly-fancy sly-indentation sly-autodoc
                      sly-stepper sly-macrostep sly-scratch))
 
-(setq inferior-lisp-program "ros -Q run")
+(setq inferior-lisp-program "sbcl")
 
 (with-eval-after-load "sly"
   (sly-setup sly-contribs))
