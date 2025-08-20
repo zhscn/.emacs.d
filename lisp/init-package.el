@@ -110,4 +110,18 @@
         (?o delete-other-windows "Delete Other Windows")
         (?? aw-show-dispatch-help)))
 
+(with-eval-after-load "magit"
+  (defun magit-log-dangling ()
+    (interactive)
+    (magit-log-setup-buffer
+     (-filter
+      (lambda (x) (not (or (equal "" x) (s-match "error" x))))
+      (s-lines
+       (shell-command-to-string
+        "git fsck --no-reflogs | awk '/dangling commit/ {print $3}'")))
+     '("--no-walk" "--color" "--decorate" "--follow")' nil))
+
+  (transient-append-suffix 'magit-log "s"
+    '("d" "dangling" magit-log-dangling)))
+
 (provide 'init-package)
