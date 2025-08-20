@@ -7,6 +7,16 @@
   (setq meow-cursor-type-insert '(bar . 2)
         meow-expand-hint-remove-delay 1.5)
   :config
+  (defun toggle-maximize-window ()
+    "Maximize window."
+    (interactive)
+    (if (and (= 1 (length (window-list)))
+             (assoc ?_ register-alist))
+        (jump-to-register ?_)
+      (progn
+        (window-configuration-to-register ?_)
+        (delete-other-windows))))
+
   (meow-global-mode 1)
   (defun meow-setup ()
     (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
@@ -18,6 +28,7 @@
      '("x" . meow-motion-origin-command)
      '("c" . meow-motion-origin-command)
      '("b" . switch-to-buffer)
+     '("=" . toggle-maximize-window)
 
      ;; Use SPC (0-9) for digit arguments.
      '("1" . meow-digit-argument)
@@ -100,7 +111,7 @@
   ;; meow-setup is your custom function, see below
   (meow-setup)
   ;; If you want relative line number in NORMAL state(for display-line-numbers-mode)
-  (meow-setup-line-number)
+  ;; (meow-setup-line-number)
   ;; If you need setup indicator, see `meow-indicator' for customizing by hand.
   (meow-setup-indicator))
 
