@@ -2,6 +2,7 @@
 (straight-use-package 'fold-this)
 (straight-use-package 'which-key)
 (straight-use-package 'undo-fu)
+(straight-use-package 'rg)
 
 (define-key global-map [remap undo] #'undo-fu-only-undo)
 

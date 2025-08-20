@@ -32,4 +32,9 @@
   (add-to-list 'meow-mode-state-list '(lsp-bridge-ref-mode . motion))
   (add-to-list 'meow-mode-state-list '(lsp-bridge-ref-switch-to-view-mode . motion)))
 
-(provide 'init-lsp)
+(setq lsp-bridge-c-lsp-server "ccls")
+(with-eval-after-load 'cc-mode
+  (keymap-unset c-mode-map "C-c .")
+  (keymap-unset c++-mode-map "C-c ."))
+
+(provide 'init-lsp-bridge)
