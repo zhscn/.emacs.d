@@ -13,21 +13,19 @@
   :commands company-lsp
   :init
   (setq-default lsp-auto-guess-root nil
-		company-transformers nil
-		company-lsp-async t
-		company-lsp-cache-candidates nil)
+    company-transformers nil
+    company-lsp-async t
+    company-lsp-cache-candidates t)
 
   :config
   (use-package yasnippet
     :straight t
-    :diminish yas-minor-mode
+    ; :diminish yas-minor-mode
     :hook (after-init . yas-global-mode)
     :config
+    (yas-minor-mode)
     (use-package yasnippet-snippets
-      :straight t))
-
-;;  (push 'company-lsp company-backends))
-  )
+      :straight t)))
 
 (provide 'init-lsp)
 

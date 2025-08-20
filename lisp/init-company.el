@@ -10,28 +10,20 @@
   :bind (("M-/" . company-complete)
          ("<backtab>" . company-yasnippet)
          :map company-active-map
-         ("C-p" . company-select-previous)
-         ("C-n" . company-select-next)
+         ("C-k" . company-select-previous)
+         ("C-j" . company-select-next)
          ("<tab>" . company-complete-common-or-cycle)
-         ("<backtab>" . my-company-yasnippet)
-         ;; ("C-c C-y" . my-company-yasnippet)
          :map company-search-map
-         ("C-p" . company-select-previous)
-         ("C-n" . company-select-next))
+         ("C-k" . company-select-previous)
+         ("C-j" . company-select-next))
   :hook (after-init . global-company-mode)
-  :init
-  (defun my-company-yasnippet ()
-    "Hide the current completeions and show snippets."
-    (interactive)
-    (company-abort)
-    (call-interactively 'company-yasnippet))
   :config
   (setq company-tooltip-align-annotations t
         company-tooltip-limit 12
         company-idle-delay 0
         company-echo-delay (if (display-graphic-p) nil 0)
         company-minimum-prefix-length 2
-        company-require-match nil
+        ; company-require-match nil
         company-dabbrev-ignore-case nil
         company-dabbrev-downcase nil)
 

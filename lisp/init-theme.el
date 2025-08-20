@@ -12,13 +12,13 @@
   (set-face-attribute
     'default nil
     :font (font-spec :family "Consolas"
-		     :size 11.5))
+                     :size 11.5))
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
       (set-fontset-font
-	(frame-parameter nil 'font)
-	charset
-	(font-spec :family "Sarasa Term SC"
-		   :size 11.8)))
+        (frame-parameter nil 'font)
+        charset
+        (font-spec :family "Sarasa Term SC"
+                   :size 11.8)))
 
   :config
   (defun reapply-themes ()
@@ -26,7 +26,7 @@
     (setq custom-safe-themes t)
     (dolist (theme custom-enabled-themes)
       (unless (custom-theme-p theme)
-	(load-theme theme)))
+        (load-theme theme)))
     (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes))))
 
   (defun light ()
@@ -50,11 +50,8 @@
   :hook (after-init . doom-modeline-mode)
   :init
   (setq doom-modeline-height 10
-	doom-modeline-bar-width 3
-	doom-modeline-icon nil))
-
-(use-package all-the-icons
-  :straight t)
+  doom-modeline-bar-width 3
+  doom-modeline-icon nil))
 
 (provide 'init-theme)
 
