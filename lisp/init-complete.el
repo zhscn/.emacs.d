@@ -1,9 +1,4 @@
 ;;; -*- lexical-binding: t -*-
-(straight-use-package '(vertico :files (:defaults "extensions/*")))
-(straight-use-package 'marginalia)
-(straight-use-package 'orderless)
-(straight-use-package 'consult)
-(straight-use-package 'smartparens)
 
 ;; vertico
 (add-hook 'after-init-hook #'vertico-mode)

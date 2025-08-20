@@ -1,8 +1,4 @@
 ;;; -*- lexical-binding: t; -*-
-(straight-use-package 'fold-this)
-(straight-use-package 'which-key)
-(straight-use-package 'undo-fu)
-(straight-use-package 'rg)
 
 (keymap-substitute global-map #'undo #'undo-fu-only-undo)
 
