@@ -19,14 +19,8 @@
 (autoload #'cmake-mode "cmake-mode" nil t)
 
 (setq ccls-executable "~/.local/bin/ccls")
-(defvar ccls-loaded nil)
-(defun load-ccls ()
-  (unless ccls-loaded
-    (require 'ccls)
-    (setq ccls-loaded t))
-  (lsp))
-(add-hook 'c-mode-hook #'load-ccls)
-(add-hook 'c++-mode-hook #'load-ccls)
+(add-hook 'c-mode-hook #'lsp)
+(add-hook 'c++-mode-hook #'lsp)
 
 (with-eval-after-load "ccls"
   (defun ccls-inheritance-hierarchy-derived () (interactive) (ccls-inheritance-hierarchy t))
@@ -54,7 +48,6 @@
   (define-key lsp-mode-map (kbd "C-c v k") #'ccls-navigate-k)
   (define-key lsp-mode-map (kbd "C-c v l") #'ccls-navigate-l))
 
-(autoload #'lsp "lsp-mode" nil t)
 (setq lsp-enable-symbol-highlighting nil
       lsp-ui-doc-enable nil
       lsp-ui-doc-show-with-cursor nil
@@ -78,6 +71,7 @@
       lsp-completion-show-kind nil)
 
 (with-eval-after-load "lsp-mode"
+  (require 'ccls)
   (defun lsp-hover-manually ()
     (interactive)
     (setq lsp-eldoc-enable-hover t)
