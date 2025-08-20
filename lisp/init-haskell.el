@@ -9,8 +9,6 @@
   :ensure t
   :hook (haskell-mode . dante-mode))
 
-(require 'hs-lint)
-
 (use-package lsp-haskell
   :ensure t
   :hook (haskell-mode . lsp)
