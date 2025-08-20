@@ -14,8 +14,6 @@
 
 (global-hl-todo-mode +1)
 
-(setq-default header-line-format nil)
-
 (defvar +smart-file-name-cache nil)
 
 (defun +smart-file-name ()
@@ -38,13 +36,16 @@ This function is slow, so we have to use cache."
             (cons (buffer-name) file-name))
       file-name)))
 
+(defun +persp-name ()
+  (when (length> persp-names-cache 1)
+    (format "#%.5s " (safe-persp-name (get-current-persp)))))
+
 (defun +format-mode-line ()
   (let* ((lhs '((:eval (meow-indicator))
-                "%l,%C "
-                (:eval (+smart-file-name-cached))))
-         (rhs '((:eval persp-last-persp-name)
-                " "
-                (:eval (rime-lighter))
+                (:eval (+smart-file-name-cached))
+                " %l,%C"))
+         (rhs '((:eval (rime-lighter)) " "
+                (:eval (+persp-name))
                 (:eval mode-name)
                 (vc-mode vc-mode)))
          (ww (window-width))
@@ -55,6 +56,7 @@ This function is slow, so we have to use cache."
             lhs-str
             (propertize " " 'display `((space :align-to (- (+ right right-fringe right-margin) (+ 1 ,rhs-w)))))
             rhs-str)))
+
 (advice-add 'meow-setup-indicator :around #'(lambda (_) (setq-default mode-line-format '((:eval (+format-mode-line))))))
 
 (provide 'init-theme)
