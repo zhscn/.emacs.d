@@ -35,6 +35,6 @@
                                      :internal-border-width 2))
 
 (with-eval-after-load "rime"
-  (define-key rime-mode-map (kbd "M-k") #'rime-force-enable))
+  (keymap-set rime-mode-map "M-k" #'rime-force-enable))
 
 (provide 'init-rime)
