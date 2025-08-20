@@ -110,13 +110,16 @@
 (global-hl-line-mode +1)
 
 ;;; No scroll bar
-(scroll-bar-mode -1)
+(when (bound-and-true-p scroll-bar-mode)
+    (scroll-bar-mode -1))
 
 ;;; No tool bar
-(tool-bar-mode -1)
+(when (bound-and-true-p tool-bar-mode)
+  (tool-bar-mode -1))
 
 ;;; No menu bar
-(menu-bar-mode -1)
+(when (bound-and-true-p menu-bar-mode)
+  (menu-bar-mode -1))
 
 ;;; No blink cursor
 (add-hook 'after-init-hook #'(lambda () (blink-cursor-mode -1)))
