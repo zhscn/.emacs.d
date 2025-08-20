@@ -45,7 +45,10 @@
    '("J" . windmove-down)
    '("K" . windmove-up)
    '("L" . windmove-right)
+   '("U" . meow-undo-in-selection)
    '("=" . toggle-maximize-window)
+   '("[" . kmacro-start-macro-or-insert-counter)
+   '("]" . kmacro-end-or-call-macro)
 
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
@@ -88,6 +91,7 @@
    '("E" . meow-kmacro-lines)
    '("f" . meow-find)
    '("g" . meow-keypad-start)
+   '("G" . meow-grab)
    '("h" . meow-left)
    '("H" . meow-left-expand)
    '("i" . meow-insert)
@@ -106,7 +110,7 @@
    '("p" . meow-yank)
    '("q" . avy-goto-char-2)
    '("Q" . goto-line)
-   '("r" . meow-kill)
+   '("r" . meow-C-k)
    '("R" . meow-query-replace-regexp)
    '("s" . meow-change)
    '("t" . meow-query-replace)
