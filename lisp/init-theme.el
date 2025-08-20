@@ -9,6 +9,7 @@
 (load-theme 'modus-vivendi t)
 
 (when window-system
+  (global-page-break-lines-mode)
   (set-fontset-font t 'emoji (font-spec :family "Noto Color Emoji"))
   ;; (set-fontset-font t 'unicode "Apple Color Emoji" nil 'append)
   (set-face-attribute
