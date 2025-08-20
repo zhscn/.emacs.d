@@ -3,7 +3,6 @@
 
 (straight-use-package 'popon)
 (straight-use-package 'markdown-mode)
-(straight-use-package 'smartparens)
 (straight-use-package 'posframe)
 
 (setq acm-candidate-match-function 'orderless-flex)
@@ -21,12 +20,6 @@
   (add-to-list 'load-path (expand-file-name "acm-terminal" user-emacs-directory))
   (with-eval-after-load 'acm
     (require 'acm-terminal)))
-
-(smartparens-global-mode +1)
-(show-smartparens-global-mode +1)
-(sp-with-modes
-    '(c++-mode objc-mode c-mode)
-  (sp-local-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET"))))
 
 (with-eval-after-load "meow"
   (add-to-list 'meow-mode-state-list '(lsp-bridge-ref-mode . motion))

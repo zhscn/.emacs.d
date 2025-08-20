@@ -3,7 +3,6 @@
 (straight-use-package 'posframe)
 (straight-use-package 'company-posframe)
 (straight-use-package 'company-box)
-(straight-use-package 'smartparens)
 (straight-use-package 'prescient)
 (straight-use-package 'company-prescient)
 
@@ -20,11 +19,5 @@
 
 (add-hook 'company-mode-hook #'company-posframe-mode)
 (add-hook 'company-mode-hook #'company-box-mode)
-
-(smartparens-global-mode +1)
-(show-smartparens-global-mode +1)
-(sp-with-modes
-        '(c++-mode objc-mode c-mode)
-        (sp-local-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET"))))
 
 (provide 'init-company)
