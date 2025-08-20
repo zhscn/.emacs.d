@@ -10,7 +10,6 @@
 (require 'init-company)
 (require 'init-theme)
 
-;(require 'init-eaf)
 (require 'init-rime)
 (require 'init-org)
 (require 'init-telega)
