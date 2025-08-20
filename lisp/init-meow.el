@@ -1,5 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
+(leaf fold-this
+  :straight t
+  :require t)
+
 (leaf meow
   :straight t
   :require t
@@ -15,6 +19,7 @@
      '("c" . meow-keypad-start))
 
     (meow-leader-define-key
+     '("f" . fold-this)
      '("x" . meow-motion-origin-command)
      '("c" . meow-motion-origin-command)
      '("b" . switch-to-buffer)
