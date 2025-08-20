@@ -4,23 +4,19 @@
 
 (use-package doom-themes
   :straight t
-  :if window-system
-  :init
-  (add-hook 'after-init-hook (load-theme 'doom-nord-light t))
-  (blink-cursor-mode -1)
-
-  (set-face-attribute
-    'default nil
-    :font (font-spec :family "Consolas"
-                     :size 11.5))
-    (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font
-        (frame-parameter nil 'font)
-        charset
-        (font-spec :family "Sarasa Term SC"
-                   :size 11.8)))
+  :hook (after-init . (lambda () 
+                        (if (not window-system)
+                          (load-theme 'doom-one t)
+                          (progn
+                            (load-theme 'doom-nord-light t)
+                            (set-face-attribute
+                              'default nil :font (font-spec :family "Consolas" :size 11.5))
+                            (dolist (charset '(kana han symbol cjk-misc bopomofo))
+                              (set-fontset-font (frame-parameter nil 'font)
+                                charset (font-spec :family "Sarasa Term SC" :size 11.8)))))))
 
   :config
+  (blink-cursor-mode -1)
   (defun reapply-themes ()
     "Forcibly load the themes listed in `custom-enabled-themes'."
     (setq custom-safe-themes t)
@@ -40,9 +36,6 @@
     (interactive)
     (setq custom-enabled-themes '(doom-one))
     (reapply-themes)))
-
-(if (not window-system)
-    (load-theme 'doom-one t))
 
 (use-package doom-modeline
   :straight t
