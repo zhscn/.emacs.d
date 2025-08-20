@@ -11,45 +11,44 @@
   :config
   (setq lsp-prefer-flymake nil))
 
+; (use-package lsp-ui
+;   :straight t
+;   :custom-face
+;   (lsp-ui-sideline-code-action ((t (:inherit warning))))
+;   :bind (("C-c u" . lsp-ui-imenu)
+;          :map lsp-ui-mode-map
+;          ("M-<f6>" . lsp-ui-hydra/body))
+;   :hook (lsp-mode . lsp-ui-mode)
+;   :init (setq lsp-ui-doc-enable t
+;               lsp-ui-doc-use-webkit nil
+;               lsp-ui-doc-delay 0.2
+;               lsp-ui-doc-include-signature t
+;               lsp-ui-doc-position 'at-point
+;               lsp-ui-doc-border (face-foreground 'default)
+;               lsp-eldoc-enable-hover nil ; Disable eldoc displays in minibuffer
 
-(use-package lsp-ui
-  :straight t
-  :custom-face
-  (lsp-ui-sideline-code-action ((t (:inherit warning))))
-  :bind (("C-c u" . lsp-ui-imenu)
-         :map lsp-ui-mode-map
-         ("M-<f6>" . lsp-ui-hydra/body))
-  :hook (lsp-mode . lsp-ui-mode)
-  :init (setq lsp-ui-doc-enable t
-              lsp-ui-doc-use-webkit nil
-              lsp-ui-doc-delay 0.2
-              lsp-ui-doc-include-signature t
-              lsp-ui-doc-position 'at-point
-              lsp-ui-doc-border (face-foreground 'default)
-              lsp-eldoc-enable-hover nil ; Disable eldoc displays in minibuffer
+;               lsp-ui-sideline-enable t
+;               lsp-ui-sideline-show-hover nil
+;               lsp-ui-sideline-show-diagnostics nil
+;               lsp-ui-sideline-ignore-duplicate t
 
-              lsp-ui-sideline-enable t
-              lsp-ui-sideline-show-hover nil
-              lsp-ui-sideline-show-diagnostics nil
-              lsp-ui-sideline-ignore-duplicate t
+;               lsp-ui-imenu-enable t
+;               lsp-ui-imenu-colors `(,(face-foreground 'font-lock-keyword-face)
+;                                     ,(face-foreground 'font-lock-string-face)
+;                                     ,(face-foreground 'font-lock-constant-face)
+;                                     ,(face-foreground 'font-lock-variable-name-face)))
+;   :config
+;   (add-to-list 'lsp-ui-doc-frame-parameters '(right-fringe . 8))
 
-              lsp-ui-imenu-enable t
-              lsp-ui-imenu-colors `(,(face-foreground 'font-lock-keyword-face)
-                                    ,(face-foreground 'font-lock-string-face)
-                                    ,(face-foreground 'font-lock-constant-face)
-                                    ,(face-foreground 'font-lock-variable-name-face)))
-  :config
-  (add-to-list 'lsp-ui-doc-frame-parameters '(right-fringe . 8))
+;   ;; `C-g'to close doc
+;   (advice-add #'keyboard-quit :before #'lsp-ui-doc-hide)
 
-  ;; `C-g'to close doc
-  (advice-add #'keyboard-quit :before #'lsp-ui-doc-hide)
-
-  ;; Reset `lsp-ui-doc-background' after loading theme
-  (add-hook 'after-load-theme-hook
-            (lambda ()
-              (setq lsp-ui-doc-border (face-foreground 'default))
-              (set-face-background 'lsp-ui-doc-background
-                                   (face-background 'tooltip)))))
+;   ;; Reset `lsp-ui-doc-background' after loading theme
+;   (add-hook 'after-load-theme-hook
+;             (lambda ()
+;               (setq lsp-ui-doc-border (face-foreground 'default))
+;               (set-face-background 'lsp-ui-doc-background
+;                                    (face-background 'tooltip)))))
 
 (use-package company-lsp
   :straight t
