@@ -13,7 +13,6 @@
       coq-project-filename "_CoqProject"
       proof-three-window-mode-policy 'hybrid)
 
-
 (add-hook 'coq-mode-hook #'company-coq-mode)
 (setq company-coq-features/prettify-symbols-in-terminals nil)
 

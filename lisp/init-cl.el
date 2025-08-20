@@ -4,8 +4,8 @@
 (straight-use-package 'sly-quicklisp)
 (straight-use-package 'common-lisp-snippets)
 
-(setq sly-complete-symbol*-fancy t)
-(setq sly-contribs '(sly-fancy
+(setq sly-complete-symbol*-fancy t
+      sly-contribs '(sly-fancy
                      sly-indentation
                      sly-autodoc
                      sly-sbcl-exts

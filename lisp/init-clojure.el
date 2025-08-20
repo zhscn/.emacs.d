@@ -3,16 +3,13 @@
 (straight-use-package 'clojure-mode)
 (straight-use-package 'cider)
 
-(autoload #'cider "cider" nil t)
-
-(setq
- cider-font-lock-dynamically nil
- cider-font-lock-reader-conditionals t
- cider-use-fringe-indicators t
- cider-prompt-for-symbol nil
- cider-save-file-on-load t
- cider-enhanced-cljs-completion-p t
- cider-offer-to-open-cljs-app-in-browser nil)
+(setq cider-font-lock-dynamically nil
+      cider-font-lock-reader-conditionals t
+      cider-use-fringe-indicators t
+      cider-prompt-for-symbol nil
+      cider-save-file-on-load t
+      cider-enhanced-cljs-completion-p t
+      cider-offer-to-open-cljs-app-in-browser nil)
 
 (with-eval-after-load "cider"
   (defun +clojure-describe-spec ()

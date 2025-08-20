@@ -1,12 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 (straight-use-package '(telega :type git :host github :branch "master"))
 
-(autoload #'telega "telega" nil t)
-
-(setq
- telega-use-images t
- telega-open-file-function 'org-open-file
- telega-proxies '((:server "localhost" :port 1080 :enable t :type (:@type "proxyTypeHttp"))))
+(setq telega-use-images t
+      telega-open-file-function 'org-open-file
+      telega-proxies '((:server "localhost" :port 1080 :enable t :type (:@type "proxyTypeHttp"))))
 
 (defun +telega-open-file (file)
   (cond
@@ -32,6 +29,6 @@
         telega-open-file-function '+telega-open-file))
 
 (setq telega-chat-input-markups '(nil "org" "markdown1"))
-(add-hook 'telega-chat-mode-hook '+use-fixed-pitch)
+(add-hook 'telega-chat-mode-hook #'+use-fixed-pitch)
 
 (provide 'init-telega)

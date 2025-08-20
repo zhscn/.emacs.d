@@ -5,7 +5,8 @@
       rime-title "im")
 
 (when *is-mac*
-  (setq rime-emacs-module-header-root "/opt/homebrew/opt/emacs-plus@28/include"))
+  (setq rime-emacs-module-header-root "/opt/homebrew/opt/emacs-plus@28/include")
+  (setq rime-librime-root "~/.local/"))
 
 (defun +rime-predicate-org-syntax-punc-p ()
   (when (eq major-mode 'org-mode)
@@ -28,12 +29,10 @@
  rime-inline-predicates '(rime-predicate-space-after-cc-p
                           rime-predicate-current-uppercase-letter-p
                           +rime-predicate-md-syntax-punc-p))
-(setq rime-translate-keybindings
-      '("C-f" "C-b" "C-n" "C-p" "M-n" "M-p"))
-(setq rime-show-candidate 'posframe)
-(setq rime-posframe-properties
-      (list :font "Sarasa Fixed SC-12"
-            :internal-border-width 2))
+(setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "M-n" "M-p")
+      rime-show-candidate 'posframe
+      rime-posframe-properties (list :font "Sarasa Fixed SC-12"
+                                     :internal-border-width 2))
 
 (with-eval-after-load "rime"
   (define-key rime-mode-map (kbd "M-k") #'rime-force-enable))

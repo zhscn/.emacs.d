@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
-(setq comp-deferred-compilation-deny-list ())
-(setq straight-vc-git-default-clone-depth 1)
+(setq comp-deferred-compilation-deny-list ()
+      straight-vc-git-default-clone-depth 1)
 
 (setq straight-disable-native-compile
       (when (fboundp 'native-comp-available-p)
@@ -33,17 +33,13 @@
 (gcmh-mode +1)
 
 (straight-use-package 'esup)
-(autoload 'esup "esup" nil t)
 
 (straight-use-package 'exec-path-from-shell)
-(setq exec-path-from-shell-variables '("PATH" "MANPATH"))
-(setq exec-path-from-shell-check-startup-files nil)
-(setq exec-path-from-shell-arguments '("-l" ))
+(setq exec-path-from-shell-variables '("PATH" "MANPATH")
+      exec-path-from-shell-check-startup-files nil
+      exec-path-from-shell-arguments '("-l" ))
 
-(when *is-mac*
-  (exec-path-from-shell-initialize))
-
-(when (daemonp)
+(when (or *is-mac* (daemonp))
   (exec-path-from-shell-initialize))
 
 (provide 'init-package)

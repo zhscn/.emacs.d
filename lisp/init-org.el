@@ -19,17 +19,17 @@
       '((ivy-bibtex . ivy--regex-ignore-order)
         (t . ivy--regex-plus)))
 
-(setq bibtex-completion-bibliography `(,(concat org-directory "bibliography/ref.bib")))
-(setq bibtex-completion-library-path `(,(concat org-directory "pdf")))
-(setq bibtex-completion-pdf-field "File")
-(setq bibtex-completion-notes-path (concat org-directory "notes"))
+(setq bibtex-completion-bibliography `(,(concat org-directory "bibliography/ref.bib"))
+      bibtex-completion-library-path `(,(concat org-directory "pdf"))
+      bibtex-completion-pdf-field "File"
+      bibtex-completion-notes-path (concat org-directory "notes"))
 
 ;;; org-ref
-(setq org-ref-completion-library 'org-ref-ivy-cite)
-(setq reftex-default-bibliography bibtex-completion-bibliography)
-(setq org-ref-default-bibliography bibtex-completion-bibliography)
-(setq org-ref-pdf-directory (file-truename "~/Zotero/storage"))
-(setq org-ref-bibliography-notes (concat org-directory "note.org"))
+(setq org-ref-completion-library 'org-ref-ivy-cite
+      reftex-default-bibliography bibtex-completion-bibliography
+      org-ref-default-bibliography bibtex-completion-bibliography
+      org-ref-pdf-directory (file-truename "~/Zotero/storage")
+      org-ref-bibliography-notes (concat org-directory "note.org"))
 
 (defun +org-ref-ivy-insert-cite-link (&optional arg)
   "insert cite link with help of `ivy-bibtext' and corresponding
@@ -54,8 +54,8 @@
               :action 'or-ivy-bibtex-insert-cite)))
 
 ;;; org-roam
-(setq org-roam-v2-ack t)
-(setq org-roam-directory (concat org-directory "roam"))
+(setq org-roam-v2-ack t
+      org-roam-directory (concat org-directory "roam"))
 
 ;;; org-roam-bibtex
 (defun load-roam-bibtex ()
@@ -86,11 +86,11 @@
       (darkroom-mode -1))))
 
 (with-eval-after-load "org"
-  (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-toggle))
+  (define-key org-mode-map (kbd "<f8>") #'org-tree-slide-toggle))
 
 (with-eval-after-load "org-tree-slide"
-  (define-key org-tree-slide-mode-map (kbd "<f9>") 'org-tree-slide-move-previous-tree)
-  (define-key org-tree-slide-mode-map (kbd "<f10>") 'org-tree-slide-move-next-tree))
+  (define-key org-tree-slide-mode-map (kbd "<f9>") #'org-tree-slide-move-previous-tree)
+  (define-key org-tree-slide-mode-map (kbd "<f10>") #'org-tree-slide-move-next-tree))
 
 (setq org-agenda-text-search-extra-files (directory-files-recursively org-roam-directory "\\.org$"))
 ;; (leaf org-latex-impatient
