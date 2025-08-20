@@ -34,9 +34,12 @@
 
 (straight-use-package '(yasnippet :type git :host github :repo "joaotavora/yasnippet"
                                   :fork (:host github :repo "zhscn/yasnippet")))
+(yas-global-mode)
 
 (straight-use-package 'ws-butler)
 (setq ws-butler-keep-whitespace-before-point nil)
 (ws-butler-global-mode)
+
+(straight-use-package 'magit)
 
 (provide 'init-package)

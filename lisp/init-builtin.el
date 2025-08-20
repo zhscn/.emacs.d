@@ -113,7 +113,7 @@
 
 ;;; No scroll bar
 (when (bound-and-true-p scroll-bar-mode)
-    (scroll-bar-mode -1))
+  (scroll-bar-mode -1))
 
 ;;; No tool bar
 (when (bound-and-true-p tool-bar-mode)
@@ -132,15 +132,16 @@
       (menu-bar-mode -1)))
 
 ;;; No blink cursor
-(add-hook 'after-init-hook #'(lambda () (blink-cursor-mode -1)))
+(add-hook 'after-init-hook (lambda () (blink-cursor-mode -1)))
 
 (defun display-startup-echo-area-message ()
   (message ""))
 
 (autoload #'View-scroll-half-page-forward "view")
 (autoload #'View-scroll-half-page-backward "view")
-(define-key global-map (kbd "C-v") #'View-scroll-half-page-forward)
-(define-key global-map (kbd "M-v") #'View-scroll-half-page-backward)
+
+(keymap-set global-map "C-v" #'View-scroll-half-page-forward)
+(keymap-set global-map "M-v" #'View-scroll-half-page-backward)
 
 (add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
 (add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
