@@ -9,7 +9,8 @@
 (load-theme 'modus-vivendi t)
 
 (when window-system
-  (set-fontset-font t 'unicode "Symbola" nil 'append)
+  (set-fontset-font t 'emoji (font-spec :family "Noto Color Emoji"))
+  ;; (set-fontset-font t 'unicode "Apple Color Emoji" nil 'append)
   (set-face-attribute
    'default nil :font (font-spec :family "Cascadia Mono" :size 16))
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
