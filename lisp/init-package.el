@@ -37,6 +37,7 @@
   (elpaca `(,@elpaca-order))
   (elpaca page-break-lines)
   (elpaca gcmh)
+  (elpaca (transient :host github :repo "magit/transient"))
   (elpaca exec-path-from-shell)
   (elpaca (telega :type git :host github :branch "master"))
   (elpaca yasnippet)
@@ -76,6 +77,8 @@
   (elpaca flycheck))
 
 (elpaca-wait)
+
+(require 'transient)
 
 (gcmh-mode +1)
 
