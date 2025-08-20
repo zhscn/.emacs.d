@@ -1,5 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
+(leaf org
+  :straight (org :type git :host github :repo "bzg/org-mode")
+  :require t)
+
 (leaf org-roam
   :straight (org-roam :type git :host github :repo "org-roam/org-roam")
   :require t

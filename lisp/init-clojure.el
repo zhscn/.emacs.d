@@ -1,4 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
+(straight-use-package '(a :type git :host github :repo "plexus/a.el"))
 (leaf clojure-mode
   :straight t)
 (leaf cider
