@@ -22,9 +22,10 @@
 
 (with-eval-after-load "embark"
   (setq bibtex-actions-at-point-function 'embark-act)
-  (add-to-list 'embark-target-finders 'bibtex-actions-citation-key-at-point)
   (add-to-list 'embark-keymap-alist '(bib-reference . bibtex-actions-map))
-  (add-to-list 'embark-keymap-alist '(citation-key . bibtex-actions-buffer-map)))
+  (add-to-list 'embark-keymap-alist '(citation-key . bibtex-actions-buffer-map))
+  (with-eval-after-load "bibtex-actions"
+    (add-to-list 'embark-target-finders 'bibtex-actions-citation-key-at-point)))
 (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
 
 ;;; org-cite
