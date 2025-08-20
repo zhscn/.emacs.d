@@ -14,7 +14,8 @@
       meow-use-cursor-position-hack t
       meow-replace-state-name-list
       '((normal . "N") (insert . "I")
-        (keypad . "K") (motion . "M")))
+        (keypad . "K") (motion . "M")
+        (bmacro . "B")))
 
 (require 'meow)
 (meow-global-mode +1)
