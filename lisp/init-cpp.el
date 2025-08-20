@@ -12,6 +12,12 @@
   (add-hook 'find-file-hook #'proj-relative-buf-name)
   (setq projectile-mode-line-function '(lambda () (format " Proj[%s]" (projectile-project-name)))))
 
+(leaf persp-mode
+  :straight t
+  :require t
+  :config
+  (persp-mode 1))
+
 (leaf rg
   :straight t
   :require t)
