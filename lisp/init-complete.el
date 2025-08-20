@@ -27,26 +27,20 @@
 
 ;; consult
 (setq consult-narrow-key "<"
-      consult-project-root-function #'consult-project-root
-      ;; xref-show-xrefs-function #'consult-xref
-      ;; xref-show-definitions-function #'consult-xref
-      )
+      consult-project-root-function #'consult-project-root)
 
 (defun consult-project-root ()
   "Returns project root directory."
   (when-let (project (project-current))
     (car (project-roots project))))
 (keymap-substitute global-map #'switch-to-buffer #'consult-buffer)
-(keymap-substitute global-map #'goto-line #'consult-goto-line)
 (keymap-substitute global-map #'imenu #'consult-imenu)
 (keymap-substitute global-map #'isearch-forward #'consult-isearch-history)
 (keymap-substitute global-map #'project-find-regexp #'consult-ripgrep)
-(with-eval-after-load "org-mode"
-  (keymap-substitute org-mode-map #'consult-imenu #'consult-org-heading))
 
 (puni-global-mode)
-(add-hook 'minibuffer-mode-hook #'puni-disable-puni-mode)
-(add-hook 'git-rebase-mode-hook #'puni-disable-puni-mode)
+(dolist (h '(minibuffer-mode-hook git-rebase-mode-hook))
+  (add-hook h #'puni-disable-puni-mode))
 (electric-pair-mode)
 
 (provide 'init-complete)
