@@ -4,7 +4,7 @@
   :straight t
   :require t
   :config
-  (load-theme 'doom-one t))
+  (load-theme 'doom-vibrant t))
 
 (when window-system
   (set-fontset-font t 'unicode "Symbola" nil 'append)

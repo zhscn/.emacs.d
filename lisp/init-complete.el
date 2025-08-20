@@ -22,6 +22,16 @@
         ivy-initial-inputs-alist nil)
 
   :config
+  (leaf ivy-rich
+    :straight t
+    :require t
+    :hook (ivy-mode-hook . ivy-rich-mode)
+    :config
+    (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line))
+  (leaf ivy-prescient
+    :straight t
+    :require t
+    :hook (ivy-mode-hook . ivy-prescient-mode))
   (leaf counsel
     :straight t
     :require t)

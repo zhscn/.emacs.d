@@ -26,6 +26,10 @@
   (defun ccls-member-function () (interactive) (lsp-ui-peek-find-custom "$ccls/member" '(:kind 3)))
   (defun ccls-member-type () (interactive) (lsp-ui-peek-find-custom "$ccls/member" '(:kind 2)))
   (defun ccls-callee () (interactive) (lsp-ui-peek-find-custom "$ccls/call" '(:callee t)))
+  (defun ccls-navigate-j () (interactive) (ccls-navigate "D"))
+  (defun ccls-navigate-k () (interactive) (ccls-navigate "U"))
+  (defun ccls-navigate-h () (interactive) (ccls-navigate "L"))
+  (defun ccls-navigate-l () (interactive) (ccls-navigate "R"))
 
   (define-key lsp-mode-map (kbd "C-c v c") #'ccls-call-hierarchy)
   (define-key lsp-mode-map (kbd "C-c v e") #'ccls-callee)
@@ -36,6 +40,11 @@
   (define-key lsp-mode-map (kbd "C-c v v") #'ccls-member-variable)
   (define-key lsp-mode-map (kbd "C-c v f") #'ccls-member-function)
   (define-key lsp-mode-map (kbd "C-c v t") #'ccls-member-type)
+  (define-key lsp-mode-map (kbd "C-c v h") #'ccls-navigate-h)
+  (define-key lsp-mode-map (kbd "C-c v j") #'ccls-navigate-j)
+  (define-key lsp-mode-map (kbd "C-c v k") #'ccls-navigate-k)
+  (define-key lsp-mode-map (kbd "C-c v l") #'ccls-navigate-l)
+
 
   (defun load-ccls ()
     (lsp))
