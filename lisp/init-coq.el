@@ -9,7 +9,8 @@
   :config
   (setq proof-splash-enable nil
         proof-three-window-enable t
-        coq-project-filename "_CoqProject")
+        coq-project-filename "_CoqProject"
+        proof-three-window-mode-policy 'hybrid)
   (add-to-list 'meow-mode-state-list '(coq-mode . normal))
   )
 
