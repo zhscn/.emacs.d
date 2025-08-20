@@ -74,7 +74,6 @@
   (elpaca lsp-mode)
   (elpaca lsp-ui)
   (elpaca citre)
-  (elpaca (copilot :host github :repo "zerolfx/copilot.el" :files ("dist" "*.el")))
   (elpaca meow)
   (elpaca flycheck))
 
