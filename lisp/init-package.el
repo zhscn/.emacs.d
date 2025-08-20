@@ -50,8 +50,6 @@
   (elpaca puni)
   (elpaca company)
   (elpaca posframe)
-  (elpaca prescient)
-  (elpaca company-prescient)
   (elpaca ace-window)
   (elpaca avy)
   (elpaca doom-themes)
