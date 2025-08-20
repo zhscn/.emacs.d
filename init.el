@@ -4,8 +4,8 @@
 (add-to-list 'load-path (expand-file-name "theme" user-emacs-directory))
 (require 'init-site-lisp)
 
-(require 'init-package)
 (require 'init-builtin)
+(require 'init-package)
 (require 'init-complete)
 (require 'init-company)
 (require 'init-theme)

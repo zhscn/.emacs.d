@@ -4,7 +4,7 @@
 (setq default-input-method "rime"
       rime-title "im")
 
-(when (memq window-system '(mac ns x))
+(when *is-mac*
   (setq rime-emacs-module-header-root "/opt/homebrew/opt/emacs-plus@28/include"))
 
 (defun +rime-predicate-org-syntax-punc-p ()

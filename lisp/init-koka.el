@@ -1,5 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-(require 'koka-mode)
+(autoload 'koka-mode "koka-mode" nil t)
 
 (provide 'init-koka)

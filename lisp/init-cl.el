@@ -10,10 +10,14 @@
                      sly-autodoc
                      sly-sbcl-exts
                      sly-scratch))
-(setq inferior-lisp-program "/usr/bin/sbcl")
 
-(require 'sly)
-(sly-setup '(sly-fancy sly-asdf sly-quicklisp))
+(if *is-mac*
+    (setq inferior-lisp-program "/opt/homebrew/bin/sbcl")
+  (setq inferior-lisp-program "/usr/bin/sbcl"))
+
+(with-eval-after-load "sly"
+  (sly-setup '(sly-fancy sly-asdf sly-quicklisp)))
+
 (with-eval-after-load "meow"
   (add-to-list 'meow-mode-state-list '(sly-mrepl-mode . normal)))
 
