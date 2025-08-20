@@ -9,6 +9,7 @@
 ;; vertico
 (add-hook 'after-init-hook #'vertico-mode)
 (setq vertico-cycle t)
+(savehist-mode +1)
 
 ;; vertico-directory
 (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy)
