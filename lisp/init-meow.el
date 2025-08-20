@@ -12,7 +12,15 @@
 (require 'meow)
 (meow-global-mode +1)
 (setq meow-cursor-type-insert '(bar . 2)
-      meow-expand-hint-remove-delay 1.5)
+      meow-expand-hint-remove-delay 1.5
+      meow-region-cursor 'insert)
+
+(defun +delete ()
+  (interactive)
+  (when (meow--allow-modify-p)
+    (if (region-active-p)
+        (delete-region (region-beginning) (region-end))
+      (meow-C-d))))
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
@@ -68,7 +76,7 @@
    '("b" . meow-back-word)
    '("B" . meow-back-symbol)
    '("c" . meow-keypad-start)
-   '("d" . meow-delete)
+   '("d" . +delete)
    '("e" . meow-line)
    '("E" . meow-kmacro-lines)
    '("f" . meow-find)
