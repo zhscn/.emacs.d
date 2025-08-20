@@ -28,8 +28,10 @@
   (make-variable-buffer-local 'face-font-rescale-alist)
   (add-to-list 'face-font-rescale-alist '("-Noto Sans-" . 0.6))
   (add-to-list 'face-font-rescale-alist '("-Noto Sans Math-" . 0.5))
-  (add-to-list 'face-font-rescale-alist '("-Noto Color Emoji-" . 0.7))
+  (add-to-list 'face-font-rescale-alist '("-Noto Color Emoji-" . 0.5))
   (add-to-list 'face-font-rescale-alist '("-Noto Sans Georgian-" . 0.8))
+  (add-to-list 'face-font-rescale-alist '("-Noto Sans Symbols-" . 0.4))
+  (add-to-list 'face-font-rescale-alist '("-mincho-" . 0.5))
   (add-to-list 'face-font-rescale-alist '("-Symbola-" . 0.8))
   (buffer-face-mode +1))
 
