@@ -41,7 +41,6 @@
    '("x" . meow-motion-origin-command)
    '("c" . meow-motion-origin-command)
    '("b" . switch-to-buffer)
-   '("g" . magit)
    '("H" . windmove-left)
    '("J" . windmove-down)
    '("K" . windmove-up)
