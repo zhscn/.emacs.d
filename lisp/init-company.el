@@ -8,8 +8,6 @@
 (keymap-set company-active-map "C-p" #'company-select-previous)
 
 (with-eval-after-load 'company
-  (delq 'company-clang company-backends)
-  ;; disable inline previews
-  (delq 'company-preview-if-just-one-frontend company-frontends))
+  (delq 'company-clang company-backends))
 
 (provide 'init-company)
