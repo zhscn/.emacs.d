@@ -100,6 +100,7 @@
  ;; disable input method in pgtk
  pgtk-use-im-context-on-new-connection nil
  enable-local-variables :safe
+ copy-region-blink-delay 0
  visible-bell 1
  ring-bell-function 'ignore)
 
