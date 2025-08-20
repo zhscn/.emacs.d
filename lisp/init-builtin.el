@@ -90,4 +90,15 @@
 (add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
 (autoload #'cmake-mode "cmake-mode" nil t)
 
+(defun my-whitespace ()
+  (interactive)
+  (setq show-trailing-whitespace t)
+  (whitespace-mode))
+
+(add-hook 'prog-mode-hook #'my-whitespace)
+
+(with-eval-after-load "whitespace"
+  (setq whitespace-display-mappings '((tab-mark 9 [187 9] [92 9]))
+        whitespace-line-column 100))
+
 (provide 'init-builtin)

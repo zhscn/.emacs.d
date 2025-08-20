@@ -43,6 +43,12 @@
   (add-hook h #'puni-disable-puni-mode))
 (keymap-set puni-mode-map "C-S-<right>" #'puni-slurp-forward)
 (keymap-set puni-mode-map "C-S-<left>" #'puni-barf-forward)
+(defun my-del (&optional n)
+  (interactive "P")
+  (if (eq (char-before) 9)
+      (backward-delete-char-untabify +1)
+    (puni-backward-delete-char n)))
+(keymap-set puni-mode-map "<backspace>" #'my-del)
 (electric-pair-mode)
 
 (provide 'init-complete)
