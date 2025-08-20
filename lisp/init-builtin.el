@@ -111,7 +111,7 @@
   (interactive)
   (find-alternate-file (format "/sudo::%s" (buffer-file-name))))
 
-(global-set-key (kbd "C-x C-z") #'+reopen-file-with-sudo)
+; (global-set-key (kbd "C-x C-z") #'+reopen-file-with-sudo)
 
 (global-hl-line-mode 1)
 

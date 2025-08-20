@@ -44,33 +44,6 @@
   (global-set-key (kbd "C-c k") 'counsel-ag)
   (global-set-key (kbd "C-x l") 'counsel-locate)
   (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-  )
-
-
-;; (leaf selectrum
-;;   :straight t
-;;   :require t
-;;   :config
-;;   (leaf selectrum-prescient
-;;     :straight t
-;;     :require t
-;;     :config
-;;     (selectrum-prescient-mode t))
-;;   (selectrum-mode t)
-;;
-;;   (defun +minibuffer-backward-delete ()
-;;     (interactive)
-;;     (delete-region
-;;      (or
-;;       (save-mark-and-excursion
-;;         (while (equal ?/ (char-before)) (backward-char))
-;;         (when-let ((p (re-search-backward "/" (line-beginning-position) t)))
-;;           (1+ p)))
-;;       (save-mark-and-excursion (backward-word) (point)))
-;;      (point)))
-;;   :bind
-;;   ((:selectrum-minibuffer-map
-;;     ("M-DEL" . +minibuffer-backward-delete))))
+  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
 
 (provide 'init-complete)
