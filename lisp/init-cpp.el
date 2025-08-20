@@ -2,15 +2,14 @@
 
 (leaf projectile
   :straight t
-  :require t
+  :global-minor-mode projectile-mode
   :config
-  (projectile-mode 1)
+  ;; (setq projectile-mode-line-function '(lambda () (format " Proj[%s]" (projectile-project-name))))
   (defun proj-relative-buf-name ()
     (ignore-errors
       (rename-buffer
        (file-relative-name buffer-file-name (projectile-project-root)))))
-  (add-hook 'find-file-hook #'proj-relative-buf-name)
-  (setq projectile-mode-line-function '(lambda () (format " Proj[%s]" (projectile-project-name)))))
+  (add-hook 'find-file-hook #'proj-relative-buf-name))
 
 (leaf persp-mode
   :straight t
@@ -27,7 +26,27 @@
 
 (leaf ccls
   :straight t
-  :require t
+  :init
+  (defun load-ccls ()
+    (require 'ccls)
+    (lsp)
+    (define-key c++-mode-map (kbd "C-c v c") #'ccls-call-hierarchy)
+    (define-key c++-mode-map (kbd "C-c v e") #'ccls-callee)
+    (define-key c++-mode-map (kbd "C-c v d") #'ccls-inheritance-hierarchy-derived)
+    (define-key c++-mode-map (kbd "C-c v b") #'ccls-inheritance-hierarchy-base)
+    (define-key c++-mode-map (kbd "C-c v s") #'lsp-ivy-workspace-symbol)
+    (define-key c++-mode-map (kbd "C-c v p") #'lsp-ui-peek-find-definitions)
+    (define-key c++-mode-map (kbd "C-c v v") #'ccls-member-variable)
+    (define-key c++-mode-map (kbd "C-c v f") #'ccls-member-function)
+    (define-key c++-mode-map (kbd "C-c v t") #'ccls-member-type)
+    (define-key c++-mode-map (kbd "C-c v h") #'ccls-navigate-h)
+    (define-key c++-mode-map (kbd "C-c v j") #'ccls-navigate-j)
+    (define-key c++-mode-map (kbd "C-c v k") #'ccls-navigate-k)
+    (define-key c++-mode-map (kbd "C-c v l") #'ccls-navigate-l))
+
+  (add-hook 'c-mode-hook #'load-ccls)
+  (add-hook 'c++-mode-hook #'load-ccls)
+
   :config
   (defun ccls-inheritance-hierarchy-derived () (interactive) (ccls-inheritance-hierarchy t))
   (defun ccls-inheritance-hierarchy-base () (interactive) (ccls-inheritance-hierarchy nil))
@@ -40,25 +59,6 @@
   (defun ccls-navigate-h () (interactive) (ccls-navigate "L"))
   (defun ccls-navigate-l () (interactive) (ccls-navigate "R"))
 
-  (define-key lsp-mode-map (kbd "C-c v c") #'ccls-call-hierarchy)
-  (define-key lsp-mode-map (kbd "C-c v e") #'ccls-callee)
-  (define-key lsp-mode-map (kbd "C-c v d") #'ccls-inheritance-hierarchy-derived)
-  (define-key lsp-mode-map (kbd "C-c v b") #'ccls-inheritance-hierarchy-base)
-  (define-key lsp-mode-map (kbd "C-c v s") #'lsp-ivy-workspace-symbol)
-  (define-key lsp-mode-map (kbd "C-c v p") #'lsp-ui-peek-find-definitions)
-  (define-key lsp-mode-map (kbd "C-c v v") #'ccls-member-variable)
-  (define-key lsp-mode-map (kbd "C-c v f") #'ccls-member-function)
-  (define-key lsp-mode-map (kbd "C-c v t") #'ccls-member-type)
-  (define-key lsp-mode-map (kbd "C-c v h") #'ccls-navigate-h)
-  (define-key lsp-mode-map (kbd "C-c v j") #'ccls-navigate-j)
-  (define-key lsp-mode-map (kbd "C-c v k") #'ccls-navigate-k)
-  (define-key lsp-mode-map (kbd "C-c v l") #'ccls-navigate-l)
-
-
-  (defun load-ccls ()
-    (lsp))
-  (add-hook 'c-mode-hook #'load-ccls)
-  (add-hook 'c++-mode-hook #'load-ccls)
   (setq ccls-executable "~/.local/bin/ccls"))
 
 (straight-use-package 'tree-sitter)
