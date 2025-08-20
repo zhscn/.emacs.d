@@ -2,16 +2,16 @@
 
 (leaf fold-this
   :straight t
-  :require t)
+  :commands fold-this)
 
 (leaf meow
   :straight t
   :require t
+  :global-minor-mode meow-global-mode
   :init
   (setq meow-cursor-type-insert '(bar . 2)
         meow-expand-hint-remove-delay 1.5)
   :config
-  (meow-global-mode 1)
   (defun meow-setup ()
     (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
     (meow-motion-overwrite-define-key
@@ -23,6 +23,7 @@
      '("x" . meow-motion-origin-command)
      '("c" . meow-motion-origin-command)
      '("b" . switch-to-buffer)
+     '("g" . magit)
      '("H" . windmove-left)
      '("J" . windmove-down)
      '("K" . windmove-up)
@@ -116,18 +117,6 @@
 
 (leaf which-key
   :straight t
-  :require t
-  :config
-  (which-key-mode))
-
-(leaf doom-modeline
-  :straight t
-  :init
-  (setq doom-modeline-icon nil)
-  (setq doom-modeline-bar-width 0)
-  (setq doom-modeline-hud nil)
-  (setq doom-modeline-height 0)
-  :config
-  (doom-modeline-mode 1))
+  :global-minor-mode which-key-mode)
 
 (provide 'init-meow)

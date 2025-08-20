@@ -2,11 +2,10 @@
 
 (leaf windmove
   :straight t
-  :require t)
+  :global-minor-mode windmove-mode)
 
 (leaf ace-window
   :straight t
-  :require t
   :bind
   ("C-x C-o" . ace-window)
   :config
@@ -26,13 +25,10 @@
 
 (leaf avy
   :straight t
-  :require t
+  :commands avy-goto-char-2
   :config
   (leaf ace-pinyin
-    :straight t
-    :require t
-    :config
-    (ace-pinyin-global-mode 1)))
+    :straight t))
 
 (defun toggle-maximize-window ()
   "Maximize window."

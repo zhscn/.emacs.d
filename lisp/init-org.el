@@ -1,20 +1,18 @@
 ;;; -*- lexical-binding: t; -*-
 
-(leaf org
-  :straight (org :type git :host github :repo "bzg/org-mode")
-  :require t)
+(leaf org :straight (org :type git :host github :repo "bzg/org-mode"))
 
 (leaf org-roam
   :straight (org-roam :type git :host github :repo "org-roam/org-roam")
-  :require t
   :init
-  ;; (setq org-agenda-text-search-extra-files (directory-files-recursively org-roam-directory "\\.org$"))
   (setq org-roam-v2-ack t)
-  (setq org-roam-directory (file-truename "~/org")))
+  (setq org-roam-directory (file-truename "~/org"))
+  :commands org-roam-node-find
+  :config
+  (setq org-agenda-text-search-extra-files (directory-files-recursively org-roam-directory "\\.org$")))
 
 (leaf org-tree-slide
   :straight t
-  :require t
   :config
   (leaf darkroom
     :straight t

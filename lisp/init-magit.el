@@ -2,6 +2,6 @@
 
 (leaf magit
   :straight t
-  :require t)
+  :commands magit)
 
 (provide 'init-magit)

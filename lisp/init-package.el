@@ -29,8 +29,6 @@
 
 (leaf gcmh
   :straight t
-  :require t
-  :config
-  (gcmh-mode 1))
+  :global-minor-mode gcmh-mode)
 
 (provide 'init-package)

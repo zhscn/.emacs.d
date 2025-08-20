@@ -2,10 +2,8 @@
 
 (leaf ivy
   :straight t
-  :require t
   :hook (after-init-hook . ivy-mode)
   :init
-
   (setq ivy-height 20
         ivy-wrap t
         ivy-fixed-height-minibuffer t
@@ -24,47 +22,30 @@
   :config
   (leaf ivy-rich
     :straight t
-    :require t
     :hook (ivy-mode-hook . ivy-rich-mode)
     :config
     (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line))
+
   (leaf ivy-prescient
     :straight t
-    :require t
     :hook (ivy-mode-hook . ivy-prescient-mode))
-  (leaf counsel
-    :straight t
-    :require t)
-  (leaf swiper
-    :straight t
-    :require t)
-  (global-set-key "\C-s" 'swiper)
-  (global-set-key (kbd "C-c C-r") 'ivy-resume)
-  (global-set-key (kbd "<f6>") 'ivy-resume)
-  (global-set-key (kbd "M-x") 'counsel-M-x)
-  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-  (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-  (global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
-  (global-set-key (kbd "<f1> l") 'counsel-find-library)
-  (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-  (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-  (global-set-key (kbd "C-c g") 'counsel-git)
-  (global-set-key (kbd "C-c j") 'counsel-git-grep)
-  (global-set-key (kbd "C-c k") 'counsel-ag)
-  (global-set-key (kbd "C-x l") 'counsel-locate)
-  (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-
-  (leaf posframe
-    :straight t
-    :require t)
 
   (leaf ivy-posframe
     :straight t
-    :require t
-    :config
-    (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-    (ivy-posframe-mode 1)))
+    :init (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+    :global-minor-mode ivy-posframe-mode)
+
+  (leaf counsel :straight t)
+  (leaf swiper :straight t)
+  (leaf posframe :straight t)
+
+  :bind
+  (("C-s" . swiper)
+   ("C-c C-r" . ivy-resume)
+   ("C-x C-f" . counsel-find-file)
+   ("M-x" . counsel-M-x)
+   ("C-c g" . counsel-git)
+   (:minibuffer-local-map
+    ("C-r" . counsel-minibuffer-history))))
 
 (provide 'init-complete)
