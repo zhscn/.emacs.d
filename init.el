@@ -13,6 +13,7 @@
 
 (require 'init-meow)
 
+(require 'init-cc)
 (require 'init-lisp)
 (require 'init-coq)
 (require 'init-haskell)
