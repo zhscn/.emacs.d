@@ -29,12 +29,14 @@ This function is slow, so we have to use cache."
      (t (buffer-name)))))
 
 (defun +smart-file-name-cached ()
-  (if (eq (buffer-name) (car +smart-file-name-cache))
-      (cdr +smart-file-name-cache)
-    (let ((file-name (+smart-file-name)))
-      (setq +smart-file-name-cache
-            (cons (buffer-name) file-name))
-      file-name)))
+  (let ((curr-file-name (if (eq (buffer-name) (car +smart-file-name-cache))
+                            (cdr +smart-file-name-cache)
+                          (let ((file-name (+smart-file-name)))
+                            (setq +smart-file-name-cache (cons (buffer-name) file-name))
+                            file-name))))
+    (if (and (buffer-modified-p) (buffer-file-name))
+        (concat "* " curr-file-name)
+      curr-file-name)))
 
 (defun +persp-name ()
   (when (length> persp-names-cache 1)
