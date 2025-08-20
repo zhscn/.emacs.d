@@ -1,24 +1,21 @@
-;;; init-scheme.el -*- lexical-binding: t -*-
-;;; Commentary: scheme
-;;; Code:
+;;; -*- lexical-binding: t; -*-
 
-(use-package geiser
-  :init
-  (setq geiser-active-implementations '(chez guile chicken mit chibi))
-  (setq geiser-mode-start-repl-p t)
+(leaf geiser
+  :straight t
+  :require t
   :config
-  (defun chez/delete-so (&optional directory)
-    (interactive
-     (list (or (and current-prefix-arg
-                    (read-directory-name "Run in directory: " nil nil t))
-               default-directory)))
-    (when (buffer-file-name)
-      (let* ((command (or (and (boundp 'executable-command) executable-command)
-                          (concat "rm *.so")))
-             (default-directory directory)
-             (compilation-ask-about-save nil))
-        (shell-command (read-shell-command "Run: " command))))))
+  (leaf geiser-chez
+    :straight t
+    :require t))
 
+(leaf paredit
+  :straight t
+  :require t
+  :hook scheme-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook lisp-mode-hook racket-mode-hook)
+
+(leaf racket-mode
+  :straight t
+  :mode "\\.rkt\\'")
+
+; (setq tab-always-indent 'complete)
 (provide 'init-scheme)
-
-;;; init-scheme.el ends here

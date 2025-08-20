@@ -1,35 +1,78 @@
-;;; init-company.el -*- lexical-binding: t -*-
-;;; Commentary: auto complete
-;;; Code:
+;;; -*- lexical-binding: t -*-
 
-(use-package company
-  :diminish
-  :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
-  :commands company-abort
-  :bind (("M-/" . company-complete)
-         ("<backtab>" . company-yasnippet)
-         :map company-active-map
-         ("C-p" . company-select-previous)
-         ("C-n" . company-select-next)
-         ("<tab>" . company-complete-common-or-cycle)
-         :map company-search-map
-         ("C-p" . company-select-previous)
-         ("C-n" . company-select-next))
-  :hook (after-init . global-company-mode)
+(leaf company
+  :straight t
+  :require t
   :config
-  (setq company-tooltip-align-annotations t
-        company-tooltip-limit 12
-        company-idle-delay 0
-        company-echo-delay (if (display-graphic-p) nil 0)
-        company-minimum-prefix-length 1
-        ; company-require-match nil
-        company-dabbrev-ignore-case nil
-        company-dabbrev-downcase nil)
+  (global-company-mode 1)
+  :bind
+  ((:company-active-map
+    ("C-n" . company-select-next)
+    ("C-p" . company-select-previous))
+   (:company-search-map
+    ("C-n" . company-select-next)
+    ("C-p" . company-select-previous)))
+  :config
+  (add-hook 'company-mode-hook #'(lambda ()
+                                   (setq company-backends (delete 'company-clang company-backends)))))
 
-  ;; Better sorting and filtering
-  (use-package company-prescient
-    :init (company-prescient-mode 1)))
+(leaf awesome-pair
+  :straight (awesome-pair :type git :host github :repo "manateelazycat/awesome-pair")
+  :require t
+  :config
+  (dolist (hook (list
+                 'c-mode-common-hook
+                 'c-mode-hook
+                 'c++-mode-hook
+                 'java-mode-hook
+                 'haskell-mode-hook
+                 'maxima-mode-hook
+                 'ielm-mode-hook
+                 'sh-mode-hook
+                 'makefile-gmake-mode-hook
+                 'php-mode-hook
+                 'python-mode-hook
+                 'js-mode-hook
+                 'go-mode-hook
+                 'qml-mode-hook
+                 'jade-mode-hook
+                 'css-mode-hook
+                 'ruby-mode-hook
+                 'coffee-mode-hook
+                 'rust-mode-hook
+                 'qmake-mode-hook
+                 'lua-mode-hook
+                 'swift-mode-hook
+                 'minibuffer-inactive-mode-hook
+                 ))
+    (add-hook hook #'(lambda () (awesome-pair-mode 1))))
+  :bind
+  ((:awesome-pair-mode-map
+    ("(" . awesome-pair-open-round)
+    ("[" . awesome-pair-open-bracket)
+    ("{" . awesome-pair-open-curly)
+    (")" . awesome-pair-close-round)
+    ("]" . awesome-pair-close-bracket)
+    ("}" . awesome-pair-close-curly)
+    ("=" . awesome-pair-equal)
+
+    ("%" . awesome-pair-match-paren)
+    ("\"" . awesome-pair-double-quote)
+
+    ("SPC" . awesome-pair-space)
+
+    ("M-O" . awesome-pair-backward-delete)
+    ("C-d" . awesome-pair-forward-delete)
+    ("C-k" . awesome-pair-kill)
+
+    ("M-\"" . awesome-pair-wrap-double-quote)
+    ("M-[" . awesome-pair-wrap-bracket)
+    ("M-{" . awesome-pair-wrap-curly)
+    ("M-(" . awesome-pair-wrap-round)
+    ("M-)" . awesome-pair-unwrap)
+
+    ("M-p" . awesome-pair-jump-right)
+    ("M-n" . awesome-pair-jump-left)
+    ("M-:" . awesome-pair-jump-out-pair-and-newline))))
 
 (provide 'init-company)
-
-;;; init-company.el ends here

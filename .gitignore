@@ -81,3 +81,5 @@ workspace/
 rime
 pyim
 snippets
+eln-cache/
+emacs-application-framework/
