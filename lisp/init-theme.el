@@ -42,24 +42,24 @@
     (setq custom-enabled-themes '(doom-one))
     (reapply-themes)))
 
-(use-package doom-modeline
-  :straight t
-  :ensure t
-  :hook (after-init . doom-modeline-mode)
-  :init
-  (setq doom-modeline-height 10
-        doom-modeline-bar-width 3
-        doom-modeline-project-detection 'project
-        doom-modeline-buffer-file-name-style 'relative-to-project
-        doom-modeline-icon nil))
-
 (use-package dashboard
   :straight t
   :diminish (dashboard-mode page-break-lines-mode)
   :hook (dashboard-mode . (lambda () (setq-local frame-title-format "")))
   :config
   (setq dashboard-banner-logo-title "zhscn's Emacs"))
-(dashboard-setup-startup-hook)
+
+(use-package doom-modeline
+  :straight t
+  :ensure t
+  :hook (after-init . doom-modeline-mode)
+  :init
+  (dashboard-setup-startup-hook)
+  (setq doom-modeline-height 10
+        doom-modeline-bar-width 3
+        doom-modeline-project-detection 'project
+        doom-modeline-buffer-file-name-style 'relative-to-project
+        doom-modeline-icon nil))
 
 (provide 'init-theme)
 

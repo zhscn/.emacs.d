@@ -70,17 +70,26 @@
       :straight t
       :after yasnippet))
 
-(use-package dap-mode
-  :straight t
-  :diminish
-  :bind
-  (:map dap-mode-map
-        (("<f12>" . dap-debug)
-         ("<f8>" . dap-continue)
-         ("<f9>" . dap-next)
-         ("<M-f11>" . dap-step-in)
-         ("C-M-<f11>" . dap-step-out)
-         ("<f7>" . dap-breakpoint-toggle))))
+; (use-package dap-mode
+;   :straight t
+;   :diminish
+;   :bind
+;   (:map dap-mode-map
+;         (("<f12>" . dap-debug)
+;          ("<f8>" . dap-continue)
+;          ("<f9>" . dap-next)
+;          ("<M-f11>" . dap-step-in)
+;          ("C-M-<f11>" . dap-step-out)
+;          ("<f7>" . dap-breakpoint-toggle)))
+;   :config
+;   (require 'dap-gdb-lldb)
+;   (dap-mode 1)
+;   (dap-ui-mode 1)
+;   ;; enables mouse hover support
+;   (dap-tooltip-mode 1)
+;   ;; use tooltips for mouse hover
+;   ;; if it is not enabled `dap-mode' will use the minibuffer.
+;   (tooltip-mode 1))
 
 (provide 'init-lsp)
 
