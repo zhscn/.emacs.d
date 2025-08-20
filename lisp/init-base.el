@@ -50,6 +50,7 @@
       inhibit-startup-echo-area-message user-login-name
       inhibit-startup-screen -1
       inhibit-default-init t
+      inhibit-compacting-font-caches t
       ; initial-major-mode 'fundamental-mode
       initial-scratch-message nil)
 (fset #'display-startup-echo-area-message #'ignore)
