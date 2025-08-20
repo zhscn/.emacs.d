@@ -22,6 +22,9 @@
       cider-enhanced-cljs-completion-p t
       cider-offer-to-open-cljs-app-in-browser nil)
 
+(with-eval-after-load "cider"
+  (keymap-set cider-repl-mode-map "C-c M-o" #'cider-repl-clear-buffer))
+
 (dolist (hook '(scheme-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
                 lisp-mode-hook common-lisp-mode-hook clojure-mode-hook sly-mrepl-mode-hook
                 cider-repl-mode))
