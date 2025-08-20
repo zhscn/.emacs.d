@@ -46,10 +46,13 @@
   (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
+  (leaf posframe
+    :straight t
+    :require t)
+
   (leaf ivy-posframe
     :straight t
     :require t
-    ;; :when window-system
     :config
     (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
     (ivy-posframe-mode 1)))

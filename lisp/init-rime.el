@@ -1,9 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-(leaf posframe
-  :straight t
-  :require t)
-
 (leaf rime
   :straight (rime :type git :host github :repo "DogLooksGood/emacs-rime")
   :require t
@@ -37,7 +33,7 @@
   (setq rime-posframe-properties
         (list :font "Sarasa Fixed SC-12"
               :internal-border-width 2))
-  ;(define-key rime-mode-map (kbd "M-k") 'rime-force-enable)
+
   :bind (:rime-mode-map
          ("M-k" . rime-force-enable)))
 
