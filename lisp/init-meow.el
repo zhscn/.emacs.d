@@ -24,7 +24,7 @@
       (delete-region (region-beginning) (region-end)))
      (t (meow-C-d)))))
 
-(set-face-attribute 'meow-region-cursor nil :inherit nil)
+(set-face-attribute 'meow-region-cursor nil)
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
