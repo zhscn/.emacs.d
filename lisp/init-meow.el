@@ -119,6 +119,9 @@
   :straight t
   :init
   (setq doom-modeline-icon nil)
+  (setq doom-modeline-bar-width 0)
+  (setq doom-modeline-hud nil)
+  (setq doom-modeline-height 0)
   :config
   (doom-modeline-mode 1))
 

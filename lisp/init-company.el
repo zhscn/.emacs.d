@@ -28,6 +28,7 @@
   :straight t
   :require t
   :config
-  (smartparens-global-mode +1))
+  (smartparens-global-mode +1)
+  (show-smartparens-global-mode +1))
 
 (provide 'init-company)

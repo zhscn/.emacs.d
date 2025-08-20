@@ -17,6 +17,8 @@
                        sly-autodoc
                        sly-sbcl-exts
                        sly-scratch))
+  (setq inferior-lisp-program "/usr/bin/sbcl")
+  (add-to-list 'meow-mode-state-list '(sly-mrepl-mode . normal))
   :config
   (sly-setup '(sly-fancy sly-asdf sly-quicklisp)))
 
