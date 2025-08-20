@@ -52,7 +52,7 @@
       lsp-headerline-breadcrumb-enable nil
       lsp-modeline-code-actions-enable nil
       lsp-diagnostics-provider :none
-      lsp-eldoc-enable-hover nil
+      lsp-eldoc-enable-hover t
       lsp-modeline-diagnostics-enable nil
       lsp-signature-auto-activate nil
       lsp-signature-render-documentation nil
@@ -68,27 +68,6 @@
    (make-lsp-client :new-connection (lsp-tramp-connection "ccls")
                     :major-modes '(c-mode c++-mode)
                     :remote? t
-                    :server-id 'ccls-remote))
-
-  (require 'ccls)
-  (defun lsp-hover-manually ()
-    (interactive)
-    (lsp-request-async
-     "textDocument/hover"
-     (lsp--text-document-position-params)
-     (-lambda ((hover &as &Hover? :range? :contents))
-       (when hover
-         (when range?
-           (setq lsp--hover-saved-bounds (lsp--range-to-region range?)))
-         (let ((msg (and contents
-                         (lsp--render-on-hover-content
-                          contents
-                          lsp-eldoc-render-all))))
-           (let ((message-log-max nil))
-             (message "%s" msg)))))
-     :error-handler #'ignore
-     :mode 'tick
-     :cancel-token :eldoc-hover))
-  (define-key lsp-mode-map (kbd "C-;") #'lsp-hover-manually))
+                    :server-id 'ccls-remote)))
 
 (provide 'init-cpp)
