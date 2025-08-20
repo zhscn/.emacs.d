@@ -1,20 +1,11 @@
 ;;; -*- lexical-binding: t; -*-
+(straight-use-package 'geiser)
+(straight-use-package 'geiser-chez)
+(straight-use-package 'paredit)
 
-(leaf geiser
-  :straight t
-  :require t
-  :config
-  (leaf geiser-chez
-    :straight t
-    :require t))
+(add-hook 'scheme-mode-hook #'paredit-mode)
+(add-hook 'emacs-lisp-mode-hook #'paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'paredit-mode)
+(add-hook 'lisp-mode-hook #'paredit-mode)
 
-(leaf paredit
-  :straight t
-  :hook ((scheme-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook lisp-mode-hook racket-mode-hook) . paredit-mode))
-
-(leaf racket-mode
-  :straight t
-  :mode "\\.rkt\\'")
-
-; (setq tab-always-indent 'complete)
 (provide 'init-scheme)

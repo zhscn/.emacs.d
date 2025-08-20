@@ -1,30 +1,23 @@
 ;;; -*- lexical-binding: t -*-
+(straight-use-package 'company)
+(straight-use-package 'posframe)
+(straight-use-package 'company-posframe)
+(straight-use-package 'company-box)
+(straight-use-package 'smartparens)
 
-(leaf company
-  :straight t
-  :global-minor-mode global-company-mode
-  :bind
-  ((:company-active-map
-    ("C-n" . company-select-next)
-    ("C-p" . company-select-previous))
-   (:company-search-map
-    ("C-n" . company-select-next)
-    ("C-p" . company-select-previous)))
-  :config
-  (add-hook 'company-mode-hook
-            #'(lambda ()
-                (setq company-backends (delete 'company-clang company-backends))))
+(global-company-mode +1)
 
-  (leaf company-posframe
-    :straight t
-    :hook (company-mode-hook . company-posframe-mode))
+(define-key company-active-map (kbd "C-n") #'company-select-next)
+(define-key company-active-map (kbd "C-p") #'company-select-previous)
 
-  (leaf company-box
-    :straight t
-    :hook (company-mode-hook . company-box-mode)))
+(add-hook 'company-mode-hook
+          #'(lambda ()
+              (setq company-backends (delete 'company-clang company-backends))))
 
-(leaf smartparens
-  :straight t
-  :global-minor-mode smartparens-global-mode show-smartparens-global-mode)
+(add-hook 'company-mode-hook #'company-posframe-mode)
+(add-hook 'company-mode-hook #'company-box-mode)
+
+(smartparens-global-mode +1)
+(show-smartparens-global-mode +1)
 
 (provide 'init-company)

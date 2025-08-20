@@ -20,19 +20,19 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(eval-when-compile
-  (straight-use-package 'leaf)
-  (straight-use-package 'leaf-keywords)
-  (require 'leaf)
-  (require 'leaf-keywords)
-  (leaf-keywords-init))
+(straight-use-package 'gcmh)
+(gcmh-mode +1)
 
-(leaf gcmh
-  :straight t
-  :global-minor-mode gcmh-mode)
+(straight-use-package 'esup)
+(autoload 'esup "esup" nil t)
 
-(leaf esup
-  :straight t
-  :commands esup)
+(straight-use-package 'exec-path-from-shell)
+(setq exec-path-from-shell-variables '("PATH" "MANPATH"))
+(setq exec-path-from-shell-check-startup-files nil)
+(setq exec-path-from-shell-arguments '("-l" ))
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+(when (daemonp)
+  (exec-path-from-shell-initialize))
 
 (provide 'init-package)

@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t -*-
+(straight-use-package 'magit)
 
-(leaf magit
-  :straight t
-  :commands magit)
+(autoload #'magit "magit" nil t)
 
 (provide 'init-magit)
