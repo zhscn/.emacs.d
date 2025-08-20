@@ -1,3 +1,6 @@
 [submodule "meow"]
 	path = meow
 	url = https://github.com/meow-edit/meow
+[submodule "acm-terminal"]
+	path = acm-terminal
+	url = https://github.com/twlz0ne/acm-terminal
