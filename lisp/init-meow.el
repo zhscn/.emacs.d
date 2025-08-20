@@ -103,7 +103,7 @@
    '("&" . meow-query-replace)
    '("%" . meow-query-replace-regexp)
    '("'" . meow-join)
-   '("/" . counsel-find-file)
+   '("/" . find-file)
    '("`" . repeat)
    '("<escape>" . meow-cancel)))
 
