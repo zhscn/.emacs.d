@@ -67,6 +67,8 @@
   (elpaca sly-quicklisp)
   (elpaca (sly-stepper :host github :repo "joaotavora/sly-stepper" :files (:defaults "*.el" "*.lisp" "*.asd")))
   (elpaca sly-macrostep)
+  (elpaca geiser)
+  (elpaca geiser-guile)
   (elpaca clojure-mode)
   (elpaca cider)
   (elpaca fold-this)
