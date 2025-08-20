@@ -3,10 +3,14 @@
 (straight-use-package '(org :type git :host github :repo "bzg/org-mode"))
 (straight-use-package 'ivy-bibtex)
 (straight-use-package 'org-ref)
-(straight-use-package '(org-roam :type git :host github :repo "org-roam/org-roam"))
+(straight-use-package 'org-roam-bibtex)
 (straight-use-package 'org-tree-slide)
 (straight-use-package 'darkroom)
-(straight-use-package 'org-roam-bibtex)
+
+(let ((straight-current-profile 'pinned))
+  (add-to-list 'straight-x-pinned-packages
+               '("org-roam" . "f819720c510185af713522c592833ec9f2934251"))
+  (straight-use-package 'org-roam))
 
 (setq org-directory (file-truename "~/org/"))
 
@@ -16,27 +20,56 @@
         (t . ivy--regex-plus)))
 
 (setq bibtex-completion-bibliography `(,(concat org-directory "bibliography/ref.bib")))
-;; (setq bibtex-completion-library-path '(""))
+(setq bibtex-completion-library-path `(,(concat org-directory "pdf")))
 (setq bibtex-completion-pdf-field "File")
 (setq bibtex-completion-notes-path (concat org-directory "notes"))
 
 ;;; org-ref
 (setq org-ref-completion-library 'org-ref-ivy-cite)
-(setq reftex-default-bibliography `(,(concat org-directory "bibliography/ref.bib")))
+(setq reftex-default-bibliography bibtex-completion-bibliography)
+(setq org-ref-default-bibliography bibtex-completion-bibliography)
 (setq org-ref-pdf-directory (file-truename "~/Zotero/storage"))
 (setq org-ref-bibliography-notes (concat org-directory "note.org"))
 
+(defun +org-ref-ivy-insert-cite-link (&optional arg)
+  "insert cite link with help of `ivy-bibtext' and corresponding
+`ivy-bibtex-display-transformer'"
+  (interactive "P")
+  (setq org-ref-bibtex-files (if arg
+				                 org-ref-default-bibliography
+			                   (org-ref-find-bibliography)))
+  (bibtex-completion-init)
+  (let* ((candidates (bibtex-completion-candidates))
+         (key (bibtex-completion-key-at-point))
+         (preselect (and key
+                         (cl-position-if (lambda (cand)
+                                           (member (cons "=key=" key)
+                                                   (cdr cand)))
+                                         candidates))))
+    (ivy-read "Open: "
+              candidates
+              :preselect preselect
+              :caller 'ivy-bibtex
+              :history 'ivy-bibtex-history
+              :action 'or-ivy-bibtex-insert-cite)))
+
 ;;; org-roam
-(autoload 'org-roam-node-find "org-roam" nil t)
 (setq org-roam-v2-ack t)
-(setq org-roam-directory (file-truename "~/org"))
-(setq org-agenda-text-search-extra-files (directory-files-recursively org-roam-directory "\\.org$"))
+(setq org-roam-directory (concat org-directory "roam"))
 
 ;;; org-roam-bibtex
-(add-hook 'org-roam-mode-hook #'org-roam-bibtex-mode)
-(with-eval-after-load "org-roam"
-  (require 'org-ref)
-  (require 'org-roam-bibtex))
+(defun load-roam-bibtex ()
+  (setq bibtex-ref-roam--loaded t)
+    (require 'org-roam)
+    (require 'org-ref)
+    (require 'ivy-bibtex)
+    (require 'org-roam-bibtex)
+    (setq org-ref-insert-cite-function #'+org-ref-ivy-insert-cite-link)
+    (org-roam-setup)
+    (org-roam-bibtex-mode +1))
+
+(with-eval-after-load "org-roam" (load-roam-bibtex))
+(with-eval-after-load "ivy-bibtex" (load-roam-bibtex))
 
 ;;; org-tree-slide
 (defvar-local org-tree-slide--on nil)
@@ -59,6 +92,7 @@
   (define-key org-tree-slide-mode-map (kbd "<f9>") 'org-tree-slide-move-previous-tree)
   (define-key org-tree-slide-mode-map (kbd "<f10>") 'org-tree-slide-move-next-tree))
 
+(setq org-agenda-text-search-extra-files (directory-files-recursively org-roam-directory "\\.org$"))
 ;; (leaf org-latex-impatient
 ;;   :straight t
 ;;   :require t
