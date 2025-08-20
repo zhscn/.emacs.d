@@ -26,7 +26,6 @@
 
 (with-eval-after-load "embark"
   (setq citar-at-point-function 'embark-act))
-(advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
 
 ;;; org-cite
 (with-eval-after-load "citar"
