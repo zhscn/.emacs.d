@@ -27,6 +27,7 @@
 
 ;;; org-cite
 (with-eval-after-load "oc"
+  (require 'ox)
   (require 'oc-bibtex-actions))
 (setq org-cite-global-bibliography bibtex-actions-bibliography
       org-cite-insert-processor 'oc-bibtex-actions
