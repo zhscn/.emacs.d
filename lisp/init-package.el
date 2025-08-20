@@ -36,6 +36,7 @@
                                   :fork (:host github :repo "zhscn/yasnippet")))
 
 (straight-use-package 'ws-butler)
+(setq ws-butler-keep-whitespace-before-point nil)
 (ws-butler-global-mode)
 
 (provide 'init-package)
