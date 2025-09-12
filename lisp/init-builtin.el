@@ -49,8 +49,7 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(when (display-graphic-p)
-  (global-hl-line-mode +1))
+(global-hl-line-mode +1)
 
 (global-auto-revert-mode +1)
 
