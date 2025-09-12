@@ -79,8 +79,6 @@
 
 (elpaca-wait)
 
-(require 'transient)
-
 (setq exec-path-from-shell-variables '("PATH" "MANPATH" "LANG")
       exec-path-from-shell-check-startup-files nil
       exec-path-from-shell-arguments '("-l"))
