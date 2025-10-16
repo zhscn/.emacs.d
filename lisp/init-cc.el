@@ -62,12 +62,72 @@
                         (innamespace . 0))))
   "Modified Google C/C++ Programming Style.")
 
-(defun google-set-c-style ()
-  "Set the current buffer's c-style to Google C/C++ Programming
-  Style. Meant to be added to `c-mode-common-hook'."
-  (c-add-style "Google" google-c-style t))
+(defconst fdb-c-style
+  `(;; IndentWidth: 4
+    (c-basic-offset . 4)
+    ;; UseTab: ForIndentation
+    (indent-tabs-mode . t)
+    ;; TabWidth: 4
+    (tab-width . 4)
+    ;; ColumnLimit: 120
+    (fill-column . 120)
+    ;; BreakBeforeBraces: Attach (K&R style, e.g., "if (cond) {")
+    (c-hanging-braces-alist . ((defun-open after)
+                               (defun-close before after)
+                               (class-open after)
+                               (class-close before after)
+                               (namespace-open after)
+                               (inline-open after)
+                               (inline-close before after)
+                               (block-open after)
+                               (block-close . c-snug-do-while)
+                               (extern-lang-open after)
+                               (extern-lang-close after)
+                               (statement-case-open after)
+                               (substatement-open after)))
+    (c-offsets-alist . (
+                        ;; AccessModifierOffset: -4
+                        (access-label . -4)
+                        ;; IndentCaseLabels: false
+                        (case-label . 0)
+                        ;; NamespaceIndentation: None
+                        (innamespace . 0)
+                        ;; ConstructorInitializerIndentWidth: 2
+                        (member-init-intro . 2)
+                        (member-init-cont . 2)
+                        ;; IndentWrappedFunctionNames: false
+                        (func-decl-cont . 0)
+                        ;; AlignAfterOpenBracket: Align
+                        (arglist-cont-nonempty . c-lineup-arglist-intro-after-paren)
+                        (arglist-cont . c-lineup-arglist-intro-after-paren)
+                        (arglist-close . c-lineup-arglist)
+                        ;; -- Sensible defaults for C++ --
+                        ;; AlwaysBreakTemplateDeclarations: true
+                        (topmost-intro . 0)
+                        (block-open . 0)
+                        (substatement . +)
+                        (substatement-open . 0)
+                        (statement-case-open . +)
+                        (statement-case-intro . +)
+                        (inher-intro . +)
+                        (inher-cont . c-lineup-multi-inher)
+                        (comment-intro . 0)))
+    ;; ForEachMacros: [ foreach, Q_FOREACH, BOOST_FOREACH ]
+    (c-recognize-foreach-p . t)
+    (c-foreach-keywords . '("foreach" "Q_FOREACH" "BOOST_FOREACH")))
+  "FoundationDB style based on Mozilla.")
 
-(add-hook 'c-mode-common-hook 'google-set-c-style)
+(defvar-local my-c-style "google")
+
+(with-eval-after-load "cc-mode"
+  (c-add-style "google" google-c-style nil)
+  (c-add-style "fdb" fdb-c-style nil)
+  (defun my-c-style-setup ()
+    (when (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+      (message "set c style %s" my-c-style)
+      (c-set-style my-c-style)))
+  (add-hook 'hack-local-variables-hook #'my-c-style-setup))
+
 (add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
 
 (with-eval-after-load "cc-mode"
