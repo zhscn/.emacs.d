@@ -124,7 +124,6 @@
   (c-add-style "fdb" fdb-c-style nil)
   (defun my-c-style-setup ()
     (when (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
-      (message "set c style %s" my-c-style)
       (c-set-style my-c-style)))
   (add-hook 'hack-local-variables-hook #'my-c-style-setup))
 
