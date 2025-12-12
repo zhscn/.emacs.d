@@ -15,16 +15,16 @@
   (unless (file-exists-p repo)
     (make-directory repo t)
     (condition-case-unless-debug err
-        (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
-                 ((zerop (call-process "git" nil buffer t "clone"
-                                       (plist-get order :repo) repo)))
-                 ((zerop (call-process "git" nil buffer t "checkout"
-                                       (or (plist-get order :ref) "--"))))
-                 (emacs (concat invocation-directory invocation-name))
-                 ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
-                                       "--eval" "(byte-recompile-directory \".\" 0 'force)")))
-                 ((require 'elpaca))
-                 ((elpaca-generate-autoloads "elpaca" repo)))
+        (if-let* ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
+                  ((zerop (call-process "git" nil buffer t "clone"
+                                        (plist-get order :repo) repo)))
+                  ((zerop (call-process "git" nil buffer t "checkout"
+                                        (or (plist-get order :ref) "--"))))
+                  (emacs (concat invocation-directory invocation-name))
+                  ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
+                                        "--eval" "(byte-recompile-directory \".\" 0 'force)")))
+                  ((require 'elpaca))
+                  ((elpaca-generate-autoloads "elpaca" repo)))
             (kill-buffer buffer)
           (error "%s" (with-current-buffer buffer (buffer-string))))
       ((error) (warn "%s" err) (delete-directory repo 'recursive))))
@@ -38,7 +38,6 @@
   (elpaca symbol-overlay)
   (elpaca page-break-lines)
   (elpaca (transient :host github :repo "magit/transient"))
-  (elpaca exec-path-from-shell)
   (elpaca (telega :type git :host github :branch "master"))
   (elpaca yasnippet)
   (elpaca ws-butler)
@@ -78,12 +77,6 @@
   (elpaca flycheck))
 
 (elpaca-wait)
-
-(setq exec-path-from-shell-variables '("PATH" "MANPATH" "LANG")
-      exec-path-from-shell-check-startup-files nil
-      exec-path-from-shell-arguments '("-l"))
-(when (or *is-mac* (daemonp))
-  (exec-path-from-shell-initialize))
 
 (yas-global-mode)
 

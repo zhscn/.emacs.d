@@ -31,7 +31,7 @@
 
 (defun consult-project-root ()
   "Returns project root directory."
-  (when-let (project (project-current))
+  (when-let* (project (project-current))
     (car (project-roots project))))
 (keymap-substitute global-map #'switch-to-buffer #'consult-buffer)
 (keymap-substitute global-map #'imenu #'consult-imenu)

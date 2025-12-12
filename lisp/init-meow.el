@@ -24,7 +24,7 @@
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
 
   (meow-leader-define-key
-   '("f" . fold-this)
+   '("f" . project-find-file)
    '("b" . consult-buffer)
    '("i" . symbol-overlay-put)
    '("I" . symbol-overlay-remove-all)
