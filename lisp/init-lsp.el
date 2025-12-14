@@ -34,6 +34,10 @@
 (add-hook 'rust-ts-mode-hook #'lsp)
 (add-hook 'rust-ts-mode-hook #'flycheck-mode)
 
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+(add-hook 'go-mode-hook #'lsp)
+(add-hook 'go-mode-hook #'flycheck-mode)
+
 (with-eval-after-load "lsp-mode"
   (defun lsp-booster--advice-json-parse (old-fn &rest args)
     "Try to parse bytecode instead of json."

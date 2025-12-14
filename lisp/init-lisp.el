@@ -36,6 +36,8 @@
     (keymap-unset paredit-mode-map k)))
 
 (with-eval-after-load "geiser"
+  (setq geiser-chez-binary "chez")
+  (require 'geiser-chez)
   (require 'geiser-guile))
 
 (provide 'init-lisp)
