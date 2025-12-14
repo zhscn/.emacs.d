@@ -5,10 +5,9 @@
 
 (when window-system
   (global-page-break-lines-mode)
-  (set-fontset-font t 'emoji (font-spec :family "Noto Color Emoji"))
-  ;; (set-fontset-font t 'unicode "Apple Color Emoji" nil 'append)
+  (set-fontset-font t 'emoji (font-spec :family (if *is-mac* "Apple Color Emoji" "Noto Color Emoji")))
   (set-face-attribute
-   'default nil :font (font-spec :family "Cascadia Mono" :size 16))
+   'default nil :font (font-spec :family "MonoLisa" :size 16))
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
                       charset (font-spec :family "LXGW WenKai Mono"))))
