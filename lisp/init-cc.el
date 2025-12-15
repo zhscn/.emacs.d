@@ -127,8 +127,6 @@
       (c-set-style my-c-style)))
   (add-hook 'hack-local-variables-hook #'my-c-style-setup))
 
-(add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
-
 (with-eval-after-load "cc-mode"
   (defun c-page-break ()
     "insert page break line in comment"

@@ -1,7 +1,9 @@
 ;;; -*- lexical-binding: t -*-
 
 (setq column-number-mode t)
-(minions-mode)
+
+(add-hook 'after-init-hook #'minions-mode)
+(add-hook 'after-init-hook #'global-hl-todo-mode)
 
 (when window-system
   (global-page-break-lines-mode)
@@ -12,12 +14,10 @@
     (set-fontset-font (frame-parameter nil 'font)
                       charset (font-spec :family "LXGW WenKai Mono"))))
 
-(global-hl-todo-mode +1)
-
-(defun +persp-name ()
-  (when (length> persp-names-cache 1)
-    (format "#%.5s " (safe-persp-name (get-current-persp)))))
-
-(add-to-list 'mode-line-format '((:eval (+persp-name))))
+(with-eval-after-load "persp-mode"
+  (defun +persp-name ()
+    (when (length> persp-names-cache 1)
+      (format "#%.5s " (safe-persp-name (get-current-persp)))))
+  (add-to-list 'mode-line-format '((:eval (+persp-name)))))
 
 (provide 'init-theme)

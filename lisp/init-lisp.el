@@ -27,7 +27,7 @@
 
 (dolist (hook '(scheme-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
                 lisp-mode-hook common-lisp-mode-hook clojure-mode-hook sly-mrepl-mode-hook
-                cider-repl-mode))
+                cider-repl-mode-hook))
   (add-hook hook #'paredit-mode)
   (add-hook hook #'puni-disable-puni-mode))
 

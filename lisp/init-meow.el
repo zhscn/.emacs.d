@@ -6,7 +6,6 @@
 
 (setq meow-cursor-type-insert '(bar . 2)
       meow-expand-hint-remove-delay 1.5
-      ;; meow-use-cursor-position-hack t
       meow-keypad-leader-dispatch "C-c")
 (meow-global-mode +1)
 
@@ -115,7 +114,6 @@
    '("<escape>" . meow-cancel)))
 
 (meow-setup)
-;; (meow-setup-line-number)
 (meow-setup-indicator)
 (meow-thing-register 'angle
                      '(pair ("<") (">"))
@@ -123,4 +121,8 @@
 
 (add-to-list 'meow-char-thing-table
              '(?a . angle))
+
+(with-eval-after-load "meow"
+  (add-to-list 'meow-mode-state-list '(haskell-interactive-mode . normal)))
+
 (provide 'init-meow)

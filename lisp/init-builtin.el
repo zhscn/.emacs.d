@@ -87,7 +87,16 @@
 
 (add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
 (add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
+(add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.ixx\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.cppm\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+(add-to-list 'auto-mode-alist '("\\.agda\\'" . agda2-mode))
+(add-to-list 'auto-mode-alist '("\\.lagda.md\\'" . agda2-mode))
+
 (autoload #'cmake-mode "cmake-mode" nil t)
+(autoload #'agda2-mode "agda2-mode" nil t)
 
 (defun my-whitespace ()
   (interactive)
@@ -100,16 +109,16 @@
   (setq whitespace-display-mappings '((tab-mark 9 [187 9] [92 9]))
         whitespace-line-column 120))
 
-(defun open-kitty ()
-  (interactive)
-  (do-applescript "
+(when *is-mac*
+  (defun open-kitty ()
+    (interactive)
+    (do-applescript "
 if application \"Kitty\" is not running then
     launch application \"Kitty\"
 else
     tell application \"Kitty\" to activate
 end if
-"))
-
-(keymap-set global-map "M-s-," #'open-kitty)
+")
+    (keymap-set global-map "M-s-," #'open-kitty)))
 
 (provide 'init-builtin)

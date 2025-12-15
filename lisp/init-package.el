@@ -80,30 +80,35 @@
 
 (elpaca-wait)
 
-(yas-global-mode)
+(add-hook 'after-init-hook
+          (lambda ()
+            (require 'yasnippet)
+            (yas-global-mode)))
 
 (setq ws-butler-keep-whitespace-before-point nil)
-(ws-butler-global-mode)
+(add-hook 'prog-mode-hook #'ws-butler-mode)
 
 (require 'persp-mode)
 (set-persp-parameter 'dont-save-to-file t nil)
 (setq-default persp-auto-save-opt 0)
 (persp-mode +1)
 
+(autoload 'ace-window "ace-window" nil t)
 (keymap-set global-map "C-x C-o" #'ace-window)
-(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
-      aw-dispatch-alist
-      '((?x aw-delete-window "Delete Window")
-        (?m aw-swap-window "Swap Windows")
-        (?M aw-move-window "Move Window")
-        (?c aw-copy-window "Copy Window")
-        (?n aw-switch-buffer-in-window "Select Buffer")
-        (?u aw-switch-buffer-other-window "Switch Buffer Other Window")
-        (?c aw-split-window-fair "Split Fair Window")
-        (?v aw-split-window-vert "Split Vert Window")
-        (?b aw-split-window-horz "Split Horz Window")
-        (?o delete-other-windows "Delete Other Windows")
-        (?? aw-show-dispatch-help)))
+(with-eval-after-load "ace-window"
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
+        aw-dispatch-alist
+        '((?x aw-delete-window "Delete Window")
+          (?m aw-swap-window "Swap Windows")
+          (?M aw-move-window "Move Window")
+          (?c aw-copy-window "Copy Window")
+          (?n aw-switch-buffer-in-window "Select Buffer")
+          (?u aw-switch-buffer-other-window "Switch Buffer Other Window")
+          (?w aw-split-window-fair "Split Fair Window")
+          (?v aw-split-window-vert "Split Vert Window")
+          (?b aw-split-window-horz "Split Horz Window")
+          (?o delete-other-windows "Delete Other Windows")
+          (?? aw-show-dispatch-help))))
 
 (with-eval-after-load "magit"
   (defun magit-log-dangling ()
@@ -117,6 +122,14 @@
      '("--no-walk" "--color" "--decorate" "--follow")' nil))
 
   (transient-append-suffix 'magit-log "s"
-    '("d" "dangling" magit-log-dangling)))
+    '("d" "dangling" magit-log-dangling))
+
+  (transient-define-argument magit:--signoff ()
+    :description "Add Signed-off-by trailer"
+    :class 'transient-switch
+    :key "/s"
+    :shortarg "-s"
+    :argument "--signoff"
+    :level 4))
 
 (provide 'init-package)

@@ -30,11 +30,9 @@
   (keymap-set lsp-mode-map "C-c v b" #'ccls-inheritance-hierarchy-base)
   (keymap-set lsp-mode-map "C-c v m" #'ccls-member-hierarchy))
 
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
 (add-hook 'rust-ts-mode-hook #'lsp)
 (add-hook 'rust-ts-mode-hook #'flycheck-mode)
 
-(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 (add-hook 'go-mode-hook #'lsp)
 (add-hook 'go-mode-hook #'flycheck-mode)
 
