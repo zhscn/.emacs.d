@@ -118,7 +118,7 @@ if application \"Kitty\" is not running then
 else
     tell application \"Kitty\" to activate
 end if
-")
-    (keymap-set global-map "M-s-," #'open-kitty)))
+"))
+  (keymap-set global-map "M-s-," #'open-kitty))
 
 (provide 'init-builtin)
